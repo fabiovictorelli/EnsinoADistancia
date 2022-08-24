@@ -1,0 +1,42 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Inclusão de Agenda ");
+?>
+<H2>Resultado</H2>
+
+<?PHP
+	if($codigo_materia == ""){
+		MostraErro( "<BR><BR> O campo NOME DA MATÉRIA deve ser preenchido!
+		<BR><BR> <BR><BR>");
+	}
+	if($data_agenda == ""){
+		MostraErro( "<BR><BR> Você deve preencher a data !  <BR><BR> <BR><BR>");
+	}
+	if($tipo_agenda == ""){
+		MostraErro( "<BR><BR> Você deve escolher um tipo !  <BR><BR> <BR><BR>");
+	}
+	if($nome == ""){
+		MostraErro( "<BR><BR> Você deve descrever no campo texto da agenda ! <BR><BR><BR><BR>");
+	}
+
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+
+	if (!$conn) {
+		echo "Não foi possivel abrir banco de dados.\n";
+	    exit;
+	}
+	$result = pg_Exec($conn,
+                        "INSERT INTO agendas
+                         VALUES ('$data_agenda','$nome','$codigo_materia','$tipo_agenda');");
+	if (!$result) {
+		echo "Ocorreu um erro durante a inclusao na base de dados.\n";
+		exit;
+	}
+
+	echo "<CENTER>";
+	echo "<BR><BR>Agenda incluída";
+	echo "</CENTER>";
+	pg_FreeResult($result);
+	pg_Close($conn);
+?>
+<?PHP MostraRodape(); ?>

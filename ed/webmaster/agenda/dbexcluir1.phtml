@@ -1,0 +1,91 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec(" Exclusão  de Agenda ");
+?>
+
+<FORM ACTION="/ed/webmaster/agenda/dbexcluir2.phtml" METHOD="post">      
+<?PHP
+	$conn = pg_connect("localhost", "5432", "", "", "ed");
+	if(!$conn){
+		echo "Não Foi possível abrir a base de dados";
+		exit;
+	}
+	$result = pg_exec($conn, "select * from agendas where cod_agenda = $codigo_agenda;");
+	$num = pg_numrows($result);
+	if($num == 0){
+		echo "<BR>Nada Encontrado."; 
+ 		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		exit; 
+	}
+	echo "<INPUT TYPE=\"hidden\" NAME=\"codigo_agenda\" VALUE=\"";
+	echo pg_result($result, 0, "cod_agenda"); echo "\">\n";	
+
+    $resultmateria = pg_Exec($conn, "Select * from materias ORDER BY nome;");
+    $num = pg_NumRows($resultmateria);
+	echo "Matéria :";
+    echo "<SELECT NAME=\"codigo_materia\">\n";
+    for($i = 0; $i < $num; $i++) {
+         echo "<OPTION VALUE=\"";
+         echo pg_Result($resultmateria, $i, "cod_materia");
+         echo "\">"; 
+		 echo pg_Result($resultmateria, $i, "nome");
+         echo "\n";
+    }
+    echo "</SELECT>\n";
+
+    echo "Data :";
+	echo "<INPUT TYPE=\"text\" SIZE=\"20\" NAME=\"data_agenda\" VALUE=\"";
+    $data_final =pg_Result($result, 0, "data") ;
+    $data_final=ereg_replace("/","-",$data_final);
+    $dmano=explode("-", $data_final);
+    $d = $dmano[0];
+    $m = $dmano[1];
+    $y = $dmano[2];
+    $data_final= date( "d-m-Y", mktime(0, 0, 0, $d, $m , $y));
+    echo "$data_final";   
+	echo "\">\n";	
+
+    $tipo= pg_result($result, 0, "tipo_agenda");
+
+    echo "<BR>Tipo :";
+    echo "<SELECT NAME=\"tipo_agenda\">\n";
+    if ( $tipo == '1' ) { 
+    	echo "<OPTION SELECTED VALUE=1>texto normal";
+    }
+    else {
+    	echo "<OPTION VALUE=1>texto normal";
+	}
+
+    if ( $tipo == '2' ) { 
+    	echo "<OPTION SELECTED VALUE=2>link";
+    }
+    else {
+    	echo "<OPTION VALUE=2>link";
+    } 
+    if ( $tipo == '3' ) { 
+    	echo "<OPTION SELECTED VALUE=3>aviso";
+    }
+    else {
+    	echo "<OPTION VALUE=3>aviso";
+    }
+    if ( $tipo == '4' ) { 
+    	echo "<OPTION SELECTED VALUE=4>arquivo p/ baixar";
+    }
+    else {
+    	echo "<OPTION VALUE=4>arquivo p/ baixar";
+    }
+    echo "</SELECT>\n";
+
+    echo "<BR>"; 
+    echo "Descrição :";
+	echo "<INPUT TYPE=\"text\" SIZE=\"80\" NAME=\"nome\" VALUE=\"";
+	echo pg_result($result, 0, "nome"); echo "\">\n";	
+
+    pg_FreeResult($result);
+    pg_FreeResult($resultmateria);
+    pg_Close($conn);
+
+?>
+<CENTER><INPUT TYPE="submit" VALUE="Exclui"></CENTER>
+</FORM>
+<?PHP MostraRodape(); ?>

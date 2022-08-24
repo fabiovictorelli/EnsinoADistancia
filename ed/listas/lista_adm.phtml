@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<TITLE>Opções Avançadas das Listas</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#000080" ALINK="#FF0000">
+<H2>Opções Avançadas das Listas</H2>
+<FORM METHOD="post" ACTION="lista_adm1.phtml">
+<P>Selecione a lista :
+<?
+
+	require("../lib/ed.bib.phtml");
+?>
+<?
+
+$handle=opendir('/home/mailman/lists');
+echo "<SELECT NAME=\"lista\">\n";
+while ($file = readdir($handle)) {
+	/* echo "$file\n<BR>"; */
+	if ( $file != "." && $file != "..") {
+		echo "<OPTION VALUE=$file>$file\n";
+	}
+}
+echo "</SELECT>";
+closedir($handle); 
+echo "<INPUT TYPE=\"hidden\" NAME=\"SITE_LOCAL\" VALUE=\"$SITE_LOCAL\">";
+?>
+<INPUT TYPE=Submit VALUE="Mostrar">
+</FORM>
+</BODY>
+</HTML>

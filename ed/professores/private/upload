@@ -1,0 +1,38 @@
+<?PHP 
+
+/*----------------------///  img_upload()  ///-------------------------------*/
+
+function img_upload($arquivo,$materia_name,$rota_arquivos) 
+{ 
+// echo "arquivo=$arquivo <BR>";               // para debug
+//echo "materia_name= $materia_name <BR>";       // para debug
+//echo "rota_arquivos=$rota_arquivos<BR>";       // para debug
+$arquivo = stripslashes($arquivo);
+
+	$i = "0"; 
+	$d = dir($rota_arquivos); 
+	while($entry=$d->read())  
+	{ 
+		if($entry == $materia_name) 
+		{ 
+			$materia_name_in_use = "TRUE";
+		} 
+		++$i; 
+	} 
+                    
+$d->close(); 
+	if($materia_name_in_use == "TRUE") {  
+		$new_materia_name = date('hms').$materia_name;
+	} 
+	else {  
+		$new_materia_name = $materia_name;
+	} 
+	$new_img_location = $rota_arquivos. '/'.$new_materia_name;
+	copy($arquivo,$new_img_location);
+	chmod($new_img_location, 0666);
+	$img_upload_array = array("$new_materia_name","$new_img_location");
+	                                  
+return($img_upload_array);      
+} 
+/*-----------------------------///  img_upload()  ///-------------------------*/
+?> 

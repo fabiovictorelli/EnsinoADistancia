@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<TITLE>Listagem de usuários nas listas </TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#000080" ALINK="#FF0000">
+<H2>Listagem de usuários nas listas </H2>
+<FORM METHOD="post" ACTION="/cgi-bin/ed/lista_usu_lista1.cgi">
+<P>Selecione a lista :
+<?
+
+$handle=opendir('/home/mailman/lists');
+echo "<SELECT NAME=\"lista\">\n";
+while ($file = readdir($handle)) {
+	/* echo "$file\n<BR>"; */
+	if ( $file != "." && $file != "..") {
+		echo "<OPTION VALUE=$file>$file\n";
+	}
+}
+echo "</SELECT>";
+closedir($handle); 
+echo "<BR><input type=\"radio\" name=\"tipolista\" value=\"dalista\" checked>listar usuários da lista acima";
+echo "<BR><input type=\"radio\" name=\"tipolista\" value=\"todos\">listar todos os usuários de todas as listas ";
+?>
+<BR>
+<INPUT TYPE=Submit VALUE="Listar">
+<BR>
+<FORM> <input type="button" value="Retornar" onClick="history.back()"></FORM>
+</FORM>
+</BODY>
+</HTML>

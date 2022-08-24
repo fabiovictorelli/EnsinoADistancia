@@ -1,0 +1,88 @@
+<?PHP 
+	 require ( "../lib/ed.bib.phtml");
+	 MostraCabec("Entrando num curso");
+
+		if(!isset($pos_cursor)){
+		$pos_cursor = 0;
+		}
+		$conn = pg_Connect("localhost", "5432", "", "", "ed");
+		if (!$conn) {
+			SaiErro("Um erro ocorreu durante a abertura da base de dados.\n");  
+		}
+
+		pg_exec($conn,"begin;");
+		pg_exec($conn,"declare pont cursor for SELECT * FROM cursos ORDER BY nome;");
+		if($pos_cursor != 0){
+				pg_exec($conn,"move forward $pos_cursor in pont;");
+		}
+		$result = pg_exec($conn,"fetch 10 in pont;");
+		if (!$result) {
+			SaiErro("Um erro ocorreu durante a abertura da base de dados.\n");  
+		}
+		pg_exec($conn,"end;");
+
+		$prox_pag = $pos_cursor + 10;
+		$pag_ant = $pos_cursor - 10;
+
+		$todos = pg_exec($conn,"SELECT * FROM cursos ORDER BY nome;");
+		$total = pg_numrows($todos);
+		$paginas = ceil($total/10);
+		if(!isset($pag_atual)){ $pag_atual = 1; }
+		pg_freeresult($todos);
+
+		echo"<B><BIG>$total cursos. Página $pag_atual/$paginas.</BIG></B><br>";
+		$num = pg_NumRows($result);
+		$i = 0;
+		if($num > 0){
+			echo "<HR SIZE=\"2\">";	    
+
+			echo "<TABLE BORDER = \"2\">";
+			echo "<TR><TD>Nome do curso<TD>&nbsp</TD></TR>\n";
+			while ($i < $num) {
+				echo "<FORM METHOD=\"post\" ACTION=\"dbentracurso.phtml\">\n";
+				echo "<INPUT TYPE=\"hidden\" NAME=\"codigo_curso\" VALUE=\"";
+				echo pg_result($result, $i, "cod_curso"); 
+				echo "\">";
+				echo "<TD>";
+				$nome_curso = pg_Result($result, $i, "nome");
+				echo "<INPUT TYPE=\"hidden\" NAME=\"nome_curso\" VALUE=\"$nome_curso\">";
+				echo "$nome_curso";
+				echo "</TD>\n" ;
+				echo "<TD><INPUT TYPE=\"submit\" VALUE=\"Entra \"></TD>\n" ;
+				echo "</TR>\n";
+				echo "</FORM>\n";
+				$i++;
+			}
+			echo "</TABLE>";
+			//pg_FreeResult($result);
+			//pg_Close($conn);
+		}
+
+		elseif  ($num == 0) {
+			echo "<TR><TD>\n";
+			echo "Nada encontrado.\n" ;
+			echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+			echo "</TR></TD>\n";
+			exit;
+		}
+
+		echo "<CENTER>\n";
+		echo "<TABLE BORDER=0 CELLSPACING=4><TR>\n";
+		if($pos_cursor > 0)
+		{
+		$cont = $pag_atual - 1;
+		echo "
+		<TD><A HREF=\"entrandocurso.phtml?";echo "pos_cursor=$pag_ant&pag_atual=$cont";echo "\">página anterior</A></TD>\n
+		";
+		}
+		if($pag_atual  < $paginas)
+		{
+		$cont = $pag_atual + 1;
+		echo"
+		<TD><A HREF=\"entrandocurso.phtml?";echo "pos_cursor=$prox_pag&pag_atual=$cont";echo "\">próxima página</A></TD>\n";
+		}
+		echo "</TR></TABLE>\n";
+		echo "</CENTER>\n";
+
+	MostraRodape();
+?>

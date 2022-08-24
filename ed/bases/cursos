@@ -1,0 +1,9 @@
+create table cursos(
+nome char(40),
+cod_professor int4,
+num_max_vagas int,
+data_final_matricula date,
+data_inicio_curso date,
+data_fim_curso date,
+periodo char(60),
+cod_curso int4 DEFAULT nexTval ( 'cursos_seq'));

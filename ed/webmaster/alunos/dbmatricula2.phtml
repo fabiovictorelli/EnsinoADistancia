@@ -1,0 +1,52 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec(" Alteração de cursos ");
+?>
+
+<FORM ACTION="/ed/webmaster/alunos/dbmatricula3.phtml" METHOD="post">      
+<?PHP
+	$conn = pg_connect("localhost", "5432", "", "", "ed");
+	if(!$conn){
+		echo "Não Foi possível abrir a base de dados";
+		exit;
+	}
+	echo "Nome do Curso : $nome_curso";
+/*    echo "<BR>Códigos:  $codigo_curso , $codigo_aluno"; */
+
+	echo "<INPUT TYPE=\"hidden\" NAME=\"codigo_curso\" VALUE=\"$codigo_curso\">\n";
+	echo "<INPUT TYPE=\"hidden\" NAME=\"nome_curso\" VALUE=\"$nome_curso\">\n";
+	echo "<INPUT TYPE=\"hidden\" NAME=\"codigo_aluno\" VALUE=\"$codigo_aluno\">\n";
+
+    $result = pg_Exec($conn, "Select * from cursos_materias WHERE cod_curso = $codigo_curso;");
+    $num = pg_NumRows($result);
+    if ( $num == 0 ) {
+          MostraErro ("Não existem materias cadastrados neste curso.");
+     }
+     echo "<BR>Selecione uma Materia:";
+     echo "<SELECT NAME=\"codigo_materia\">\n";
+     for($i = 0; $i < $num; $i++)
+     {
+        $aux = pg_Result($result, $i, "cod_materia");
+    	$result1 = pg_Exec($conn, "Select * from materias WHERE cod_materia = '$aux';");
+		$num_aux = pg_NumRows($result1);
+		if ( $num_aux == 0 ) {
+			MostraErro ("Não existem materias cadastrados com este codigo ");
+	     }
+		 $nome_materia= pg_Result($result1, 0, "nome");
+         echo "<OPTION VALUE=\"";
+         echo "$aux";
+         echo "\">";
+		 echo "$nome_materia";
+         echo "\n";
+         pg_FreeResult($result1);  
+		echo "</OPTION>";
+     }
+     echo "</SELECT>\n";
+     pg_FreeResult($result);  
+     pg_Close($conn);
+
+
+?>
+<CENTER><INPUT TYPE="submit" VALUE="continuar"></CENTER>
+</FORM>
+<?PHP MostraRodape(); ?>

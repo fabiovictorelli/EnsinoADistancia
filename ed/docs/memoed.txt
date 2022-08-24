@@ -1,0 +1,58 @@
+
+MINISTÉRIO DA EDUCAÇÃO E DO DESPORTO 
+CENTRO FEDERAL DE EDUCAÇÃO TECNOLÓGICA DO PARANÁ
+CURSO DE PÓS-GRADUAÇÃO EM ENGENHARIA ELÉTRICA E INFORMÁTICA INDUSTRIAL
+
+
+
+
+Memo:214/98-CPGEI				Curitiba, 4 de dezembro1998.
+
+De: Prof. Eduardo Nisenbaum
+      
+A: Diretor de Ensino.
+C/C: Coordenador do CPGEI/CEFET-PR
+
+
+
+Venho por meio dessa pedir que a diretoria de ensino da escola estude a oficialização do projeto  "Servidor de Educação à Distância", que está sendo desenvolvido dentro do CPGEI/CEFET-PR sob minha coordenação.
+Os objetivos do projeto são:
+
+I-De carater imediato (curto prazo):
+
+Auxiliar os professores e   alunos da escola no cumprimento dos cronogramas de suas matérias mesmo nos casos comuns de ausência temporária, por fatores tais como:
+Do lado dos Professores:
+* Viagens a congressos ou treinamentos externos a serviço da Instituição.
+* Viagens para trabalhos e contatos a serviço da Instituição.
+* Doenças que exijam período curto de resguardo.
+
+Do lado dos alunos:
+* Viagens a serviço e de curta duração, pelas empresas em que o aluno regular trabalha ou faz estágio.
+* Doenças que exijam período curto de resguardo.
+
+
+II-De carater futuro (médio  prazo):
+
+* Oferecer cursos abertos à comunidade externa com conteúdo e acompanhamento de responsabilidade da instituição.
+
+
+
+A oficialização do projeto dentro da escola é essencial pelos seguintes motivos:
+
+1. Garantir  infra-estrutura técnica para o servidor a saber:
+
+    -Alocar endereço IP definitivo para o servidor (atualmente provisório)
+    -Alocar banda satisfatória no acesso futuro a RNP via rede  Araucária(PROTEM).
+
+2. Incentivar aos realizadores não remunerados do projeto a continuar as pesquisas e testes de campo.
+
+3. Ajudar a conseguir recursos governamentais que tornarão possível a expansão planejada do servidor de ensino a distância.
+
+
+
+
+
+                                                      Atenciosamente,
+
+                                                                  .....................................................
+                                                                  Prof. Dr. Eduardo  Nisenbaum

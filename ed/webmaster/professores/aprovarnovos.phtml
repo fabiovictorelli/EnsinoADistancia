@@ -1,0 +1,110 @@
+<?PHP 
+	require ( "../../lib/ed.bib.phtml");
+	MostraCabec("Aprovação de professores novos");
+
+	$conn = pg_connect("localhost", "5432", "", "", "ed");
+	if(!$conn){
+		echo "Não Foi possível abrir a base de dados";
+		exit;
+	}
+
+	echo "Acao=$Acao";
+
+	if ( $Acao == "Reprova" ) {
+           echo "<H3>Reprovando professor...</H3>";
+	   $result = pg_Exec($conn,
+                     "delete from professorestemp
+                      where cod_professor = $codigo_professor;");
+           if (!$result) {
+              echo "<CENTER>";
+              echo "<BR><BR>Nada Encontrado";
+              echo "</CENTER>";
+              pg_FreeResult($result);
+              pg_Close($conn);
+              exit;
+           }
+	   else {
+		echo "Professor Excluído!";
+	        MostraRodape();
+		exit;
+	   }
+	}
+	if ( $Acao == "Aprova" ) {
+
+	    echo "<FORM ACTION=\"/ed/webmaster/professores/dbinclusao.phtml\" METHOD=\"post\">";
+	    $result = pg_exec($conn, "select * from professorestemp where cod_professor = $codigo_professor;");
+        $num = pg_numrows($result);
+        if($num == 0){
+		   echo "<BR>Nada Encontrado."; 
+		   exit;
+        }
+	    echo "<INPUT TYPE=\"hidden\" NAME=\"codigo_professor\" VALUE=\"";
+	    echo pg_result($result, 0, "cod_professor"); echo "\">\n";	
+	    echo "<P>Professor:";
+	    echo "<INPUT TYPE=\"text\" SIZE=\"20\" NAME=\"nome_professor\" VALUE=\"";
+	    echo pg_result($result, 0, "nome");     echo "\">\n";	
+	    echo "<P>Titulação:";
+	    echo "<INPUT TYPE=\"text\" SIZE=\"20\" NAME=\"titulo_professor\" VALUE=\"";
+	    echo pg_result($result, 0, "titulo");     echo "\">\n";	
+	    echo "<P>Chave:";
+	    echo "<INPUT TYPE=\"text\" SIZE=\"20\" NAME=\"chave_professor\" VALUE=\"";
+	    echo pg_result($result, 0, "chave");     echo "\">\n";	
+	    echo "<P>Senha:";
+	    echo "<INPUT TYPE=\"text\" SIZE=\"20\" NAME=\"senha_professor\" VALUE=\"";
+	    echo pg_result($result, 0, "senha");     echo "\">\n";	
+
+
+$tipo=pg_result($result, 0, "tipo");
+        echo "<BR>Tipo :";
+        echo "<SELECT NAME=\"tipo\">\n";
+        if ( $tipo == '1' ) {
+                echo "<OPTION SELECTED VALUE=1>Normal";
+        }
+        else {
+                echo "<OPTION VALUE=1>Normal";
+        }
+        if ( $tipo == '2' ) {
+                echo "<OPTION SELECTED VALUE=2>Orientador";
+        }
+        else {
+                echo "<OPTION VALUE=2>Orientador";
+        }
+        if ( $tipo == '3' ) {
+                echo "<OPTION SELECTED VALUE=3>Coordenador de Curso";
+        }
+        else {
+                echo "<OPTION VALUE=3>Coordenador de Curso";
+        }             
+	if ( $tipo == '4' ) {
+                echo "<OPTION SELECTED VALUE=4>Visitante";
+        }
+        else {
+                echo "<OPTION VALUE=4>Visitante";
+        }
+        echo "</SELECT>\n";      
+
+	    echo "<P>Email:";
+	    echo "<INPUT TYPE=\"text\" SIZE=\"30\" NAME=\"mail_professor\" VALUE=\"";
+	    echo pg_result($result, 0, "email"); echo "\">\n";	
+
+         pg_FreeResult($result);
+
+	    /* excluindo da base temporaria */
+        echo "<H3>Reprovando professor da base temporária...</H3>";
+	    $result = pg_Exec($conn,
+                 "delete from professorestemp
+                  where cod_professor = $codigo_professor;");
+        if (!$result) {
+            echo "<CENTER>";
+            echo "<BR><BR>Nada Encontrado";
+            echo "</CENTER>";
+            pg_FreeResult($result);
+            pg_Close($conn);
+            exit;
+         }
+         pg_FreeResult($result);
+	}
+?>
+<CENTER><INPUT TYPE="submit" VALUE="Aprova"></CENTER>
+</FORM>
+<?PHP MostraRodape(); ?>

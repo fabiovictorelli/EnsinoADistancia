@@ -1,0 +1,16 @@
+<?PHP 
+	require ( "../lib/ed.bib.phtml");
+	MostraCabec("Entrando no curso $nome_curso - código:$codigo_curso ");
+	
+	echo "<FORM METHOD=\"post\" ACTION=\"dbentracurso1.phtml\">\n";        
+	echo "Entre com a chave:";
+	echo "<INPUT TYPE=\"hidden\" NAME=\"nome_curso\" VALUE=\"$nome_curso\"></INPUT> ";
+	echo "<INPUT TYPE=\"hidden\" NAME=\"codigo_curso\" VALUE=\"$codigo_curso\"></INPUT> ";
+	echo "<INPUT TYPE=\"texto\" NAME=\"chave\" SIZE=\"8\"></INPUT><BR> ";
+	echo "Entre com a senha:";
+	echo "<INPUT TYPE=\"password\" NAME=\"senha\" SIZE=\"8\"></INPUT><BR> ";  
+	echo "<INPUT TYPE=\"submit\" VALUE=\"continua \"></TD>\n" ;
+	echo "</FORM>\n"; 
+
+	MostraRodape();
+?>

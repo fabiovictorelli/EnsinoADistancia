@@ -1,28 +1,25 @@
-# EnsinoADistancia
- Distance Learning with PHP PostgreSQL , shells, etc
+SoluÁ„o de ensino a dist‚ncia via Internet para instituiÁıes de ensino superior com problemas de assiduidade professor/aluno.
 
-Solu√ß√£o de ensino a dist√¢ncia via Internet para institui√ß√µes de ensino superior com problemas de assiduidade professor/aluno.
-
-F√°bio Dorival Victorelli  e Eduardo Nissenbaum
+F·bio Dorival Victorelli  e Eduardo Nissenbaum
 
 
 
 
-   Abstract    Detectamos o problema de assiduidade professor/aluno no CEFET-PR ( institui√ß√£o de ensino superior da √°rea tecnol√≥gica) devido a fatores intrinsecos ao perfil da mesma como : Necessidade de aus√™ncias por per√≠odo 
+   Abstract æ   Detectamos o problema de assiduidade professor/aluno no CEFET-PR ( instituiÁ„o de ensino superior da ·rea tecnolÛgica) devido a fatores intrinsecos ao perfil da mesma como : Necessidade de ausÍncias por perÌodo 
 prolongados a trabalho de professores e alunos.
-	Implementamos uma aplica√ß√£o WEB que usa uma metodologia de ensino a dist√¢ncia e recursos multim√≠dia para solucionar esse tipo de problema. 
-Aspectos t√©cnicos de comunica√ß√µes e metodol√≥gicos de administra√ß√£o do ensino a dist√¢ncia s√£o analisados nesse artigo.
+	Implementamos uma aplicaÁ„o WEB que usa uma metodologia de ensino a dist‚ncia e recursos multimÌdia para solucionar esse tipo de problema. 
+Aspectos tÈcnicos de comunicaÁıes e metodolÛgicos de administraÁ„o do ensino a dist‚ncia s„o analisados nesse artigo.
 
-   Index Terms ¬æ Distance Learning. Internet, Web Server.
+   Index Terms æ Distance Learning. Internet, Web Server.
 
 
 I. INTRODUCTION
 
-    O Cefet-PR √© uma institui√ß√£o de ensino superior cujo perfil do curso de engenharia industrial √© fortemente voltado para a pr√°tica tecnol√≥gica. Alem disso a maioria de seus alunos j√° s√£o t√©cnicos na √°rea em que cursam a engenharia e portanto trabalham durante o curso.
-    Por outro lado a maioria dos professores trabalham em empresas da √°rea de suas mat√©rias. Esse perfil, aliado √†s demandas modernas de viagens constantes no mercado de trabalho tecnol√≥gico, leva-nos ao problema de per√≠odos
-de faltas inevit√°veis do aluno/professor dentro do calend√°rio programado de  aulas.  
-   A qualidade de ensino nas mat√©rias onde o problema ocorre cai e propomos o uso de uma _FERRAMENTA_ metodologia de ensino a dist√¢ncia via Internet implementada em um servidor web da institui√ß√£o, para professores e alunos que tenham previs√£o de baixa assiduidade durante o semestre da mat√©ria em quest√£o e que tenham acesso √† microcomputadores de baixo custo ligados a Internet nos locais remotos onde se encontrem durante os per√≠odos de aus√™ncia.
-   O crescimento exponencial da Internet chegou a dezenas de milh√µes de servidores em todo o mundo e vem crescendo cada vez mais. O numero de Web sites dobra a cada 06 meses. Aplica√ß√µes do tipo video-on-demand e distance learning incrementa o tr√°fego na Internet cada vez a taxa maiores.  Alguns sites recebem milh√µes de visitas por dia, e √© comum estes sites terem uma taxa muito alta de repostas.
+    O Cefet-PR È uma instituiÁ„o de ensino superior cujo perfil do curso de engenharia industrial È fortemente voltado para a pr·tica tecnolÛgica. Alem disso a maioria de seus alunos j· s„o tÈcnicos na ·rea em que cursam a engenharia e portanto trabalham durante o curso.
+    Por outro lado a maioria dos professores trabalham em empresas da ·rea de suas matÈrias. Esse perfil, aliado ‡s demandas modernas de viagens constantes no mercado de trabalho tecnolÛgico, leva-nos ao problema de perÌodos
+de faltas inevit·veis do aluno/professor dentro do calend·rio programado de  aulas.  
+   A qualidade de ensino nas matÈrias onde o problema ocorre cai e propomos o uso de uma _FERRAMENTA_ metodologia de ensino a dist‚ncia via Internet implementada em um servidor web da instituiÁ„o, para professores e alunos que tenham previs„o de baixa assiduidade durante o semestre da matÈria em quest„o e que tenham acesso ‡ microcomputadores de baixo custo ligados a Internet nos locais remotos onde se encontrem durante os perÌodos de ausÍncia.
+   O crescimento exponencial da Internet chegou a dezenas de milhıes de servidores em todo o mundo e vem crescendo cada vez mais. O numero de Web sites dobra a cada 06 meses. AplicaÁıes do tipo video-on-demand e distance learning incrementa o tr·fego na Internet cada vez a taxa maiores.  Alguns sites recebem milhıes de visitas por dia, e È comum estes sites terem uma taxa muito alta de repostas.
 
 
 
@@ -30,93 +27,93 @@ de faltas inevit√°veis do aluno/professor dentro do calend√°rio programado de  a
 
 A. O servidor  e seus recursos administrativos
 
- Diante do que se tem hoje em tecnologia voltada para educa√ß√£o a dist√¢ncia, deveremos utilizar no sistema as seguintes aplica√ß√µes:
+ Diante do que se tem hoje em tecnologia voltada para educaÁ„o a dist‚ncia, deveremos utilizar no sistema as seguintes aplicaÁıes:
 * hipertexto (www),
-*  transfer√™ncia de arquivos (ftp),
-* listas de discuss√£o sobre diversos assuntos, via email,
-* chats (software para conversa√ß√£o on-line entre um grupo de pessoas),
-* v√≠deo confer√™ncia (refletor de v√≠deo confer√™ncia e cu-seeme),
-* ferramenta de buscas (search engines) para busca de informa√ß√£o em outras universidades,
-* correspondencia eletr√¥nica (email).
-* correio de v√≠deos. ( arquivos de imagem com  som gravados, com poss√≠veis perguntas e respostas)   
+*  transferÍncia de arquivos (ftp),
+* listas de discuss„o sobre diversos assuntos, via email,
+* chats (software para conversaÁ„o on-line entre um grupo de pessoas),
+* vÌdeo conferÍncia (refletor de vÌdeo conferÍncia e cu-seeme),
+* ferramenta de buscas (search engines) para busca de informaÁ„o em outras universidades,
+* correspondencia eletrÙnica (email).
+* correio de vÌdeos. ( arquivos de imagem com  som gravados, com possÌveis perguntas e respostas)   
 
-    O projeto encontra-se em fase final de desenvolvimenteo e testes,  pretendemos que este software tenha acesso pr√°tico e de f√°cil uso por parte dos professores e alunos, como tamb√©m um software de f√°cil manuten√ß√£o pelo administrador identificado aqui como webmaster, que possa configurar permiss√µes dar manuten√ß√£o nas bases de professores, alunos e mat√©rias cadastradas.
-    O projeto proposto teria 04 areas: webmaster, mat√©rias, professores e alunos. As interfaces de cada uma das √°reas seriam:
+    O projeto encontra-se em fase final de desenvolvimenteo e testes,  pretendemos que este software tenha acesso pr·tico e de f·cil uso por parte dos professores e alunos, como tambÈm um software de f·cil manutenÁ„o pelo administrador identificado aqui como webmaster, que possa configurar permissıes dar manutenÁ„o nas bases de professores, alunos e matÈrias cadastradas.
+    O projeto proposto teria 04 areas: webmaster, matÈrias, professores e alunos. As interfaces de cada uma das ·reas seriam:
 
     Professor
-* Listas e grupos de discuss√£o, de responsabilidade do professor
+* Listas e grupos de discuss„o, de responsabilidade do professor
 * Chats entre professores e aluno.
-* Interface para um professor novo se cadastrar de maneira f√°cil.
+* Interface para um professor novo se cadastrar de maneira f·cil.
 * Interfaces para o professor enviar arquivo de aula(s).
-* Interfaces para o professor enviar arquivo de v√≠deo(s).
-* Interface para um professor criar uma mat√©ria.
-* Interface para um professor criar e dar manuten√ß√£o numa lista de discuss√£o.
-* Refletor de v√≠deo confer√™ncia.
+* Interfaces para o professor enviar arquivo de vÌdeo(s).
+* Interface para um professor criar uma matÈria.
+* Interface para um professor criar e dar manutenÁ„o numa lista de discuss„o.
+* Refletor de vÌdeo conferÍncia.
 
 
 
     Aluno
 * Interface para cadastramento como aluno.
-* Interface para a matr√≠cula num curso de educa√ß√£o a dist√¢ncia.
-* Interface de acesso √†s materias cadastradas pelo professor.
-* √Årea p√∫blica de alunos para transfer√™ncia de arquivos.
-* Interface para assinar uma lista de discuss√£o, cadastrada pelo professor.
+* Interface para a matrÌcula num curso de educaÁ„o a dist‚ncia.
+* Interface de acesso ‡s materias cadastradas pelo professor.
+* ¡rea p˙blica de alunos para transferÍncia de arquivos.
+* Interface para assinar uma lista de discuss„o, cadastrada pelo professor.
 
-    Mat√©ria ( acesso do webmaster)
+    MatÈria ( acesso do webmaster)
 * . Interface para manutencao na base de materias, com( inclusao,alteracao,listagem e exclusao de uma materia)
 
     Webmaster ( administrador do sistema )
 * Interface para ativar/desativar e verificar status do sistema.
 * Interface para configurar o sistema, nos aspectos:
 * linguagem
-* diret√≥rio
-* nivel de prote√ß√£o da √°rea do professor
-* permiss√£o de upload de arquivos textos para os alunos
-* permiss√£o de upload de arquivos de v√≠deos para os alunos
-* configura√ß√£o de tamanho m√°ximo de arquivos para upload.
-* configura√ß√£o da disponibilidade de arquivos de v√≠deos no servidor.
-* Interface p/ manuten√ß√£o em v√≠deo confer√™ncia.
-* Interface p/ manuten√ß√£o das listas de discuss√£o, com
+* diretÛrio
+* nivel de proteÁ„o da ·rea do professor
+* permiss„o de upload de arquivos textos para os alunos
+* permiss„o de upload de arquivos de vÌdeos para os alunos
+* configuraÁ„o de tamanho m·ximo de arquivos para upload.
+* configuraÁ„o da disponibilidade de arquivos de vÌdeos no servidor.
+* Interface p/ manutenÁ„o em vÌdeo conferÍncia.
+* Interface p/ manutenÁ„o das listas de discuss„o, com
 * Criar lista
 * Remover lista
 * Editar arquivos de mensagem
-* Incluir/Remover Usu√°rios
-* Listar Usu√°rios                      
-* Interface para manuten√ß√£o na base de professores, com
+* Incluir/Remover Usu·rios
+* Listar Usu·rios                      
+* Interface para manutenÁ„o na base de professores, com
 * Incluir, Alterar, Excluir e Listar os professores cadastrados
 * Interace para cadastramento de professores novos.
-* Interface para manuten√ß√£o na base de mat√©rias, com
-* Incluir, Alterar, Excluir e Listar as mat√©rias cadastradas
-* Interface para manuten√ß√£o na base de alunos, com
+* Interface para manutenÁ„o na base de matÈrias, com
+* Incluir, Alterar, Excluir e Listar as matÈrias cadastradas
+* Interface para manutenÁ„o na base de alunos, com
 * Incluir, Alterar, Excluir e Listar os alunos cadastrados
 
 
-2.0 An√°lise de Performance Client/Server 
+2.0 An·lise de Performance Client/Server 
 	Vamos considerar aqui uma Universidade com 1.000 computadores em 100 locais diferentes sendo salas de treinamento, laboratorios , etc.  e uma media de 6.000 alunos, sendo manha, tarde e noite, que totalize uma media de 02 alunos por computador. Embora nossa analise seja sobre o acesso remoto aos dados (educacao a distancia) eh interessante termos estes numeros para sabermos da proporcao.
 	Consideraremos o acesso remoto utlizando o backbone internet para  acesso aos dados de educacao a distancia no servidor, onde 1.000 alunos fazem cursos a distancia utilizando um computador pessoal em casa, acessando os dados no  servidor. 
 	O acesso aos dados no servidor sao 24 horas por dia nos 07 dias da semana. Uma media de 500 acessos ao dia . Ointenta porcento destes acessos sao feitos ao dia, num pico de 12 horas, ou seja ( 400 = 0.8 x 500). Entao o numero medio de acesso aos dados por hora neste periodo eh de 33.3 , ou seja um acesso a cada 1,8 minutos ( 01 minuto e 48 segundos ). O servidor eh uma maquina Unix ( Linux com kernel 2.36 ) com 02 discos IDE de 4,3 e 3,4 de 03
 gigabytes, com 64 Mega de RAM, e um processador Pentium 200 MHZ. A comunicacao entre o servidor e o Roteador eh atraves de uma placa de rede de 10 megatibis, O roteador tem links com outras redes internas da universidade e tem acesso ao backbone internet sobre um link de 2 megabitis.
 	Esta universidade tem outros 07 servidores www, ftp e email.
-	Bom, eh logico que nao podemos considerar todo o link para o nosso servidor, pois existem varias outras aplicacoes em uso na universidade neste link, como email, ftp, listas de discuss√£o, outras aplicacoes WWW, e
+	Bom, eh logico que nao podemos considerar todo o link para o nosso servidor, pois existem varias outras aplicacoes em uso na universidade neste link, como email, ftp, listas de discuss„o, outras aplicacoes WWW, e
 outros servicos oferecidos pela universidade. Entao, aqui teremos que decidir sob qual otica utilizaremos para dimensionar a banda do nosso servidor, ou seja a questao eh quanto da banda utilizaremos ou qual o tipo de servico que ofereceremos, visto que determinados servicos utilizam boa
 parte da banda, por exemplo video conferencia precisariamos de 64 kbytes(???) fixos para cada aluno.
-	Assumiremos entao que utilizaremos parcialmente a banda de 02 megabitis para a aplica√ß√£o de educacao a distancia, a questao agora eh quanto teremos disponiveis para este servidor. Vimos anteriormente que temos em media
+	Assumiremos entao que utilizaremos parcialmente a banda de 02 megabitis para a aplicaÁ„o de educacao a distancia, a questao agora eh quanto teremos disponiveis para este servidor. Vimos anteriormente que temos em media
 500 acessos www ao dia ou seja um a cada 1,8 minutos por cada um dos 400  alunos durante o dia. Com  certeza teremos varios acessos simultaneos, mas esturaremos aqui como se houesse somente 01 acesso por vez para simplificar o 
 estudo. Mas quanto da banda permitiremos que este acesso possa chegar? 
-	Decidimos utilizar em nosso servidor varios servicos como acesso www, transferencia de arquivos via ftp, listas de discuss√£o via email  e principalmente troca de arquivos de video com tamanhos variados,  todos acima de 1 megabytes.
+	Decidimos utilizar em nosso servidor varios servicos como acesso www, transferencia de arquivos via ftp, listas de discuss„o via email  e principalmente troca de arquivos de video com tamanhos variados,  todos acima de 1 megabytes.
 	Observando o comportamento medio de cada aluno chegamos a tabela I
 	
                                                       TABLE I
 AVERAGE OF BYTES TX PER EACH STUDENTE IN A DAY
-Servi√ßo 
-Descri√ß√£o da unidade
+ServiÁo 
+DescriÁ„o da unidade
 Quantidade  kbytes
 www
 ftp
 email
-v√≠deo
+vÌdeo
 
-07 p√°ginas de ikb
+07 p·ginas de ikb
 tx of text file
 20 messages of 2 k
 01 file of video per  week
@@ -138,20 +135,20 @@ Sd = AvgSeek + Avg Latency + TransfTime  ( pg 38 livro Web Performace)
      = 0.009 + 0.00417 +2048/20,000,000 
      = 0.0133 segundos.
 
-   Analisaremos entao o tempo real de uso da banda para podermos chegar no tamanho ideal da banda passante para a aplica√ß√£o.
+   Analisaremos entao o tempo real de uso da banda para podermos chegar no tamanho ideal da banda passante para a aplicaÁ„o.
    Agora nos temos uma somatora em media de 2.797 kbytes por aluno,  que resulta em 2.843.648 bytes por aluno.
 
    Qmuso= Qmwww + Qmftp + Qmemail + Qmvideo
    Qmuso = 2797 kbytes.
 	
    Como vimos que em media cada aluno tem direito a 1,8 minutos por dia, teriamos 108 segundos de uso e calculariamos a largura da banda para o sistema, sendo
-Qmuso ( Quantidade de uso m√©dia por aluno) / Tmaluno ( tempo medio diario do aluno) 
+Qmuso ( Quantidade de uso mÈdia por aluno) / Tmaluno ( tempo medio diario do aluno) 
    Larg Banda = Qmuso / Tmaluno
    Larg Banda = 2797 / 108 segundos
    Larg Banda = 25.7 kbytes por segundo    
    Larg Banda = 205,7 kbits por seg.
 
-   Esta largura ( 205,7 kbits por seg. ) desconsiderando erros de transmissao e pedidos de retransmissao estaria razoavel para uma universidade que tem um link de 2 megabits , ou seja a aplica√ß√£o do ensino a distancia usaria 10 por cento da largura total da banda da universidade.
+   Esta largura ( 205,7 kbits por seg. ) desconsiderando erros de transmissao e pedidos de retransmissao estaria razoavel para uma universidade que tem um link de 2 megabits , ou seja a aplicaÁ„o do ensino a distancia usaria 10 por cento da largura total da banda da universidade.
    O problema que usualmente o aluno nao tem um modem de 205,7 kbits por segundo em casa, entao adminindo que em media o aluno tem um modem de 33,600 bits por segundo,  e contando com o melhor caso em que a comuni
 cacao TCP/IP do aluno chegaria a universidade com esta media de transmissao  ( do roteador de seu ISP ate o roteador da universidade ) nosso tempo  medio de transmissao diario do aluno ficaria em ( 205,7 / 33,6 ) = a 6,12  vezes do tempo original que era de 1,8 minutos, ou seja , cada aluno teria direito a 11,02 minutos de uso diariamente do sistema.
 
@@ -164,10 +161,10 @@ verdadeiro responsavel. Entao o primeiro passo eh saber o que realmente acontece
 	
 	FIGURA II ( ver pg 78 Web Performance )
 
-Usu√°rio      Browser Cliente          Rede            Servidor
+Usu·rio      Browser Cliente          Rede            Servidor
 	
 Browser
-* Qdo um usu√°rio clica num hyperlink e pede um documento.
+* Qdo um usu·rio clica num hyperlink e pede um documento.
 * O browser verifica no cache se existe o documento 
 * requisitado
 * O browser pede ao DNS [ara mapear o hostname para um 
@@ -213,9 +210,9 @@ as seguintes configuracoes:
 	Video
 	Frame Rate: 8,00   Frames/Sec 	
 	Tamanho : 176 x 144 (QCIF)
-	Cor  : Milh√µes ( 24 bits )
+	Cor  : Milhıes ( 24 bits )
 	Tempo : 10 segundos
-	Compacta√ß√£o : Intel Indeo(R) Video Interactive
+	CompactaÁ„o : Intel Indeo(R) Video Interactive
 
 	Som
 	Formato PCM
@@ -239,15 +236,15 @@ xxx
 	2912 frames com tamanho de 176x144 (QCIF) 
 
 
-CONCLUS√ÉO ( do trabalho individual)
+CONCLUS√O ( do trabalho individual)
 
-    Esta pesquisa tem como prop√≥sito central o estudo da viabilidade de difus√£o da informa√ß√£o utilizando recursos tecnol√≥gicos via internet junto com a utiliza√ß√£o de softwares de livre distribui√ß√£o, que na maioria dos casos s√£o gratu√≠tos. Fazendo com que se torne vi√°vel para as aplica√ß√µes das entidades de ensino p√∫blico, reduzindo o investimento pelos org√£os competentes e auxiliando o educador ou o pr√≥prio aprendiz na estrutura√ß√£o de seus conhecimentos.
+    Esta pesquisa tem como propÛsito central o estudo da viabilidade de difus„o da informaÁ„o utilizando recursos tecnolÛgicos via internet junto com a utilizaÁ„o de softwares de livre distribuiÁ„o, que na maioria dos casos s„o gratuÌtos. Fazendo com que se torne vi·vel para as aplicaÁıes das entidades de ensino p˙blico, reduzindo o investimento pelos org„os competentes e auxiliando o educador ou o prÛprio aprendiz na estruturaÁ„o de seus conhecimentos.
 
-    Educacao a Distancia √© um software de ensino, onde o professor passa/troca informacoes com alunos remotamente. A principio desenhado para ser utilizado a rede internet, embora muitas servicos como v√≠deo-confer√™ncia exigam uma
-banda de dados maiores do que a existente hoje, o software traz um refletor para v√≠deo confer√™ncia, que podera ser configurado para rodar na rede local do servidor. Este projeto est√° sendo elaborado sob softwares free, sob licensa de uso GNU, sob Sistema Operacional Linux.
+    Educacao a Distancia È um software de ensino, onde o professor passa/troca informacoes com alunos remotamente. A principio desenhado para ser utilizado a rede internet, embora muitas servicos como vÌdeo-conferÍncia exigam uma
+banda de dados maiores do que a existente hoje, o software traz um refletor para vÌdeo conferÍncia, que podera ser configurado para rodar na rede local do servidor. Este projeto est· sendo elaborado sob softwares free, sob licensa de uso GNU, sob Sistema Operacional Linux.
 
 REFERENCES
- [1] Menasc√© Daniel A. and Almeida Virg√≠lio A.F., "Capacity Planning For
+ [1] MenascÈ Daniel A. and Almeida VirgÌlio A.F., "Capacity Planning For
 	Web Performance Metrics, Models, & Methods" , 1998
 [2] Transaction Processing Performance Council, http://www.tpc.org 
 

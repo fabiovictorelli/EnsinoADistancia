@@ -1,0 +1,51 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec(" Inclusão de Alunos ");
+?>
+
+<FORM ACTION="/ed/webmaster/alunos/dbinclusao.phtml" METHOD="POST">
+<?
+
+       $conn = pg_Connect("localhost", "5432", "", "", "ed");
+
+       if (!$conn) {
+		SaiErro ("Nao foi possivel abrir banco de dados.\n");
+        }    
+
+        $result = pg_Exec($conn, "Select * from cursos ORDER BY nome;");
+        $num = pg_NumRows($result);
+        if ( $num == 0 ) {
+            MostraErro ("Não existe cursos cadastradas, deve ser cadastrado um curso ");
+        }
+        echo "<BR>Selecione um Curso para matrícula:";
+        echo "<SELECT NAME=\"codigo_curso\">\n";
+        for($i = 0; $i < $num; $i++)
+        {
+                echo "<OPTION VALUE=\"";
+                echo pg_Result($result, $i, "cod_curso");
+                echo "\">";
+                echo pg_Result($result, $i, "nome");
+                echo "\n";
+        }
+        echo "</SELECT>\n";
+        pg_FreeResult($result);      
+
+?>
+<P>Matricular em todas as matérias do curso? <BR>
+<INPUT TYPE="radio" NAME="cadtodasmaterias"  checked>sim</INPUT> <BR>
+<INPUT TYPE="radio" NAME="cadtodasmaterias" >não, vou me cadastrar nas matérias depois.</INPUT>
+<P>Nome :
+<INPUT TYPE="text" NAME="nome_aluno" SIZE="40"></INPUT>
+<P>Email :
+<INPUT TYPE="text" NAME="email" SIZE="50"></INPUT>
+<P>Chave de acesso: (login no sistema)
+<INPUT TYPE="text" NAME="chave" SIZE="8"></INPUT>
+<P>Senha de acesso:
+<INPUT TYPE="password" NAME="senha" SIZE="8"></INPUT>
+<CENTER>
+<INPUT TYPE="submit" VALUE="Cadastrar"></INPUT>
+<INPUT TYPE="reset" VALUE="Limpar"></INPUT>
+</CENTER>
+</FORM>
+
+<?PHP MostraRodape(); ?>

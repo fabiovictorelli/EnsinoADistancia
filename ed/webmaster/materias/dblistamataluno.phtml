@@ -1,0 +1,82 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Listagem de Alunos e suas Matérias ");
+?>
+
+<?PHP
+
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+	     
+	if (!$conn) {
+		SaiErro ("Nao foi possivel abrir banco de dados.\n");
+	}
+
+        $result = pg_Exec($conn, "Select * from alunos_cursos_materias WHERE cod_aluno = $codigo_aluno;");
+        $num = pg_NumRows($result);
+		if ( $num == 0 ) {
+		    MostraErro ("Não existe materias cadastradas para este aluno.");
+		} 
+
+        echo "<BR>Listagem de todas as matérias do aluno:";
+        echo "<TABLE BORDER = \"2\">";   
+		echo "<TR><TD width=\"5\">Código curso</TD><TD>Curso</TD><TD>Aluno</TD><TD width=\"5\">Codigo matéria </TD><TD>Matéria</TD></TR>\n";
+        for($i = 0; $i < $num; $i++)
+        {
+		        $cod_aluno= pg_Result($result, $i, "cod_aluno");
+		        $cod_curso= pg_Result($result, $i, "cod_curso");
+		        $cod_materia= pg_Result($result, $i, "cod_materia");
+
+				$resultnome = pg_exec($conn, "select * from alunos where cod_aluno = $cod_aluno;");
+				$numaux = pg_numrows($resultnome);
+				if($numaux == 0){
+					echo "<BR>Nenhum aluno encontrado.";
+					echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\">";
+					echo "</form>";
+					exit;
+				}        
+				$nome_aluno =  pg_result($resultnome, 0, "nome");
+				pg_FreeResult($resultnome);   
+
+
+				$resultnome = pg_exec($conn, "select * from cursos where cod_curso = $cod_curso;");
+				$numaux = pg_numrows($resultnome);
+				if($numaux == 0){
+					echo "<BR>Nenhum curso encontrado.";
+					echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\">";
+					echo "</form>";
+					exit;
+				}        
+				$nome_curso =  pg_result($resultnome, 0, "nome");
+				pg_FreeResult($resultnome);   
+
+
+
+				$resultnome = pg_exec($conn, "select * from materias where cod_materia = $cod_materia;");
+				$numaux = pg_numrows($resultnome);
+				if($numaux == 0){
+					echo "<BR>Nenhuma matéria encontrada.";
+					echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\">";
+					echo "</form>";
+					exit;
+				}        
+				$nome_materia =  pg_result($resultnome, 0, "nome");
+				pg_FreeResult($resultnome);   
+
+				echo "<TR><TD>";
+				echo "$cod_curso";
+				echo "</TD><TD>";
+				echo "$nome_curso";
+				echo "</TD><TD>";
+				echo "$nome_aluno";
+				echo "</TD><TD>";
+				echo "$cod_materia";
+				echo "</TD><TD>";
+				echo "$nome_materia";
+				echo "</TD></TR>";
+
+        }
+	echo "</TABLE>";
+        pg_Close($conn);
+        pg_FreeResult($result);
+?>                              
+<?PHP MostraRodape(); ?>

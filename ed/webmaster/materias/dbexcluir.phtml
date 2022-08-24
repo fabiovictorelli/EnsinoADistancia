@@ -1,0 +1,58 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Exclusão de matérias");
+
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+	     
+	if (!$conn) {
+		SaiErro ("Nao foi possivel abrir banco de dados.\n");
+	}
+		 
+	$result = pg_Exec($conn,
+                     "delete from materias 
+                      where cod_materia = $codigo;");
+	if (!$result) {
+                echo "<CENTER><BR><BR>Nada Encontrado<BR><BR></CENTER>";
+ 		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+                pg_FreeResult($result);
+                pg_Close($conn);
+                exit;
+     }
+
+	$result1 = pg_Exec($conn,
+                     "delete from agendas 
+                      where cod_materia = $codigo;");
+	if (!$result1) {
+                echo "<CENTER><BR><BR>Nada Encontrado<BR><BR></CENTER>";
+ 		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+                pg_FreeResult($result);
+                pg_Close($conn);
+                exit;
+     }
+
+  	$ret = rmdir ("/home/httpd/html/ed/materias/$nome_materia/arquivos");
+        if (!$ret) {
+                SaiErro ("<BR>\nOcorreu um erro durante a remoção do diretorio /home/httpd/html/ed/materias/$nome_materia/arquivos da materia $nome_materia.\n");
+        }
+  	$ret = rmdir ("/home/httpd/html/ed/materias/$nome_materia/videos/questoes");
+        if (!$ret) {
+                SaiErro ("<BR>\nOcorreu um erro durante a remoção do diretorio /home/httpd/html/ed/materias/$nome_materia/videos/questoes da materia $nome_materia.\n");
+        }
+  	$ret = rmdir ("/home/httpd/html/ed/materias/$nome_materia/videos/respostas");
+        if (!$ret) {
+                SaiErro ("<BR>\nOcorreu um erro durante a remoção do diretorio /home/httpd/html/ed/materias/$nome_materia/videos/respostas da materia $nome_materia.\n");
+        }
+  	$ret = rmdir ("/home/httpd/html/ed/materias/$nome_materia/videos");
+        if (!$ret) {
+                SaiErro ("<BR>\nOcorreu um erro durante a remoção do diretorio /home/httpd/html/ed/materias/$nome_materia/videos da materia $nome_materia.\n");
+        }
+
+	echo "<CENTER>";
+	echo "<BR><BR>Matéria Excluída do Cadastro";
+	echo "<BR><BR>";
+	echo "<BR><BR>";
+	echo "</CENTER>";
+	pg_FreeResult($result);
+	pg_Close($conn);
+	MostraRodape(); 
+?>

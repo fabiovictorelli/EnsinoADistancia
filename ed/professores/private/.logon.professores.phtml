@@ -1,0 +1,42 @@
+<? 
+	if ($Logoff>time()) {
+		Header( "WWW-authenticate:  basic  realm=\"ED\"");
+		Header( "HTTP/1.0  401  Unauthorized");
+		$title= "Logon again";
+		echo "erro";
+		exit;
+	}
+	if(!isset($PHP_AUTH_USER))  { 
+		Header( "WWW-authenticate: basic realm=\"ED\""); 
+		Header( "HTTP/1.0  401  Unauthorized"); 
+		$title= "Login  Instructions"; 
+	    echo "<blockquote>";
+	    require ( "../../lib/ed.bib.phtml"); 
+	    $webmaster = Configuracao("WEBMASTER"); 
+	    echo "Erro 1 - Para ter acesso a esta área, você precisa ser um usuário cadastrado pelo sistema, caso voce já seja um, por favor contate <a  href=\"mailto:$webmaster\">$webmaster</a> ";
+	    echo "<blockquote>";
+		exit; 
+	}  
+	else  { 
+		$conn = pg_connect( "localhost", "5432", "", "", "ed"); 
+		$user_id=strtolower($PHP_AUTH_USER); 
+		$password=$PHP_AUTH_PW; 
+/*		echo "user_id=$user_id e password=$password"; */
+		/*$password= crypt($PHP_AUTH_PW, substr($PHP_AUTH_PW,  0,  2  ));*/
+		$query  =  pg_Exec( $conn, "select  chave, senha  from professores where chave ='$user_id' and senha = '$password' ;"); 
+		if(!pg_numrows($query))  { 
+			Header( "WWW-authenticate:  basic  realm=\"ED\""); 
+			Header( "HTTP/1.0  401  Unauthorized"); 
+			$title= "Login  Instructions"; 
+	        require ( "../../lib/ed.bib.phtml"); 
+	        $webmaster = Configuracao("WEBMASTER"); 
+	        echo "<blockquote>";
+	        echo "Erro 2 - Para ter acesso a esta área, você precisa ser um usuário cadastrado pelo sistema, caso voce já seja um, por favor contate <a  href=mailto:\"$webmaster\">$webmaster</a> ";
+	        echo "<blockquote>";
+			exit; 
+		} 
+		pg_freeresult($query);
+		pg_close($conn); 
+	} 
+ ?> 
+

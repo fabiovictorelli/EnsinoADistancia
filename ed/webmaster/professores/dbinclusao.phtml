@@ -1,0 +1,107 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Inclusão de professores");
+?>
+<H2>Operações</H2>
+
+<?PHP
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+	     
+	if (!$conn) {
+		echo "Não foi possivel abrir banco de dados.\n";
+	exit;
+	}
+	if($nome_professor == ""){
+		echo "<BR><BR> O campo NOME DO PROFESSOR deve ser preenchido!\n";
+		echo "<BR><BR>\n";
+                echo "<BR><BR>\n";
+		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form> ";
+             	pg_Close($conn);
+		exit;	
+	}
+	if($titulo_professor == ""){
+		echo "<BR><BR> O campo títulação deve ser preenchido!\n";
+		echo "<BR><BR>\n<BR><BR>\n";
+		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form> ";
+             	pg_Close($conn);
+		exit;	
+	}
+	if($chave_professor == ""){
+		echo "<BR><BR> O campo Chave deve ser preenchido!\n";
+		echo "<BR><BR>\n<BR><BR>\n";
+		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form> ";
+             	pg_Close($conn);
+		exit;	
+	}
+	if($senha_professor == ""){
+		echo "<BR><BR> O campo SENHA deve ser preenchido!\n";
+		echo "<BR><BR>\n";
+                echo "<BR><BR>\n";
+		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form> ";
+             	pg_Close($conn);
+		exit;	
+	}
+	if($mail_professor == ""){
+		echo "<BR><BR> O campo EMAIL deve ser preenchido!\n";
+		echo "<BR><BR>\n";
+                echo "<BR><BR>\n";
+		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form> ";
+        pg_Close($conn);
+		exit;	
+	}
+
+    $NOME = strtoupper($nome_professor);
+    $testanome = pg_Exec($conn, "select * from professores ;");
+    $num = pg_NumRows($testanome);
+    $i=0;
+	for($i = 0; $i < $num; $i++) {
+		/* trim() tira os espacos em brancos  do comeco ate o fim da base de dados */
+	    $nome= strtoupper(trim(pg_Result( $testanome, $i, "nome" ))); 
+		$ret=strcmp ( $nome, $NOME );
+		if ( $ret == 0 ) {
+		   echo "<BR><BR><BR>Professor $nome_professor já está cadastrado !";
+ 	       echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		   pg_FreeResult($testanome);
+		   pg_close($conn);
+		   exit;
+	   }
+	}
+	pg_FreeResult($testanome);
+
+
+    $CHAVE = strtoupper($chave_professor);
+	$testachave = pg_Exec($conn, "select * from professores ;");
+	$num = pg_NumRows($testachave);
+    $i=0;
+	for($i = 0; $i < $num; $i++) {
+			/* trim() tira os espacos em brancos  do comeco ate o fim da base de dados */
+	    $chave= strtoupper(trim(pg_Result( $testachave, $i, "chave" ))); 
+		$ret=strcmp ( $chave, $CHAVE );
+		if ( $ret == 0 ) {
+		   echo "<BR><BR><BR>Esta chave $chave_professor já está cadastrada, clique em retornar e tente outra !";
+ 	       echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		   pg_FreeResult($testachave);
+		   pg_close($conn);
+		   exit;
+	   }
+	}
+	pg_FreeResult($testachave);
+
+	$result = pg_Exec($conn,
+                        "INSERT INTO professores
+                         VALUES ('$nome_professor','$titulo_professor','$chave_professor','$senha_professor','$tipo','$mail_professor');");
+	if (!$result) {
+		echo "Ocorreu um erro durante a inclusao na base de dados.\n";
+		exit;
+	}
+
+	GravaLog("webmaster", "professor - inclusao - $nome_professor - $titulo_professor - $chave_professor - $tipo - $mail_professor");
+
+	echo "<CENTER>";
+	echo "<BR><BR>Professor incluído";
+	echo "</CENTER>";
+	pg_FreeResult($result);
+	pg_Close($conn);
+?>
+<BR><A HREF="/ed/webmaster/professores/inclusao.phtml">Cadastrar outro</A>
+<?PHP MostraRodape(); ?>

@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<TITLE>Listagem de listas cadastradas</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#000080" ALINK="#FF0000">
+<H2>Listagem de listas cadastradas</H2>
+<?
+
+$handle=opendir('/home/mailman/lists');
+echo "<BR>\n";
+echo "<table border=1>";
+while ($file = readdir($handle)) {
+	/* echo "$file\n<BR>"; */
+	if ( $file != "." && $file != "..") {
+		echo "<TR><TD>$file</TD></TR> "; 
+	}
+}
+echo "</table>";
+closedir($handle); 
+?>
+<BR>
+<BR>
+<FORM> <input type="button" value="Retornar" onClick="history.back()"></FORM>
+</FORM>
+</BODY>
+</HTML>

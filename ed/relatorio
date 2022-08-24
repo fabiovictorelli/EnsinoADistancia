@@ -1,0 +1,802 @@
+
+
+Wed Apr 15 11:14:46 EST 1998
+- alteracao do /home/httpd/html/ed/menu.html
+- tentativa de compilar o ssh para Sun e Solaris
+
+Thu Apr 16 12:09:58 EST 1998
+-aula das 08:20 as 10:00
+-medico oftalmologista 10:45
+-trabalho no ED: procura de um upload.cgi e 
+-estudo em .htaccess das areas privadas dos professores.
+
+Fr  Apr 17
+-acertos no upload.cgi
+
+Fr  Apr 18
+-alteracao  no upload.cgi ( em casa)
+
+Mon Apr 20
+-alteracao no upload.cgi ( conec )
+
+Mon Apr 27
+- preparacao prova de redes.
+Mon Apr 28
+- preparacao prova de redes.
+
+Wed Apr 29 10:06:45 EST 1998
+
+ATENCAO:
+-www.verasalles.com.br   -> saiu na gazeta do povo -> primeiro site para deficientes 
+
+maio 04 ate 08
+- preparacao e finalizacao prova de redes.
+
+maio 11 ( volta a ativa sem materias didaticas )
+- Instalacao/configuracao do smbm samba  na maquina sol
+ ver em /usr/doc/samba-1.9.17p4-1  
+
+Tue May 12 11:43:36 EST 1998
+- Ajustes nas paginas iniciais http://sol.cpgei.cefetpr.br/ed
+- Criacao e cadastramento da lista de discucao "ed"
+- envio de email para os 04 cadastrados, conversa com o Marcelo sobre visita
+  no site e apos isto marcarmos uma reuniao
+- email para leonardo, aluno deficiente no cefet pr, que tem interesse em par
+  ticipar/desenvolver algo na area de ensino a distancia. Excelente colabora
+  dor, pois tem bons conhecimentos na area.
+
+
+
+Thu May 14 11:38:40 EST 1998
+- medico pela manha 9:15
+- leitura de emails
+- levantamento da necessidade de um mirror da www.zdu.com, Treinamentos 
+  na internet.
+
+May 15 
+- Varias definicoes com o Eduardo, como:
+
+	No cadastramento da materia: 
+	- Colocar prazo inicial e final.
+	- Nome do Professor
+	- Form contendo breve descricao da materia ( ou abrir upload para o 
+	  professor mandar o arquivo que tem as descricoes).
+	- implementacao de exclusao da materia.
+	- implementar os seguintes campos:
+	 [escola-materia-curso-periodo-numdecreditos-linkp/gradecurricular]
+
+*OBS: houve a necessidade de um gerenciador de base dados. 
+	  sugiro o php-fi com SQL, software free, mas existe a necessidade de uma
+	  atualizacao para o Marumbi, RedHat 5.0
+
+
+
+Backlog:
+	- Analise de tempo da gravacao off line video VS transmissao de realvideo
+	- Ver com coordenador pedagogico sob a sala de videoconferencia, qual o link
+	  disponivel e como funciona
+	
+
+
+
+
+	Aula:
+	- Implementacao de um conversor automatico da aula, formato *.doc para
+	  formato html.
+
+	
+
+
+
+
+Mon May 18 11:34:05 EST 1998
+- Definicoes de matricula do aluno
+- Definicoes na area do professor
+
+
+Tue May 19 10:34:58 EST 1998
+- marquei reuniao com o Helio do CPD SExta a tarde  
+
+Tue May 20
+- Atualizacao do Sistema Operacional para o Marumbi. Conectiva Red Hat Linux 5.0
+- acertos no htdig.
+
+21/05/98 Quarta
+- ajustes no Marumbi e acertos do htdig
+
+22/05/98
+- Reuniao com o Caio do Cepro
+
+
+seg mai 25 11:44:46 /etc/localtime 1998
+- Verificacao da implementacao do Cepro e Virtual University of Calfornia
+
+ter mai 26 11:58:50 /etc/localtime 1998
+- Baixa e instalacao/alteracao do  htdig-3.0.8b2-1.i386.rpm, para search nas
+  universidades.
+
+qua mai 27 11:36:56 /etc/localtime 1998
+- acerto e configuracoes no Xwindows X11, 
+
+qui mai 28 11:38:19 /etc/localtime 1998
+- Videoconferencia no miniauditorio ( sala de videoconferencia )
+
+ter jun  1 09:22:45 /etc/localtime 1998
+- avaliacao do processo de matriculas
+
+ter jun  2 09:22:45 /etc/localtime 1998
+- Sem atividades, medico ortopedista e fisioterapia 
+
+qua jun  3 09:22:45 /etc/localtime 1998
+- 9:00 acerto nas areas privadas, nos .htaccess e no proteus
+- fisioterapia 10:30
+-  
+
+qui jun  4 11:40:11 /etc/localtime 1998
+- Sem atividades, fisioterapia as 9:00 e cardiologista as 10:40
+
+sex jun  5 11:40:11 /etc/localtime 1998
+- acerto nas rotas da rede.
+- geracao de disco suplementar para o DAINF
+
+seg jun  8 11:27:30 /etc/localtime 1998
+- leitura de emails e http://idg.uol.com.br/now/entre.htm
+- leitura de emails da lista linux-br
+
+ter jun  9 11:20:32 /etc/localtime 1998
+- protegi area privada do proteus: /home/httpd/html/proteus
+- protegi area privada de professores: /home/httpd/html/ed/professores/private
+- acertos nos .htacces em : /home/httpd/html/ed/professores/private/.htaccess
+
+- 15 a 19 
+Analise AulaNet 
+
+- 22 e 23 jun
+- Aulanet
+
+qua jun 24 e  qui jun 25 
+- Sao Paulo SP - falecimento avo
+
+sex jun 26 10:57:10 /etc/localtime 1998
+- Procura do pesquisa do livro dominando linux de  Kevin Reichard da Editora Berkeley 
+
+seg jun 29 11:46:08 /etc/localtime 1998
+- acerto e envio da prova de Redes da keiko para melhorar a nota para ¨A¨ .
+
+ter e qua jul  1 11:40:31 /etc/localtime 1998
+- definicao do config/ed.cfg e implementacao:
+
+#
+# $HOME/config/ed.cfg   = arquivo de configuracao do sistema Educacao
+# 							a distancia.
+# 
+# A configuracao deste arquivo devera ser feita via HTML, Borwser, 
+# implementar um CGI, que faca esta alteracao.
+
+
+# LANG = variavel que define linguagem sera apresentada o HTML e as respostas
+# Valores = pt_BR, EN, ES, etc.
+#
+# 		Seguir o mesmo principio de softwares i18n, internazionalization.
+#
+# ver arquivo $HOME/config/messages.cfg onde terao as mensagens do sistema.
+#
+# Obs.: alteracao da linguagem implica em anteracao do arquivo de messages.cfg
+# 
+LANG=pt_BR
+
+
+# PRIVATE_TEACHER_PASS_REQ = define a area de seguranca de professor se pedira
+# senha ou nao.
+# Valores = yes,no.
+#
+PRIVATE_TEACHER_PASS_REQ=yes
+
+# ALLOW_STUDENT_UPLOAD = define se estudante pode executar o upload ou nao, na
+# area publica.
+#
+# Valores = yes,no.
+#
+ALLOW_STUDENT_UPLOAD=yes
+
+qui jul 2
+- IEEE definicao
+
+seg jul  6 11:54:14 /etc/localtime 1998
+-IEEE definicao
+
+qua jul  8 12:09:07 /etc/localtime 1998
+- termino e envio questao 5 para keiko.
+- leitura de emails.
+
+
+qui jul  9 11:42:56 /etc/localtime 1998
+- cadastramentos nas listas : 
+  http://www.manta.ieee.org/p1484/servtest.htm
+  em :
+      . Learner-Model
+	  . Learning-Objects
+	  . IISP - ED
+
+- analise dos groups do IEEE
+- analise do http://www.opencontent.org/ , que tambem referencia ao modelo de
+  learning do IEEE
+
+
+seg e ter jul 14 12:01:26 /etc/localtime 1998
+- verifiquei em http://www.mec.gov.br/sesu/concurso/ para inscrever o nosso
+  software.
+- analise do Computer-Aided Instruction (CAI) systems do IEEE.
+- tentativa de baixar o ftp> mget netscape-communicator-4.05-6.2.i386.rpm 
+  pois o netscape local, esta´ dando erros em paginas com frames e pags seguras.
+
+- Desenvolvimento/Analise da configuracao local para o webmaster do ¨ED¨ ,poder
+  ter abertura em configuracoes ver no ed.cfg. 
+- comeco de leitura do http://www.manta.ieee.org/p1484/par-rm.htm.
+
+
+20 a 24 julho 
+Fenasoft 98
+
+27 e 28 julho
+- Atualizacoes no servidor :
+bind-4.9.7-1.1.i386.rpm
+bind-utils-4.9.7-1.1.i386.rpm
+elm-2.4.25-14.1.i386.rpm 
+findutils-4.1-24.2.i386.rpm 
+rpm -Uvh /marumbi/mnt/RedHat/RPMS/netscape-communicator-4.05-3.i386.rpm
+
+- teste com a camera WebCam II
+
+29-31 
+-nada
+
+ter ago  3 
+- instalacao testes da webcamII e webphone
+
+ter ago  4 12:01:33 /etc/localtime 1998
+- conversa com o luciano, apresentacao do video caputre e do webfone
+- tentativa de baixa do realvideo para windows 95 www.real.com , sem sucesso
+
+seg ago 10 11:59:52 /etc/localtime 1998
+- alteracao no html descricao.html
+
+
+ter ago 11 12:39:20 /etc/localtime 1998
+- baixei o Webphone 4.01 para atualizar na maquina windows 95 que tinha o 
+  3.1, 
+- esperei o professor amigo do prof. Luciano
+
+
+quarta 
+quinta 13  e sex ago 14 21:06:54 /etc/localtime 1998
+- testes com o Prof amigo do Eduardo sobre o webphone e analise de video
+- testes com rs503classroom-linux-2_0_
+
+
+seg ago 17 11:52:22 /etc/localtime 1998
+- alteracao/implementacao da area webmaster 
+- instalacao do windows 95 na maquina do lado, pois prociso para testes dos
+  clientes real video, etc.
+
+root     tty2                          Thu Aug 20 11:06   still logged in
+root     ttyp0        petunia.conectiv Wed Aug 19 14:08 - 14:43  (00:34)
+root     tty2                          Wed Aug 19 09:38 - 09:43  (00:04)
+root     tty1                          Wed Aug 19 09:36 - 09:43  (00:07)
+abarros  ftp          dhcp138.cpgei.ce Wed Aug 19 09:20 - 09:25  (00:04)
+abarros  tty1                          Wed Aug 19 09:18 - 09:27  (00:09)
+abarros  tty1                          Wed Aug 19 09:09 - 09:18  (00:08)
+abarros  ttyp2        dhcp138          Wed Aug 19 08:06 - 08:06  (00:00)
+abarros  tty1                          Wed Aug 19 07:57 - 09:09  (01:11)
+reboot   system boot                   Wed Aug 19 07:54  
+fabio    ftp          perninha.conecti Tue Aug 18 18:04 - down   (00:03)
+root     ttyp0        petunia.conectiv Tue Aug 18 17:07 - 18:07  (00:59)
+fabio    ftp          perninha.conecti Tue Aug 18 16:25 - down   (01:42)
+fabio    ttyp2        perninha.conecti Tue Aug 18 16:20 - down   (01:47)
+fabio    ttyp1        animaniacs.conec Tue Aug 18 16:18 - 16:54  (00:36)
+fabio    ftp          animaniacs.conec Tue Aug 18 16:07 - down   (02:00)
+root     ttyp0        petunia.conectiv Tue Aug 18 16:04 - 16:23  (00:19)
+fabio    ftp          perninha.conecti Tue Aug 18 14:51 - down   (03:16)
+jl       ttyp0        dhcp187          Tue Aug 18 11:36 - 11:39  (00:03)
+fabio    ftp          perninha.conecti Mon Aug 17 18:56 - down   (23:10)
+fabio    ftp          perninha.conecti Mon Aug 17 18:52 - down   (23:14)
+fabio    ftp          perninha.conecti Mon Aug 17 18:47 - down   (23:19)
+fabio    ftp          perninha.conecti Mon Aug 17 18:40 - down   (23:27)
+fabio    ftp          perninha.conecti Mon Aug 17 18:33 - down   (23:34)
+fabio    ftp          perninha.conecti Mon Aug 17 18:32 - 18:32  (00:00)
+fabio    ftp          petunia.conectiv Mon Aug 17 18:09 - 18:12  (00:02)
+root     ttyp0        petunia.conectiv Mon Aug 17 17:57 - 19:12  (01:14)
+fabio    ftp          petunia.conectiv Mon Aug 17 17:51 - 17:57  (00:05)
+fabio    ftp          petunia.conectiv Mon Aug 17 14:25 - 14:26  (00:00)
+root     tty1                          Mon Aug 17 09:51 - 10:52  (01:00)
+abarros  ftp          dhcp133.cpgei.ce Mon Aug 17 09:24 - 09:24  (00:00)
+abarros  ftp          dhcp133.cpgei.ce Mon Aug 17 09:23 - 09:24  (00:00)
+abarros  ftp          dhcp133.cpgei.ce Mon Aug 17 08:46 - 08:46  (00:00)
+abarros  ftp          albatroz.cpgei.c Mon Aug 17 08:22 - 08:22  (00:00)
+abarros  tty1                          Mon Aug 17 08:18 - 09:21  (01:03)
+reboot   system boot                   Mon Aug 17 08:03  
+root     ttyp0        petunia.conectiv Sat Aug 15 18:13 - 18:15  (00:02)
+fabio    ftp          petunia.conectiv Sat Aug 15 18:11 - 18:14  (00:02)
+fabio    ftp          petunia.conectiv Fri Aug 14 22:01 - 22:02  (00:00)
+fabio    ftp          petunia.conectiv Fri Aug 14 21:19 - 21:21  (00:01)
+root     ttyp0        petunia.conectiv Fri Aug 14 21:18 - 21:19  (00:00)
+fabio    ftp          petunia.conectiv Fri Aug 14 21:16 - 21:17  (00:01)
+fabio    ftp          petunia.conectiv Fri Aug 14 21:10 - 21:15  (00:04)
+root     ttyp0        petunia.conectiv Fri Aug 14 21:04 - 21:09  (00:05)
+fabio    ftp          petunia.conectiv Thu Aug 13 20:53 - 21:32  (00:38)
+fabio    ftp          dhcp133.cpgei.ce Thu Aug 13 10:25 - 10:26  (00:00)
+root     tty1                          Thu Aug 13 10:22 - 11:22  (01:00)
+fabio    ftp          dhcp135.cpgei.ce Tue Aug 11 12:49 - 12:49  (00:00)
+fabio    ftp          listas.conectiva Tue Aug 11 12:27 - 13:03  (00:36)
+fabio    ftp          dhcp135.cpgei.ce Tue Aug 11 12:12 - 12:14  (00:02)
+root     tty1                          Tue Aug 11 11:43 - 12:43  (01:00)
+fabio    ftp          dhcp135.cpgei.ce Mon Aug 10 16:38 - 16:38  (00:00)
+root     tty1                          Mon Aug 10 10:56 - 12:00  (01:04)
+root     tty1                          Mon Aug 10 10:36 - 10:56  (00:19)
+fabio    ftp          dhcp135.cpgei.ce Fri Aug  7 14:10 - 14:10  (00:00)
+root     ttyp0        petunia.conectiv Thu Aug  6 19:54 - 20:03  (00:09)
+fabio    ttyp1        dhcp135          Thu Aug  6 12:18 - 12:20  (00:02)
+fabio    ftp          dhcp135.cpgei.ce Thu Aug  6 09:47 - 09:47  (00:00)
+root     tty1                          Thu Aug  6 09:44 - 10:45  (01:00)
+root     tty1                          Wed Aug  5 21:52 - 22:40  (00:48)
+jl       ttyp0        dhcp187.cpgei.ce Wed Aug  5 09:53 - 10:19  (00:26)
+root     tty1                          Tue Aug  4 11:42 - 12:04  (00:21)
+jl       ttyp0        dhcp187          Tue Aug  4 08:50 - 08:51  (00:00)
+root     tty1                          Mon Aug  3 10:29 - 11:30  (01:00)
+reboot   system boot                   Mon Aug  3 08:09  
+
+wtmp begins Mon Aug  3 08:09:05 1998
+
+
+qui ago 20 11:37:53 /etc/localtime 1998
+
+- instalacao dos pacotes :
+-glibc-profile-2.0.7-19.1.i386.rpm
+-libtermcap-2.0.8-9.1.i386.rpm
+-libtermcap-devel-2.0.8-9.1.i386.rpm
+-mailx-8.1.1-3.1.i386.rpm
+-metamail-2.7-17.1.i386.rpm.partial                                                                      
+
+sex ago 21 14:18:57 /etc/localtime 1998
+
+
+metamail-2.7-17.1.i386.rpm
+minicom-1.81-4.1.i386.rpm
+ncurses-1.9.9e-9.1.i386.rpm
+ncurses-devel-1.9.9e-9.1.i386.rpm
+rpm-2.5.2-1.1.i386.rpm
+rpm-devel-2.5.2-1.1.i386.rpm
+slang-0.99.38-7.1.i386.rpm
+slang-devel-0.99.38-7.1.i386.rpm
+tin-1.22-11.1.i386.rpm
+xscreensaver-2.16-4.1.i386.rpm
+
+
+
+seg ago 24 11:31:39 /etc/localtime 1998
+Atualizacao de:
+
+-Mesa-2.6-1.i386.rpm.gif
+-rpm-2.5.2-1.1.i386.rpm
+-wget-log
+-xscreensaver-2.16-4.1.i386.rpm
+
+25 26 ter /quart
+
+-trabalho na area do webmaster:
+ http://sol.cpgei.cefetpr.br/ed/webmaster/index.html
+
+qui ago 27 11:49:20 /etc/localtime 1998
+-trabalho na area do webmaster
+-conversa com Marionel e Luciano
+-atualizacao do netscape
+-instalacao do Real Player 5.0 na maquina Jau ( windoes 95 ) para testes
+ do Marionel e nosso
+
+sexta ago 28
+- trabalho na area webmaster
+- trabalho na criacao de diretorio e base SQL de materias
+- alteracao na preparacao de um programa para instalacao do software, para poder participar de concursos e instalar em outras maquinas (  instal.sh ) 
+
+sabado ago 29
+- finalizacao do trabalho da area webmaster
+- definicao e implantacao de novar area do provessor
+- definicao do arquivo http://sol.cpgei.cefetpr.br/ed/pendencias
+- alterar http://sol.cpgei.cefetpr.br/ed/professores/private/teste.phtml
+  para listar materias da base para o envio
+
+seg ago 31 11:57:44 /etc/localtime 1998
+- alteraracao http://sol.cpgei.cefetpr.br/ed/professores/private/teste.phtml
+  para listar materias da base para o envio
+- atualizacao do linux
+- conversa com o pessoal da UFMG e analise do EAD deles.
+
+- no windows 95 : teste de baixa de arquivos do cnn e espn, para analise de video
+- Atualizacoes dos pacotes:
+    nfs-server-2.2beta29-7.1.i386.rpm
+    nfs-server-clients-2.2beta29-7.1.i386.rpm
+    xscreensaver-2.27-1.1.i386.rpm          
+
+
+ter set  1 11:51:38 /etc/localtime 1998
+- conversa com pessoal de didatica , para ver esquema de prova
+- conversa com o Luciano p ver o Lotus dominus sobre Learning Space
+- alteracao no ed.update.cgi 
+
+qua/qui set  3 13:34:33 /etc/localtime 1998
+- implementacoes dos CGIS: 
+		[root@sol ed]# l cgis
+		total 24
+		drwxr-xr-x   2 root     root         1024 set  3 13:25 ./
+		drwxr-xr-x  15 nobody   nobody       1024 set  3 13:34 ../
+		-rwxr-xr-x   1 root     root         4269 set  3 13:25 iniciaservidor*
+		-rw-r--r--   1 root     root          146 set  3 13:25 iniciaservidor.c
+		-rwsr-sr-x   1 root     root         4267 set  3 13:22 paraservidor*
+		-rw-r--r--   1 root     root          145 set  3 13:22 paraservidor.c
+		-rwxr-xr-x   1 root     root         5260 set  3 11:13 unescape*
+		-rw-r--r--   1 root     root          962 set  3 11:10 unescape.c
+		-rwxr-xr-x   1 root     root         2925 set  2 22:53 web-sistema.cgi*     
+		Estes CGIS sao para a area do webmaster que dara manutencao no servidor
+		sql, pose ser ativado , desativado e listagem do status
+- 
+sex set  4 12:47:37 /etc/localtime 1998
+-atualizacao de
+-rw-r--r--   1 root     root       302843 set  4 04:03 apache-1.2.6-5.i386.rpm
+-rw-r--r--   1 root     root       491345 set  4 04:06 apache-doc-1.2.6-5.i386.rpm
+-rw-r--r--   1 root     root       306810 set  4 04:07 apache-ssl-1.2.6-5.i386.rpm
+-rw-r--r--   1 root     root      1022616 set  4 04:11 ghostscript-4.03-2.i386.rpm
+-rw-r--r--   1 root     root       461787 set  4 04:12 svgalib-1.3.0-0.i386.rpm
+-rw-r--r--   1 root     root       179360 set  4 04:12 svgalib-devel-1.3.0-0.i386.rpm  
+
+
+qua 09 e qui set 10 11:24:13 /etc/localtime 1998
+
+- Alteracao no cgis/paraservidor e cgis/iniciaservidor
+- Alteracao no webmaster/materias/criamaterias para na criacao da materia
+  criar os diretorios:
+  materias/nome_da_materia/arquivos
+  materias/nome_da_materia/videos
+  materias/nome_da_materia/videos/questoes
+  materias/nome_da_materia/videos/respostas
+
+
+seg set 14 12:02:39 /etc/localtime 1998
+- Alteracao no envia arquivo ( area do professor ) continua com problema.
+- abertura do mirco windows 95 jau para verificar placa de video, pois a ca
+  mera esta com resolucao pessima, o chipset da placa eh TRIDENT PCI TGUI0680-1
+  estou baixando o driver da www.spec-research.com/9680d.htm
+
+ter set 15 12:40:18 /etc/localtime 1998
+- finalizado o envia arquivo, basta tirar os debugs, gracas a dica em
+  http://ca.php.net/manual/features03.php3, Ufaa...
+
+qua/qui 16 e 17 set 1998
+- acerto remoto da postmaster running and accepting TCP/IP(with -i) 
+- implementacoes de funcoes para descobrir nome do arq temporario
+  postgress e remocaso do arquivo /tmp/.s.POST.pid
+
+seg set 21 10:38:14 /etc/localtime 1998
+- acerto nas duas primeiras pendencias ver aquivo "pendecias".
+- acertos na remocao do arquivo /tmp/.s.POST.pid e o startup na area webmaster
+
+ter e quarta 
+- finalizacao dos programas do websistema, 02 cgis e 03 em linguagem c e um ed-sistema.h 01 shell script, que sao os seguintes:
+-rw-r--r--   1 root     root          222 set 21 11:17 ed-defines.h
+-rwxr-xr-x   1 root     root         9201 set 21 18:31 iniciaservidor*
+-rw-r--r--   1 root     root         1821 set 21 18:31 iniciaservidor.c
+-rwsr-sr-x   1 root     root         4335 set 10 10:50 paraservidor*
+-rw-r--r--   1 root     root          203 set 10 10:49 paraservidor.c
+-rwxr-xr-x   1 root     root           34 set  4 13:49 tst*
+-rwxr-xr-x   1 root     root         5260 set  3 11:13 unescape*
+-rw-r--r--   1 root     root          962 set  3 11:10 unescape.c
+-rwxr-xr-x   1 root     root         3047 set 21 12:26 web-sistema.cgi*
+[root@sol ed]#       
+
+
+qui set 24 13:16:16 /etc/localtime 1998
+- conversa com prof. Marinoel
+- conversa com prof. Marcelo sobre o Lotus "Learning Space", e o dominum, ele
+  vai nos emprestar o CD quando chegar para analizarmos,	
+- conversa com prof. Luciano
+
+
+28 e ter set 29 11:55:09 /etc/localtime 1998
+- alteracao dos programas
+	/webmaster/professores/excluir.ptml
+	/webmaster/professores/dbexcluir.ptml
+	/webmaster/professores/alterar.ptml
+	/webmaster/professores/dbupdate.ptml
+	/webmaster/materias/excluir.ptml
+	/webmaster/materias/dbexcluir.ptml
+	/webmaster/materias/alterar.ptml
+	/webmaster/materias/dbupdate.ptml
+	/webmaster/alunos/excluir.ptml
+	/webmaster/alunos/dbexcluir.ptml
+	/webmaster/alunos/alterar.ptml
+	/webmaster/alunos/dbupdate.ptml
+
+	O acerto foi que agora nao precisa mais digitar o valor do codigo de
+	aluno,professor,materia para exclusao e alteracao, somente basta selecionar
+	de todos os existentes
+
+
+seg out  5 15:51:17 EDT 1998
+-Implantacao de senha na area do professor
+-Alteracao na area do webmaster para alterar senha
+-Alteracao na area do webmaster para cadastrar senha para professor
+-Resolucao de 02 pendencias do arquivo pendencias
+
+ter out  6 12:06:20 /etc/localtime 1998
+-acerto na alteracao da materia para alterar tambem o professor
+-aalteracao na exibicao de materias para mostrar o prof. responsavel
+
+ter 13 e qua out 14 10:55:08 /etc/localtime 1998
+- acertos no /home/httpd/cgi-bin/ed/web-sistema.cgi, pois nao estava ativando o sistema
+
+
+qui out 15 11:33:28 /etc/localtime 1998
+- ajustes na area private do professor,
+
+seg out 19 10:05:20 /etc/localtime 1998
+- acerto na inclusao de materia:
+	somente cadastrar materia apos ter cadastrado um professor reponsavel
+	pela materia
+
+seg e ter 26 e 27
+- levantamento do material que esta faltando no servidor e numa estacao
+  memorias 32 megas
+  hd de 4,3 IDE
+  camera quick cam e webcamII
+
+qua out 28 
+- implementacao da /lib/ed.bib.phtml  , biblioteca com as funcoes:
+	- send_mail
+	- configuracao
+
+qui out 29 10:50:42 /etc/localtime 1998
+- restauracao do backup, pois houve perdas na area do webmaster/professor
+
+sex out 30
+-Cefet estava fechado
+
+seg nov 2 
+-feriado finados, trabalhei no postgress pesquiza
+
+ter nov 3 e qua nov  4 08:55:26 /etc/localtime 1998
+  Criacao da area para os professores novos se cadastrarem, enviando um email
+  confirmando para o professor e para o webmaster, que apovara ou nao.
+
+- criei area ed.dados no diretorio irmao do ed. 
+- criacao do /home/httpd/html/ed/professores/cadastroprof.phtml
+- criacao do /home/httpd/html/ed/professores/inclusaoproftemp.phtml
+
+- acertos no ed/webmaster/webconfigsistema.phtml 
+
+05 e 06
+- inicio do /home/httpd/html/ed/webmaster/professores/aprovar.phtml 
+
+seg nov 09 e 10 10:27:41 /etc/localtime 1998
+- inclusao no ed/conf/ed.cfg para ter o WEBMASTER, onde pego o email
+  do webmaster para enviar email de cada cadastramento de professor novo
+- acertos no ed/lib/ed.bib.phtml funcao de sendmail() e Configuracao()
+
+- desenvolvimento do /home/httpd/html/ed/webmaster/professores/aprovar.phtml 
+
+
+seg nov 16 10:35:26 /etc/localtime 1998
+- analise de uma serie de sites sob educacao a distancia
+   http://www.cade.com.br/edudist.htm
+
+
+qua nov 18 08:44:55 /etc/localtime 1998
+- Atualizacao do mirror do marumbi em /marumbi e no ~ftp
+- Acertos em todos os .phtml para usar funcoes MostraCabec e MostraRodape
+
+qui nov 19
+- acerto na parte dos .phtml alunos e aprovacao de professor novo
+  para usarem funcoes MostraCabec e MostraRodape
+
+sex nov 20 10:32:30 EDT 1998
+- formatei o winchester maquina jau, pois precisava instalar webcamII e 
+  estava com disco cheio de erro.
+
+seg nov 23 11:37:06 EDT 1998
+- inicio do relatorio, procura do Windows 95, nao existe original no CPGEI.
+
+ter nov 24 
+- aula com prof. Tazza para iniciar o trab individual.
+- cd do windows95 no Dainf
+
+qua nov 25 11:17:22 EDT 1998
+- inicio do trab_individual
+- instalacao do windos95 e pluss, na maquina jau para instalacao dos softwares
+  da camera.
+
+qui nov 26 12:08:13 EDT 1998
+- intalacao dos softwares da camera, webphone, gravador de imagens, etc.
+- ajustes na configuracao de rede da maq jau.
+- baixa de 06 clips de 03,5 minutos cada com som imagen, padrao avi e highperf
+
+seg nov 30 12:04:42 EDT 1998
+- trabalho individual
+
+ter nov 01  ate ter dez  7 09:14:12 EDT 1998
+- trabalho individual, relatorio para cefet e busca de formatacao do ICECE,
+  para apresentacao no simposio da unicamp.
+
+ter dez  8 09:15:07 EDT 1998
+- correcoes no trabalho individual/relatorio
+
+ter dez 9
+- conversa com o orientador, novas definicoes, priorizacoes
+
+ter dez 10
+- procura de outro software para captura de video para analise e gravacao.
+
+sex dez 11 10:49:10 EDT 1998
+- relatorio e verificacao das pendencias, por prioridade
+- inicio dos alunos/enviandoarqvideo.phtml  e alunos/uploadphpnovo.phtml
+
+seg dez 14 11:47:53 EDT 1998
+- implementacao do upload de video na area de alunos
+- alteracao do ed/conf/ed.cfg para as variáveis TAMVIDEO=3 TEMPOQUESTOESVIDEO=7
+- tentativa de baixa do ftp.netspeak.com.pub;wpsetup.exe de 03 mega.
+
+ter dez 15 11:49:58 EDT 1998
+- Baixa do padrao H.303 usado em video conferencia/webphones para estudo e analise, dos links:
+http://www.connectedpc.com/cpc/videophone/index.htm
+http://www.vosaic.com/
+http://standards.pictel.com/standorg.htm
+http://www.netspeak.com/product/webphone/features.html , diz :
+
+H.323 Version 2.0 Standards Compatibility
+ WebPhone lets you speak with Internet telephone users around the world
+ regardless of vendor, platform or network. WebPhone supports the H.323
+ Version 2.0 Series Standard including the G.723.1 and G.711 audio codecs,
+ allowing interoperability between IP-based multimedia applications. Now you
+ can send voice and video communications to any H.323-compliant application. 
+
+qua dez 16 
+- instalacao e configuracao do hd de 4.3 gigabytes
+- troca de 01 pente de memoria de 32 por 02 de 16 na datasilcro.
+
+qui dez 17 08:42:38 EDT 1998
+- abertura de ordem de servico nr 14538, para tirar rebites da maq jau
+- troca dos pentes de memoria da maq jau de 02 pentes de 08 para 02 pentes de
+  32
+- acerto nas bases de materias e alunos, conforme combinado
+
+
+seg dez 21 08:41:30 EDT 1998
+- atualizacoes dos pacotes:
+-rw-r--r--   1 root     root      4606450 dez 19 04:24 netscape-common-4.08-2cl.i386.rpm
+-rw-r--r--   1 root     root      4374604 dez 19 04:38 netscape-communicator-4.08-2cl.i386.rpm
+-rw-r--r--   1 root     root      1195725 dez 19 04:40 samba-1.9.18p10-6cl.i386.rpm
+-rw-r--r--   1 root     root       472252 dez 19 04:42 svgalib-1.3.1-1cl.i386.rpm
+-rw-r--r--   1 root     root       191367 dez 19 04:43 svgalib-devel-1.3.1-1cl.i386.rpm
+-rw-r--r--   1 root     root        51766 dez 19 04:43 sysklogd-1.3-31cl.i386.rpm
+-rw-r--r--   1 root     root        91119 dez 19 04:44 zgv-4.2-2cl.i386.rpm
+
+
+ter dez 22 11:43:02 EDT 1998
+- instalacao do Star Ofice
+- verificacao da placa ATM
+- instalacao no wpsetup.exe na maquina jau.
+- tentativa de compilacao do software qcam3.0 no linux.
+- correcao do trabalho individual
+
+qua dez 23 10:38:47 EDT 1998
+- transformacao do foricece.doc para foricece.txt para escrever o artigo
+- organizacao das paginas html em baixo do diretorio ed/html
+- criacao do diretorio doc onde tera documentos, artigos, etc.
+
+
+seg dez 28 08:50:05 EDT 1998
+- leitura do http://www.imsproject.org/ e http://www.educause.edu, para inicio
+  do artigo
+
+qua dez 30 06:32:21 EDT 1998
+- inicio do docs/artigo.txt
+
+sex jan 01 
+- escrita docs/artigo.txt
+
+seg jan 04
+- acerto disco maq sol
+
+ter jan 05
+- atualizacao sistema operacional sol
+
+qua e qui jan 06 e 07
+- acertos sistema operacional sol
+
+sex jan 08 
+- escrita docs/artigo.txt
+
+seg jan 11 
+- artigo acerto e impressao para eduardo
+
+ter jan 12 1999
+- acerto no httpd.conf para aceitar os phps e php3 ( paginas do ed )
+
+qua jan 13 09:54:21 EDT 1999
+- acertos no htdig do search nas universidades
+- marcado com o Pelisson prof do Dainf para analise do MPEG sobre arquivos
+  AVI, amanha 14/01 
+
+qui e sex jan 15 12:01:52 EDT 1999
+- baixa das bibliotecas para AVI, Indeo e 
+- compilacao do xanim para linux na sol ver em /usr/local/xanim
+
+dom 17 e seg jan 18 09:20:16 EDT 1999
+- leitura de artigos da revista IEEE Transactions on Education,
+   vol 4, n0.1, February 1998
+
+ter 19 e qua jan 20 11:56:44 EDT 1999
+- leitura de artigos da revista IEEE Transactions on Education,
+
+
+qua 20 ate ter fev  2 12:33:20 EDT 1999
+- artigo
+
+ter fev  2 12:33:44 EDT 1999
+- conversa com o Eduardo sobre pessoal CPD Federal, proreitor federal,
+etc
+
+qua fev 03 sex fev 05
+- artigo
+
+seg fev 08 e ter fev  9 11:39:24 EDT 1999
+- acertos no sistema para ficar ok, para testes
+
+qui fev 11 e sex fev 12
+- acertos no sistema para ficar ok, para testes
+
+sab fev 13 à qua fev 17
+- carnaval
+
+qui fev 18 e sex fev 19 10:41:49 EST 1999
+- acerto no sistema ed
+- acerto na maquina jau ( desisti )
+
+
+seg mar 15 08:43:42 EST 1999
+- atualizacao de 
+[root@sol ed]# l /home/freshrpms/
+total 5862
+      1172796 mar 13 04:04 ghostscript-5.10-1cl.i386.rpm
+       831544 mar 13 04:05 ghostscript-fonts-5.10-1cl.noarch.rpm
+       170631 mar 13 04:05 minicom-1.82-3cl.i386.rpm
+      3649893 mar 13 04:10 perl-5.004m7-1cl.i386.rpm
+       143631 mar 13 04:11 proftpd-1.2.0pre1-4cl.i386.rpm
+
+
+ter mar 16 08:51:41 EST 1999
+
+- instalacao das rpms:
+		qmail-1.03-7.2.i386.rpm
+		ezmlm-idx-0.53.313-1.i386.rpm
+		qmail-imap-4.5.beta-2.i386.rpm 
+
+  retirada das rpms do sendmail;
+  inicio de desenvolvimento de cgi para gerenciamento das listas 
+	
+17 mar a 26 marco
+- listas de discussao acerto implantacao/desenvolvimento novos programas/paginas
+forms, etc usando ezmlm
+
+seg mar 29 08:52:15 EST 1999
+- organizacao dos links, e listas 
+
+
+Abril - 01 semana
+- repouso , por casa da cirugia
+
+seg abr 12
+- conversa com o Borba e acertos e acesso remoto
+
+ter abr 13 09:47:11 EST 1999
+- colocquei o wmail3.cgi no cgi-bin/ed
+- estou estudando o ed/listas/lista_inscricao_canc.phtml                
+- estou estudando o ezmlm-make
+- e o /usr/bin/ezmlm-* para fazer uma interface para o ed.

@@ -1,0 +1,145 @@
+<?PHP
+	 require ( "../lib/ed.bib.phtml");
+	 MostraCabec("Inclusao professores novos ");
+
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+	     
+	if (!$conn) {
+		echo "Não foi possivel abrir banco de dados.\n";
+	exit;
+	}
+	if($nome_professor == ""){
+		echo "<BR><BR> O campo NOME DO PROFESSOR deve ser preenchido!\n";
+		echo "<BR><BR>\n";
+                echo "<BR><BR>\n";
+		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form> ";
+             	pg_Close($conn);
+		exit;	
+	}
+	if($titulo_professor == ""){
+		echo "<BR><BR> O campo titulação deve ser preenchido!\n";
+		echo "<BR><BR>\n";
+                echo "<BR><BR>\n";
+		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form> ";
+             	pg_Close($conn);
+		exit;	
+	}
+	if($chave_professor == ""){
+		echo "<BR><BR> O campo chave deve ser preenchido!\n";
+		echo "<BR><BR>\n";
+                echo "<BR><BR>\n";
+		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form> ";
+             	pg_Close($conn);
+		exit;	
+	}
+	if($senha_professor == ""){
+		echo "<BR><BR> O campo SENHA deve ser preenchido!\n";
+		echo "<BR><BR>\n";
+                echo "<BR><BR>\n";
+		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form> ";
+             	pg_Close($conn);
+		exit;	
+	}
+	if($mail_professor == ""){
+		echo "<BR><BR> O campo EMAIL deve ser preenchido!\n";
+		echo "<BR><BR>\n";
+                echo "<BR><BR>\n";
+		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form> ";
+             	pg_Close($conn);
+		exit;	
+	}
+	/* verificando se já nao esta cadastrado na base professorestemp */
+
+    $NOME = strtoupper($nome_professor);
+    $testanome = pg_Exec($conn, "select * from professorestemp ;");
+    $num = pg_NumRows($testanome);
+    $i=0;
+	for($i = 0; $i < $num; $i++) {
+		/* trim() tira os espacos em brancos  do comeco ate o fim da base de dados */
+	    $nome= strtoupper(trim(pg_Result( $testanome, $i, "nome" ))); 
+		$ret=strcmp ( $nome, $NOME );
+		if ( $ret == 0 ) {
+		   echo "<BR><BR><BR>Professor $nome_professor já foi  cadastrado recentemente e ainda nao foi aprovado!";
+ 	       echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		   pg_FreeResult($testanome);
+		   pg_close($conn);
+		   exit;
+	   }
+	}
+	pg_FreeResult($testanome);
+
+
+    $CHAVE = strtoupper($chave_professor);
+	$testachave = pg_Exec($conn, "select * from professorestemp ;");
+	$num = pg_NumRows($testachave);
+    $i=0;
+	for($i = 0; $i < $num; $i++) {
+			/* trim() tira os espacos em brancos  do comeco ate o fim da base de dados */
+	    $chave= strtoupper(trim(pg_Result( $testachave, $i, "chave" ))); 
+		$ret=strcmp ( $chave, $CHAVE );
+		if ( $ret == 0 ) {
+		   echo "<BR><BR><BR>Esta chave $chave_professor já está cadastrada recentemente e ainda nao foi aprovada, clique em retornar e tente outra !";
+ 	       echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		   pg_FreeResult($testachave);
+		   pg_close($conn);
+		   exit;
+	   }
+	}
+	pg_FreeResult($testachave);
+
+	/* verificando se já nao esta cadastrado na base professores */
+
+    $NOME = strtoupper($nome_professor);
+    $testanome = pg_Exec($conn, "select * from professores ;");
+    $num = pg_NumRows($testanome);
+    $i=0;
+	for($i = 0; $i < $num; $i++) {
+		/* trim() tira os espacos em brancos  do comeco ate o fim da base de dados */
+	    $nome= strtoupper(trim(pg_Result( $testanome, $i, "nome" ))); 
+		$ret=strcmp ( $nome, $NOME );
+		if ( $ret == 0 ) {
+		   echo "<BR><BR><BR>Professor $nome_professor já está cadastrado !";
+ 	       echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		   pg_FreeResult($testanome);
+		   pg_close($conn);
+		   exit;
+	   }
+	}
+	pg_FreeResult($testanome);
+
+
+    $CHAVE = strtoupper($chave_professor);
+	$testachave = pg_Exec($conn, "select * from professores ;");
+	$num = pg_NumRows($testachave);
+    $i=0;
+	for($i = 0; $i < $num; $i++) {
+			/* trim() tira os espacos em brancos  do comeco ate o fim da base de dados */
+	    $chave= strtoupper(trim(pg_Result( $testachave, $i, "chave" ))); 
+		$ret=strcmp ( $chave, $CHAVE );
+		if ( $ret == 0 ) {
+		   echo "<BR><BR><BR>Esta chave $chave_professor já está cadastrada, clique em retornar e tente outra !";
+ 	       echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		   pg_FreeResult($testachave);
+		   pg_close($conn);
+		   exit;
+	   }
+	}
+	pg_FreeResult($testachave);
+
+        /*** Gravando na base temporária de professor ***/
+	$result = pg_Exec($conn,
+                        "INSERT INTO professorestemp
+                         VALUES ('$nome_professor','$titulo_professor', '$chave_professor','$senha_professor','$tipo','$mail_professor');");
+	if (!$result) {
+		echo "Ocorreu um erro durante a inclusao na base de dados.\n";
+		exit;
+	}
+	echo "<CENTER>";
+	$webmaster = Configuracao("WEBMASTER");
+	send_mail( $webmaster, $mail_professor, "ed-inclusao novoprovessor", "$mail_professor - $chave_professor"); 
+	echo "<BR><BR>Professor novo incluído, aguarde a aprovação pelo webmaster = $webmaster";
+	echo "</CENTER>";
+	pg_FreeResult($result);
+	pg_Close($conn);
+	MostraRodape();
+?>

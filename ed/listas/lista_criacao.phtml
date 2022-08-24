@@ -1,0 +1,99 @@
+<html>
+<head>
+
+<?PHP
+    require ( "../lib/ed.bib.phtml");
+    MostraCabec("Página de gerenciamento das listas ");
+?>  
+<SCRIPT language="JavaScript">
+<!--
+
+function validaEmail (email)
+{
+  if (email.length < 5 || email.indexOf("@") == -1 || 
+      email.indexOf(".") == -1 || email.indexOf(" ") != -1 )
+    return -1;
+
+  return 0;
+}
+
+function isFormOk(form)
+{
+  var lista = document.forms[form].lista.value;
+  var email = document.forms[form].maintainer.value;
+  var senha = document.forms[form].senha.value;
+
+  if (lista.length == 0)
+  {
+    alert ("\nLista nao informada.\n");
+    return false;
+  }
+
+  if (validaEmail (email) < 0)
+  {
+    alert ("email do mantenedor invalido ou nao informado.");
+    return false;
+  }
+
+  if (senha.length == 0)
+  {
+    if (confirm ("\nSenha nao informada.\nA lista sera criada, mas nao sera possivel a manutencao remota via email") == false)
+    return false;
+  }
+     
+  if (document.forms[form].accept[2].checked)
+  {
+    var email = document.forms[form].email_accept.value;
+    
+    if (validaEmail (email) < 0)
+     {
+        alert ("email para submissao restrita invalido ou nao informado");
+        return false;
+     }
+  }
+
+  return true;
+}
+//-->
+</SCRIPT>
+
+<title>CriaLista  Admin </title>
+<body bgcolor="#FFFFFF">
+<h3>CriaLista Admin </h3>
+<hr size=5 align=center>
+
+<form action="/cgi-bin/ed/crialista.cgi" method="post" onSubmit = "return isFormOk(0)">
+
+<pre>
+  <font size="+2"><b>Nome da Lista:</b></font>
+  <input type="text" size=50 name="lista" maxsize=60>
+
+  <font size="+2"><b>Email do mantenedor:</b></font>
+  <input type="text" size=30 name="maintainer" maxsize=60>
+
+  <font size="+2"><b>senha de administracao:</b></font>
+  <input type="password" size=30 name="senha" maxsize=60>
+
+  <font size="+2"><b>tamanho maximo das mensagens:</b></font>
+  <input type="text" size=10 name="size_limit" value="20480" maxsize=60> bytes
+
+  <font size="+2"><b>numero de mensagens arquivadas:</b></font>
+  <input type="text" size=10 name="archive_hist" value="20" maxsize=60> mensagens
+
+  <font size="+2"><b>Outras opcoes:</b></font>
+  <input type="checkbox" checked name="subject_list" value="yes">nome da lista no subject
+  <input type="checkbox" checked name="reply_to" value="yes">seta "reply to"
+
+  <input type="radio" name="accept" value="all">aceita mail de qualquer usuario (inclusive nao cadastrado na lista)
+  <input type="radio" name="accept" value="dist" checked>aceita mail somente de usuarios cadastradas na lista
+  <input type="radio" name="accept" value="restrita">restringe submissao para: <input type="text" size=30 name="email_accept" maxsize=60>
+
+  <input type="submit" value="Processa Comando">
+  <input type="reset" value="Reseta Campos">
+
+</pre>
+</form>
+
+<A HREF="http://www.conectiva.com.br">Feito por Conectiva Informática</A>
+<?PHP MostraRodape(); ?>   
+</html>

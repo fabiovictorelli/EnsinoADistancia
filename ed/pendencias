@@ -1,0 +1,138 @@
+
+1) ERRO, acertar em webmaster/materias/dbexcluir.phtml a linha 45:
+             $ret = rmdir ("/home/httpd/html/ed/materias/$nome_materia"); 
+
+
+2) - alterar http://sol.cpgei.cefetpr.br/ed/professores/private/teste.phtml
+  para listar materias da base para o envio de aruqivos ( upload)
+OK em seg out  5 11:47:15 /etc/localtime 1998
+
+6) Analise do correio de voz/video e texto
+	
+	Sistema
+	    1) Definir padroes de video aceitos. ( ra, ram, vdo, sfw, ... ) Luciano
+		2) no crontab  limpar aulas com mais de TEMPOQUESTOESVIDEO
+
+	Aluno
+		1) Pode mandar questao video para determinada materia, do tamanho 
+		   TAMVIDEO
+
+OK no webmaster
+        2) Tambem podera ser mandado arquivo texto .
+		3) chegou arquivo na area materias/robotica1/videos/questoes
+		4) Avisar  professor por email que chegou QuestaoVideo , do aluno tal.
+		5) Depois que o prof respondeu, aluno verifica em 
+		   materias/robotica1/videos/respostas
+
+
+    Professor
+		1) E avisado,
+		2) Responder via video e avisar na area de aluno.
+		3) professor tambem podera responder somente o texto
+		4) Caso pergunta interessante pode arquivar num FAQ.
+
+
+	Webmaster
+		1) Implementar area p/ configurar tempo de video por semana ou 
+		   por tamanho TAMVIDEO.
+OK, na pagina webmaster, falta no conf/ed.cfg e postgress
+OK, no arquivo de configuracao conf/ed.cfg
+
+		2) Implementar configuracao de TEMPOQUESTOESVIDEO
+OK, na pagina webmaster, falta no conf/ed.cfg e postgress
+OK, no arquivo de configuracao conf/ed.cfg
+
+	Materias
+	    Criar diretorios videos/questoes e  videos/respostas na criacao de
+		cada materia
+OK
+
+	Nao prioritario
+		1) desenvolver em java, um reloginho para que alerete o aluno que 
+		somente pode usar TAMVIDEO, no browse cliente.
+		2) Sem prioridade: se tiver area de FAQ de video.
+
+7) Implementacao da prova
+	1)Caso subjetiva o sistema avalia on-line da a avaliacao ao aluno e com 
+	tutorial para as questoes incorretas.
+
+	2) Criar  base sql de avalicao/provaS
+
+	3) Professor pode alterar quadro de provas. Assim que alterar avisar na area       de materias visiveis pelos alunos.
+
+
+sex dez 11 10:48:59 EDT 1998
+	Foi decido por parte do orientador em 09 dez de 1998, que gerara a seguinte
+demanda:
+
+	1. Webmaster aprovar curso/materia nova cadastrado pelo professor, gera os 
+	   alteracoes:
+	
+		- criar nova base de materias-precadastradas.
+		- alterar pagina de criacao de materias do professor.
+		- criar pagina/programas para aprovar as materias-precadastradas e dai
+		  passar para a base definida de materias.
+
+	2 Na matricula do aluno respeitar numero maximo de vagas (NRMAXVAGAS) da materia, gera as seguintes alterecaoes:
+
+		- gerar pagina de matricula que recebe numero infinito de matricula.
+		- criar nova base sql de alunos precadastrados.
+		- alterar toda a base de materias, para incluir os campo NRMAXVAGAS, 
+		  DATA FINAL de MATRICULA e PERIODO DO CURSO
+OK
+		- alterar paginas e programas do webmaster e professor para definir o 
+		  NRMAXVAGAS  e DATA FINAL de MATRICULA , PERIODO DO CURSO no 
+		  cadastramento da materia.
+		- implementar paginas e programas postgress de precadastramento na 
+		  materia respeitando o nrmaxvagas, recuperado da base MATERIAS.
+		- desenvolver programa para guardar na base de alunos prematriculados.
+
+	3. Aprovacao pelo professor responsavel da materia dos alunos prematriculados.
+		- desenvolver pag/programa para validacao do aluno prematriculado, dai
+		  apos aprovado e respeitado o NRMAXVAGAS passar para a base de alunos.
+
+	4. protecao de area materia/video/questoes/alunos
+		- proteger a partir de /video ( entrando o aluno ou qualquer professor) 
+
+	5. cadastrar chave e senha do aluno ( sugiro tambem email )
+OK, criado na base
+		- alterar paginas programas de cadastramento do aluno, incluindo nome,
+		  email, chave e senha. ( sendo que email nao é campo obrigatorio).	 
+
+	
+Tambem foi decido a seguinte prioridade no desenvolvimento dos trabalhos, sendo que podera ser trabalhado metade do tempo diario nos itens 1,2 e 3 (escrita) e
+a outra metade no item 04(desenvolvimento).
+
+1. Estudo/analise do melhor padrao para gerarmos  e transmitirmos arquivo 
+   de video.
+2. Artigo p/ o  ICECE
+3. trabalho individual.
+4. desenvolvimento dos programas e das pendencias a cima.
+
+
+Quanto ao artigo, foi decido abordar:
+1. Tipo e problema da escola ( ausencias de prof e alunos )
+2. problemas com a banda
+3. como o servidor esta sendo implementado
+4. arquivos de video passando pelo backbone da internet.
+
+
+qua fev  3 10:29:58 EDT 1999
+1. eduardo decidiu hoje :
+	- Relacionarmos toda a parte tecnica pa o web master, o que ele deve
+	  conhecer, como:
+	  	. Linux
+		. Rede
+		. phtml
+		. postgress sql
+		. listas ezml
+		. apache
+		. mail
+
+2. Implementarmos uma rotina de atualizacao
+
+3. Implementarmos um FAQ
+
+
+ter mai 18 19:39:06 EST 1999
+- na exclusao da lista tirar do /etc/aliases a entrada

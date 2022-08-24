@@ -1,0 +1,38 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Inclusão  de  matéria para o aluno cursos");
+?>
+<?PHP
+	$conn = pg_connect("localhost", "5432", "", "", "ed");
+	if(!$conn){
+		echo "Não Foi possível abrir a base de dados";
+		exit;
+	}
+	echo "Nome do Curso : $nome_curso";
+/*    echo "<BR>Códigos: $codigo_aluno,$codigo_curso, $codigo_materia"; */
+
+
+   /*verificando se esta materia ja nao está cadastrada para o aluno no curso */
+
+
+   $result = pg_Exec($conn, "Select * from alunos_cursos_materias WHERE 
+            cod_aluno = $codigo_aluno and cod_curso = $codigo_curso and cod_materia =$codigo_materia ;");
+   $num = pg_NumRows($result);
+   if ( $num != 0 ) {
+         MostraErro ("Está matéria já está cadastrada para o aluno neste curso.");
+   }                   
+   pg_FreeResult($result);
+
+
+	$result1 = pg_Exec($conn,
+                "INSERT INTO alunos_cursos_materias
+                VALUES ('$codigo_aluno','$codigo_curso', '$codigo_materia');");
+    if (!$result1) {
+        echo "Ocorreu um erro durante a inclusao na base de dados.\n";
+        exit;
+     }
+	 echo "<BR>Matéria incluida para o aluno";
+     pg_FreeResult($result1);
+     pg_Close($conn);
+?>
+<?PHP MostraRodape(); ?>

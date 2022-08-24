@@ -1,0 +1,87 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec(" Alteração de cursos ");
+?>
+
+<FORM ACTION="/ed/webmaster/cursos/dbupdate2.phtml" METHOD="post">      
+<?PHP
+	$conn = pg_connect("localhost", "5432", "", "", "ed");
+	if(!$conn){
+		echo "Não Foi possível abrir a base de dados";
+		exit;
+	}
+	$result = pg_exec($conn, "select * from cursos where cod_curso = $codigo_curso;");
+	$num = pg_numrows($result);
+	if($num == 0){
+		echo "<BR>Nada Encontrado."; 
+ 		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		exit; 
+	}
+	echo "Nome do Curso :";
+	echo "<INPUT TYPE=\"hidden\" NAME=\"codigo_curso\" VALUE=\"";
+	echo pg_result($result, 0, "cod_curso"); echo "\">\n";	
+	echo "<INPUT TYPE=\"text\" SIZE=\"20\" NAME=\"curso\" VALUE=\"";
+	echo pg_result($result, 0, "nome");
+	echo "\">\n";	
+
+	echo "<BR>Vagas:";
+	echo "<INPUT TYPE=\"text\" SIZE=\"3\" NAME=\"num_max_vagas\" VALUE=\"";
+	echo pg_Result($result, 0, "num_max_vagas");
+	echo "\">\n";	
+
+	echo "<BR>Data final da matricula";
+	echo "<INPUT TYPE=\"text\" SIZE=\"10\" NAME=\"data_final_matricula\" VALUE=\"";
+	$data_aux=pg_Result($result, 0, "data_final_matricula");
+	$data_aux=ereg_replace("/","-",$data_aux);
+	$dmano=explode("-", $data_aux);
+	$d = $dmano[0];
+	$m = $dmano[1];
+	$y = $dmano[2];
+	$data_aux= date( "d/m/Y", mktime(0, 0, 0, $d, $m , $y));
+	echo "$data_aux";   
+	echo "\">\n";	
+
+	echo "<BR>Data inicio do curso";
+	echo "<INPUT TYPE=\"text\" SIZE=\"10\" NAME=\"data_inicio_curso\" VALUE=\"";
+	$data_aux = pg_Result($result, 0, "data_inicio_curso");
+	$data_aux=ereg_replace("/","-",$data_aux);
+	$dmano=explode("-", $data_aux);
+	$d = $dmano[0];
+	$m = $dmano[1];
+	$y = $dmano[2];
+	$data_aux= date( "d/m/Y", mktime(0, 0, 0, $d, $m , $y));
+	echo "$data_aux";   
+	echo "\">\n";	
+
+	echo "<BR>Data final do curso";
+	echo "<INPUT TYPE=\"text\" SIZE=\"10\" NAME=\"data_fim_curso\" VALUE=\"";
+	$data_aux = pg_Result($result, 0, "data_fim_curso");
+	$data_aux=ereg_replace("/","-",$data_aux);
+	$dmano=explode("-", $data_aux);
+	$d = $dmano[0];
+	$m = $dmano[1];
+	$y = $dmano[2];
+	$data_aux= date( "d/m/Y", mktime(0, 0, 0, $d, $m , $y));
+	echo "$data_aux";   
+	echo "\">\n";	
+
+	echo "<BR>Selecione um professor  :";
+ $result = pg_Exec($conn, "Select * from professores ORDER BY nome;");
+        $num = pg_NumRows($result);
+        echo "<SELECT NAME=\"codigo_professor\">\n";
+        for($i = 0; $i < $num; $i++)
+        {
+                echo "<OPTION VALUE=\"";
+                echo pg_Result($result, $i, "cod_professor");
+                echo "\">"; 
+				echo pg_Result($result, $i, "nome");
+                echo "\n";
+        }
+        echo "</SELECT>\n";
+        pg_Close($conn);
+        pg_FreeResult($result);
+
+?>
+<CENTER><INPUT TYPE="submit" VALUE="Alterar"></CENTER>
+</FORM>
+<?PHP MostraRodape(); ?>

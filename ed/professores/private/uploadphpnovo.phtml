@@ -1,0 +1,29 @@
+<? //Comentado require(auth_logon) ?>
+
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Recebendo arquivo ");
+?>
+
+<? require(upload); ?>
+
+<?
+	//$anunciante = $PHP_AUTH_USER;
+$auxmateria=chop($materia);
+$auxfile=chop($nome_arquivo);
+$aux=basename($arquivo);
+if($arquivo != "none")
+{
+#	echo " auxmateria=$auxmateria<BR>" ;
+#	echo " aux=$aux<BR>" ;
+#	echo " arquivo=$arquivo<BR>" ;
+#	echo " arquivo_name=$arquivo_name<BR>" ;
+#	echo " auxfile=$auxfile<BR>" ;
+	$img_array= img_upload($arquivo,$arquivo_name,"/home/httpd/html/ed/materias/$auxmateria");
+}
+	 
+	echo "<BR>OK<BR>";
+	echo "Gravado arquivo <b>$img_array[0]</b> para a  matéria <b>$materia</b>.";
+?>
+
+<?PHP MostraRodape(); ?>

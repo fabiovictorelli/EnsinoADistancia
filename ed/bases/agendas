@@ -1,0 +1,6 @@
+create table agendas(
+data date,
+nome text,
+cod_materia int4,
+tipo_agenda int4,
+cod_agenda int4 DEFAULT nexTval ( 'agendas_seq')); 

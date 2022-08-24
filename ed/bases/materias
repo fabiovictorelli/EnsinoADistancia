@@ -1,0 +1,8 @@
+create table materias(
+nome char(40),
+cod_professor int4,
+num_max_vagas int,
+data_criacao_materia date,
+data_final_matricula date,
+periodO char(60),
+cod_materia int4 DEFAULT nexTval ( 'materias_seq'));

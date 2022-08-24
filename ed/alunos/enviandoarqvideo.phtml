@@ -1,0 +1,31 @@
+<?PHP 
+	 require ( "../lib/ed.bib.phtml");
+	 MostraCabec("Aluno enviando uma dúvida em formato arquivo de Vídeo ");
+?>
+
+<FORM METHOD="POST" ENCTYPE=multipart/form-data ACTION=uploadphpnovo.phtml> 
+<!--FORM METHOD="POST" ACTION=uploadphpnovo.phtml--> 
+<!--INPUT TYPE="hidden" name="MAX_FILE_SIZE" value="1000"-->
+<BR>Selecione uma Matéria(s):
+<?PHP
+        $conn2 = pg_Connect("localhost", "5432", "", "", "ed");
+        $result = pg_Exec($conn2, "Select * from materias ORDER BY nome;");
+        $num = pg_NumRows($result);
+        echo "<SELECT NAME=\"materia\">\n";
+        for($i = 0; $i < $num; $i++)
+        {
+                echo "<OPTION VALUE=\"";
+                echo pg_Result($result, $i, "nome");
+                echo "\">"; echo pg_Result($result, $i, "nome");
+                echo "\n";
+        }
+        echo "</SELECT>\n";
+        pg_Close($conn2);
+        pg_FreeResult($result);
+?>
+
+<BR>Nome de Arquivo : <INPUT TYPE="file" NAME="arquivo"  SIZE=35>
+<INPUT TYPE=submit NAME=UPLOAD VALUE=ENVIA>  
+</FORM>
+
+<?PHP MostraRodape(); ?>

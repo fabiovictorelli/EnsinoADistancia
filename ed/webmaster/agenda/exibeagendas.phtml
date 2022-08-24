@@ -1,0 +1,44 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Listagem de Agenda ");
+?>
+
+<FORM ACTION="/ed/webmaster/agenda/dbexibeagendas.phtml" METHOD="POST">
+<?PHP
+
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+	     
+	if (!$conn) {
+		SaiErro ("Nao foi possivel abrir banco de dados.\n");
+	}
+    $result = pg_Exec($conn, "Select * from materias ORDER BY nome;");
+    $num = pg_NumRows($result);
+
+    if($num == 0) {
+        echo "<BR><CENTER>ERRO- Atenção - não existem materias cadastradas!\n";
+        echo "<BR>Você deve cadastrar uma matéria primeiro !\n";
+        echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\" ></form>";
+        pg_Close($conn);
+        exit;
+     }
+            
+
+	echo "Escolha uma matéria para mostrar a agenda: ";
+    echo "<SELECT NAME=\"codigo_materia\">\n";
+    for($i = 0; $i < $num; $i++) {
+          echo "<OPTION VALUE=\"";
+          echo pg_Result($result, $i, "cod_materia");
+          echo "\">";
+          echo pg_Result($result, $i, "nome");
+          echo "\n";
+     }
+     echo "</SELECT>\n";
+     pg_FreeResult($result);
+     pg_Close($conn);
+?>                              
+
+<BR>
+<INPUT TYPE="submit" VALUE="Mostrar"></INPUT>
+</CENTER>
+</FORM>
+<?PHP MostraRodape(); ?>

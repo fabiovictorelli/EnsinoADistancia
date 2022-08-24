@@ -1,0 +1,13 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec(" Alteração de Alunos ");
+	$conn = pg_connect("localhost", "5432", "", "", "ed");
+	if(!$conn){
+		echo "Não Foi possível abrir a base de dados";
+		exit;
+	}
+	$result = pg_exec($conn, "update alunos set nome = '$aluno' where cod_aluno = $codigo_aluno;");
+	$num = pg_numrows($result);
+	echo "<BR>Aluno Alterado.";
+	MostraRodape(); 
+?>

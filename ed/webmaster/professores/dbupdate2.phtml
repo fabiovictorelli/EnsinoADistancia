@@ -1,0 +1,14 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec(" Alteração de Professores ");
+	$conn = pg_connect("localhost", "5432", "", "", "ed");
+	if(!$conn){
+		echo "Não Foi possível abrir a base de dados";
+		exit;
+	}
+
+	$result = pg_exec($conn, "update professores set nome = '$professor', titulo = '$titulo',chave ='$chave', senha = '$senha' ,tipo = '$tipo' , email = '$email'  where cod_professor = $codigo_professor;");
+	$num = pg_numrows($result);
+	echo "<BR>Professor Alterado.";
+	MostraRodape();
+?>

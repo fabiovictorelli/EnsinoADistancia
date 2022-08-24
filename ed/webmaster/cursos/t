@@ -1,0 +1,4 @@
+				echo "<TD>";echo pg_Result($result, $i, "num_max_vagas");echo "</TD>\n" ;
+				echo "<TD>";echo pg_Result($result, $i, "data_final_matricula");echo "</TD>\n" ;
+				echo "<TD>";echo pg_Result($result, $i, "data_inicio_curso");echo "</TD>\n" ;
+				echo "<TD>";echo pg_Result($result, $i, "data_fim_curso");echo "</TD>\n" ;

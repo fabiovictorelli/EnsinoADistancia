@@ -1,0 +1,4 @@
+create table cursos_materias(
+cod_curso int4,
+data_criacao_materia date,
+cod_materia int4);

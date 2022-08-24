@@ -1,0 +1,49 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Alteração de Matérias ");
+?>
+<script language="JavaScript">
+<!--
+//
+function ir(nome){
+   if (nome.select.options[nome.select.selectedIndex].value != "none") {
+         parent.location = nome.select.options[nome.select.selectedIndex].value
+   }
+}
+
+// -->
+</script> 
+
+
+<?PHP
+
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+	     
+	if (!$conn) {
+		echo "Nao foi possivel abrir banco de dados.\n";
+		exit;
+	}
+
+    $result = pg_Exec($conn, "Select * from materias ORDER BY nome;");
+        $num = pg_NumRows($result);
+		if ( $num == 0 ) {
+		    MostraErro ("Não existe matérias cadastradas ");
+		} 
+	    echo "<FORM>";
+        echo "<SELECT NAME=\"select\" onChange=\"if (this.form.select.selectedIndex != 0) { ir(this.form) }\" >\n";
+		echo "<OPTION>Selecione uma Matéria</OPTION>";  
+        for($i = 0; $i < $num; $i++)
+        {
+                echo "<OPTION VALUE=\"dbupdate.phtml?codigo_materia=";
+                echo pg_Result($result, $i, "cod_materia");
+                echo "\">"; 
+				echo pg_Result($result, $i, "nome");
+                echo "\n";
+				echo "</OPTION>";
+        }
+        echo "</SELECT>\n";
+	    echo "</FORM>";
+        pg_Close($conn);
+        pg_FreeResult($result);
+?>                              
+<?PHP MostraRodape(); ?>

@@ -1,0 +1,38 @@
+Bem-vindo a lista %(real_name)s@%(host_name)s !
+%(welcome)s
+Para enviar mensagens para esta lista, envie seu email para:
+
+  %(emailaddr)s
+
+Informações gerais sobre esta lista está em:
+
+  %(listinfo_url)s
+
+Se você quiser se desinscrever da lista ou alterar suas opções( ex.: escolher
+ou não o modo de empacotamento (digest mode), mudar sua senha, etc ), visite 
+sua página de assinante em:
+
+  %(optionsurl)s
+%(umbrella)s
+Você pode também fazer ajustamentos via email, enviando uma mensagem para:
+
+  %(real_name)s-request@%(host_name)s
+
+com a palavra `help' no campo assunto ou no corpo da mensagem
+(não incluindo as aspas), e você receberá uma mensagem de volta com
+as instruções.
+
+Voce deve saber sua senha para mudar suas opções ( incluindo a troca
+da própria senha) ou para desinscrição. Ela é:
+
+  %(password)s
+
+
+Se você esqueceu sua senha, não se preocupe, você receberá mensalmente
+um email notificando tudo sobre suas senhas das listas do servidor
+ %(host_name)s, e como desinscrever ou alterar suas opçoes. Existe
+também um botão em sua página de opções que irá mandar sua senha para você
+via email.
+
+Vodê pode ter também a opção de emissão de email automática desabilitada,
+na página citada acima.

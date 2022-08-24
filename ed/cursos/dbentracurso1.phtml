@@ -1,0 +1,96 @@
+<?PHP 
+	require ( "../lib/ed.bib.phtml");
+	MostraCabec("Entrando no curso $nome_curso - código:$codigo_curso ");
+
+
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+
+    if (!$conn) {
+        SaiErro ("Nao foi possivel abrir banco de dados.\n");                                       }
+             
+	/*	echo "chave=$chave senha =$senha\n"; */
+
+	/* validando a chave e senha do aluno */
+
+	$result = pg_exec($conn, "select * from alunos where chave = '$chave';");
+    $numaux = pg_numrows($result);
+    if($numaux == 0){
+        echo "<BR>Erro 1 -Não encontrei aluno com esta chave.";
+        echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\">";
+        echo "</form>";
+        exit;
+    }
+    $nome_aluno =  trim(pg_result($result, 0, "nome"));   
+    $cod_aluno =  trim(pg_result($result, 0, "cod_aluno"));   
+    $senha_base =  trim(pg_result($result, 0, "senha"));   
+	if ( $senha_base != $senha ) {
+		MostraErro("Senha Incorreta");
+	}
+/*	echo "<BR>senha correta";*/
+	pg_FreeResult($result);  
+
+	/* validando se aluno esta no curso*/
+
+	$result = pg_Exec($conn, "Select * from alunos_cursos where cod_curso = '$codigo_curso' and
+cod_aluno = '$cod_aluno';");
+    $num = pg_NumRows($result);
+    if ( $num == 0 ) {
+        MostraErro ("O aluno $nome_aluno nao está cadastrado para o curso $nome_curso.");
+    }                          
+	pg_FreeResult($result);  
+
+	echo "OK aluno $nome_aluno entrou no curso $nome_Curso";
+
+	$SITE_LOCAL= Configuracao("SITE_LOCAL");
+	$url = sprintf ( "%s/cursos/%s",$SITE_LOCAL,$nome_curso);
+	echo "<BR><BR>Curso <A HREF=\"http://$url\">$nome_curso</A>";
+	$url= trim($url);
+
+	/* listando as agendas das materias do curso */
+	$result = pg_Exec($conn, "Select * from cursos_materias where cod_curso = '$codigo_curso';");
+    $num = pg_NumRows($result);
+    if ( $num == 0 ) {
+        MostraErro ("Não existem matérias cadastradas para o curso $nome_curso.");
+    }
+
+	for($i = 0; $i < $num; $i++) {
+    	$cod_materia =  trim(pg_result($result, $i, "cod_materia"));   
+
+		$result1 = pg_Exec($conn, "Select * from materias where cod_materia = '$cod_materia';");
+    	$num_mat = pg_NumRows($result1);
+    	if ( $num_mat == 0 ) {
+        	MostraErro ("Não achei a matéria de codigo $cod_materia.");
+		}
+    	$nome_materia = trim(pg_result($result1, 0, "nome"));   
+		pg_FreeResult($result1);  
+
+		$result1 = pg_Exec($conn, "Select * from agendas where cod_materia = '$cod_materia' ORDER BY data;");
+    	$num_agenda = pg_NumRows($result1);
+		if ( $num_agenda != 0 ) {
+			
+			echo "<BR><BR>Agendas da Matéria <A HREF=\"http://$url/materias/$nome_materia\">$nome_materia</A>";
+			for($ii = 0; $ii < $num_agenda; $ii++) {
+    			$data = trim(pg_result($result1, $ii, "data"));   
+				$data=ereg_replace("/","-",$data);
+                $dmano=explode("-", $data);
+                $d = $dmano[0];
+                $m = $dmano[1];
+                $y = $dmano[2];
+                $data= date( "d-m-Y", mktime(0, 0, 0, $d, $m , $y));  
+    			$texto = trim(pg_result($result1, $ii, "nome"));   
+    			$tipo = trim(pg_result($result1, $ii, "tipo_agenda"));   
+				if ( $tipo == '2' ) {
+					echo "<BR>$data - <A HREF=\"http://$texto\">$texto</A>";    
+				}
+				else{ 
+					echo "<BR>$data - $texto";
+				}
+			}
+		}
+		pg_FreeResult($result1);  
+	}
+	
+	pg_FreeResult($result);  
+	pg_Close($conn);
+	MostraRodape();
+?>

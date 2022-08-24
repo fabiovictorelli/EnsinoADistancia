@@ -1,0 +1,141 @@
+#! /usr/bin/env python
+#
+# Copyright (C) 1998 by the Free Software Foundation, Inc.
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+# 
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# 
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software 
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+
+"""Create a new, unpopulated mailing list.
+
+  newlist <list-name> <list-admin's-address> <admin-password> <immediate>
+
+You can specify as many of the arguments as you want on the command line. 
+The optional <immediate> argument, if present, means to send out the notice 
+immediately.  Otherwise, the script hangs pending input, to give time for
+the person creating the list to customize it before sending the admin an
+email notice about the existence of the new list.
+
+Note that list-names are forced to lowercase.
+"""
+
+import sys, os, string
+import time
+import paths                                      # path hacking
+try:
+    import getpass
+except ImportError:
+    # we must be in Python 1.5, which didn't have the getpass module
+    from Mailman.pythonlib import getpass
+from Mailman import MailList
+from Mailman import Utils
+from Mailman import mm_cfg
+from Mailman.Crypt import crypt
+
+ADDALIASES_CMD = paths.prefix + '/bin/addaliases'
+
+def getusername():
+    username = os.environ.get('USER') or os.environ.get('LOGNAME')
+    if not username:
+        import pwd
+        username = pwd.getpwuid(os.getuid())[0]
+    if not username:
+        username = '<unknown>'
+    return username
+
+
+def main(argv):
+    if len(argv) > 1:
+	list_name = argv[1]
+    else:
+	list_name = raw_input("Enter the name of the list: ")
+    list_name = string.lower(list_name)
+
+    if '@' in list_name:
+	sys.stderr.write("** List name must not include '@': %s\n"
+			 % `list_name`)
+	sys.stderr.write("   (It's the list name, not address.)\n")
+	return 1
+
+    if list_name in Utils.list_names():
+	sys.stderr.write("** List with name %s already exists\n" % `list_name`)
+	return 1
+
+    if len(argv) > 2:
+	owner_mail = argv[2]
+    else:
+	owner_mail = raw_input(
+	    "Enter the email of the person running the list: ")
+    if len(argv) > 3:
+	list_pw = argv[3]
+    else:
+        list_pw = getpass.getpass("Initial %s password: " % list_name)
+
+    newlist = MailList.MailList()
+    pw = crypt(list_pw , Utils.GetRandomSeed())
+    # guarantee that all newly created files have the proper permission.
+    # proper group ownership should be assured by the autoconf script
+    # enforcing that all directories have the group sticky bit set
+    oldmask = os.umask(002)
+    try:
+        newlist.Create(list_name, owner_mail, pw)
+    finally:
+        os.umask(oldmask)
+
+    ###os.system('%s %s' % (ADDALIASES_CMD, list_name))
+    print '''
+Entry for aliases file:
+
+## %(listname)s mailing list
+## created: %(date)s %(user)s
+%(list)s "|%(wrapper)s post %(listname)s"
+%(admin)s "|%(wrapper)s mailowner %(listname)s"
+%(request)s "|%(wrapper)s mailcmd %(listname)s"
+%(owner1)s %(listname)s-admin
+%(owner2)s %(listname)s-admin
+''' % {'listname': list_name,
+       'list'    : "%-24s" % (list_name + ":"),
+       'wrapper' : '%s/wrapper' % mm_cfg.WRAPPER_DIR,
+       'admin'   : "%-24s" % ("%s-admin:" % list_name),
+       'request' : "%-24s" % ("%s-request:" % list_name),
+       'owner1'  : "%-24s" % ("owner-%s:" % list_name),
+       'owner2'  : "%-24s" % ("%s-owner:" % list_name),
+       'date'    : time.strftime('%d-%b-%Y', time.localtime(time.time())),
+       'user'    : getusername(),
+       }
+
+    if len(argv) < 5:
+	print ("Hit enter to continue with %s owner notification..."
+	       % list_name),
+	sys.stdin.readline()
+    sendnotice(newlist, list_name, owner_mail, list_pw)
+    newlist.Unlock()
+
+
+def sendnotice(newlist, list_name, owner_mail, list_pw):
+    text = Utils.maketext(
+        'newlist.txt',
+        {'listname'    : list_name,
+         'password'    : list_pw, 
+         'admin_url'   : newlist.GetAbsoluteScriptURL('admin'), 
+         'listinfo_url': newlist.GetAbsoluteScriptURL('listinfo'),
+         'requestaddr' : "%s-request@%s" % (list_name, newlist.host_name),
+         'hostname'    : newlist.host_name,
+         })
+    newlist.SendTextToUser(subject="Sua nova lista de email ",
+			   recipient=owner_mail,
+			   sender='mailman-owner@%s' % newlist.host_name, 
+			   text=text)
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv))

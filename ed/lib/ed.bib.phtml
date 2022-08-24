@@ -1,0 +1,145 @@
+
+<?
+/*
+Le o arquivo indicado por $arquivo  linha por linha, separando os campos
+pelo delimitador $delim
+e armazena o resultado de cada campo em uma celula da tabela HTML
+Funciona para qqer arquivo. Basta informar o delimitador
+*/
+?>
+<?
+
+$SITE_LOCAL="petunia.conectiva.com.br";
+$DIR_HOME="/home/httpd/html/ed";
+
+	function Configuracao($var) {
+        $DIR_HOME="/home/httpd/html/ed";
+		$arquivo = "$DIR_HOME/conf/ed.cfg";   /* Indique aqui o nome do arquivo */
+		$delim = "=";           /*Indique aqui o delimitador */
+
+		$arq_array = file("$arquivo");/*cada linha do arq vai para uma posic. do array*/
+		for($i = 0; $i < sizeof($arq_array); $i++) {
+			if ( ! ereg( "#" , $arq_array[$i]) ) {         // se não achei o "#" na linha
+					/* a função split abaixo separa a linha pelo delimitador (#) e
+				    joga os campos num array (semelhante ao cut do shell) */
+				$lin_array = split( $delim , $arq_array[$i]);
+				for($j = 0; $j < sizeof($lin_array); $j++) {
+					if ( strlen( $lin_array[$j]) > 1 ) 
+						if ( $j == 0 ) {
+							if ( $lin_array[$j] == $var ) {
+								//echo  $lin_array[$j + 1];
+								$aux=trim($lin_array[$j + 1]);
+								return ($aux);
+							}
+						}
+				}
+			}
+		}
+		$ERRO="ERRO - Nao existe a variavel $var no arquivo $arquivo<BR>";
+		return ( $ERRO );
+	} // Fim de Funcao Configuracao
+
+	function MostraCabec($cabecalho) {
+		echo "<HTML>";
+		echo "<HEAD>";
+		echo "<TITLE>Educação a distância </TITLE>";
+		echo "</HEAD>";
+		echo "<BODY BGCOLOR=\"#FFFFFF\" TEXT=\"#000000\" LINK=\"#0000FF\" VLINK=\"#000080\" ALINK=\"#FF0000\">";
+		echo "<CENTER><P><IMG SRC=\"/ed/images/ed.jpg\" ALT=\"[A EDUCAÇÃO A DISTANCIA]\" HEIGHT=72 WIDTH=426></P></CENTER> ";
+		echo "<H2>$cabecalho</H2>";
+		echo "<hr size=5 align=center> ";
+
+	} // Fim de Funcao MostraCabec
+
+	function MostraRodape() {
+		echo "<hr size=3 align=center>";
+		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		echo "</BODY>";
+		echo "</HTML>";
+	} // Fim de Funcao MostraRodape
+
+
+
+function send_mail($to_address, $from_address, $subject, $message) {
+
+		$path_to_sendmail = "/usr/lib/sendmail";
+
+		$fp = popen("$path_to_sendmail -t", "w");
+		$num = fputs($fp, "To: $to_address\n");
+		$num += fputs($fp, "From: $from_address\n");
+		$num += fputs($fp, "Subject: $subject\n\n");
+		$num += fputs($fp, "$message");
+		pclose($fp);
+
+		if ($num > 0) {
+		  return 1;
+		} else {
+		  return 0;
+		}
+
+}
+
+// SaiErro ()
+// fabio@conectiva.com.br
+// somente avisa o erro GRAVE
+// pede para usuário avisar o webmaster
+// coloca botão retornar
+// e sai
+function SaiErro($msg)
+{
+        echo "<BR>Erro!!";
+        echo "<BR>$msg";
+        echo "<BR>Envie email para o webmaster!<BR>";
+        echo "<form>";
+            echo "<input type=\"button\" value=\"Retornar\" onClick=\"history.back()\">";
+        echo "</form>";
+        exit;
+}    
+// MostraErro ()
+// fabio@conectiva.com.br
+// somente avisa o erro,
+// coloca botão retornar
+// e sai
+function MostraErro($msg)
+{
+        echo "<BR>Erro!!";
+        echo "<BR>$msg<BR>";
+        echo "<form>";
+        echo "<input type=\"button\" value=\"Retornar\" onClick=\"history.back()\">";
+        echo "</form>";
+        exit;
+}     
+function TabelaOK($conn,$tabela)
+{
+    $result__local = pg_Exec($conn, "Select * from $tabela ;");
+    $num__local = pg_NumRows($result__local);
+    if ( $num__local == 0 ) {
+          MostraErro ("Não existem dados na tabela $tabela cadastradas!.");
+    }    
+    pg_freeresult($result__local);
+    return ;
+}
+
+function GravaLog ( $arquivo, $texto )
+{
+    $DIR_HOME="/home/httpd/html/ed";
+	if ( $arquivo == webmaster ) {
+		$ARQ_LOG = "$DIR_HOME/logs/webmaster.log";
+	}
+	if ( $arquivo == professor ) {
+		$ARQ_LOG = "$DIR_HOME/logs/professor.log";
+	}
+	if ( $arquivo == aluno ) {
+		$ARQ_LOG = "$DIR_HOME/logs/aluno.log";
+	}
+
+//	echo "arquivo=$arquivo , texto=$texto, ARQ_LOG=$ARQ_LOG\\n";
+	$fp = fopen("$ARQ_LOG", "a+");
+	$data_atual = date("d/m/Y"); 
+	$Texto_log="$data_atual - $texto\n";
+	fwrite($fp,$Texto_log);
+	fclose($fp);
+}
+
+
+?>       

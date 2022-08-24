@@ -1,0 +1,393 @@
+				CENTRO FEDERAL DE EDUCAÇÃO TECNOLÓGICA DO PARANÁ 
+	CURSO DE PÓS-GRADUAÇÃO EM ENGENHARIA ELÉTRICA E INFORMÁTICA INDUSTRIAL
+
+
+
+
+
+
+
+
+
+
+
+
+						PROJETO DE TRABALHO INDIVIDUAL 
+
+
+
+						Fábio Dorival Victorelli
+
+							CPGEI/CEFET-PR
+			Av. Sete de Setembro,365 80230-901 Curitiba PR
+			e-mail: fabio@conectiva.com.br
+
+
+
+
+
+
+
+Orientador: Prof. Dr. Eduardo Nisenbaum
+Área de Concetração: Educação a Distância
+Novembro de 1998
+
+
+
+
+Sumário
+
+1- 	OBJETIVO
+
+2- 	INTRODUÇÃO
+	
+	2.1 Identificação do Problema que Originou o Trabalho
+
+	2.1.1 Preocupação do governo sobre o tema
+
+	2.2 Possível Uso dos Conehcimentos Gerados
+
+	2.3 Descrição dos Trabalhos Existentes
+
+	2.4 Discussão dos Pontos Críticos
+
+	2.5 Organização do Trabalho
+
+
+3-	RESULTADOS ESPERADOS
+
+	3.1 O Ponto de vista Teórico
+		3.1.1 A inovação do método: vantagens e desvantagens
+
+4-	CRONOGRAMA
+	4.1 Cronograma Geral de Execução
+
+5- CONCLUSÃO
+
+6- Revisão Bibliográfica
+
+
+
+1- 	OBJETIVO
+
+	O propósito de ensino a distância é ajudar na formação acadêmica do aluno
+utilizando como meio uma rede de computadores local ou a rede internet. 
+	Cada vez mais o uso educacional do computador vem contribuindo para o 
+aprendizado, e com a grande difusão e uso da rede internet temos cada vez mais
+recursos tecnológicos e facilidades para serem utilizados no ensino.
+	
+	Este trabalho tem alguns objetivos práticos de implementação imediata a 
+educação, podemos citar alguns como: liberdade no acesso a informação de 
+outros centros, modernizar o ensino utilizando-se de tecnologias emergentes, 
+dar liberdade ao aluno quanto ao horário de aprendizado; troca de informacoes
+com um grupo de pesquisa através de lista de discussão; busca de informações 
+em outras universidades sob um determinado assunto, vídeo conferência, correio 
+de vídeos ou seja interatividade máxima com o aluno utilizando recursos 
+computacionais existentes.
+
+
+2- 	INTRODUÇÃO
+
+	Atualmente vemos que cada vez mais a comunicação humana vem utilizando
+recursos tecnológicos para troca de informações, podemos citar desde telefones 
+celulares até notebooks conectados por modem rádio nos carros. É facil prever 
+que no futuro cada vez mais a comunicação será feita em rede. Hoje vemos a 
+grande difusão e uso da rede internet, com troca de informações comerciais
+e culturais. 
+
+	As universidades começam a avançar no uso da Educação a Distância, por 
+exemplo um aluno de uma universidade paranaense poderá fazer matérias numa 
+universidade paulista. E isso não quer dizer acesso somente a uma apostila 
+na rede. A metodologia de ensino via internet envolve contatos frequentes com
+o professor, chats entre os alunos, grupos e lista de discussão, aulas gravadas
+em som, vídeos, correio de vídeo, com perguntas e respostas, pesquisas em 
+outras universidades, multimídia, etc.
+
+	A Universidade Virtual é efeito da chamada globalização. E cada vez
+mais o sucesso de cada nação estará diretamente associada ao valor potêncial
+de cada cidadão, ou seja sua capaciadade, sua cultura, sua educação, seu poder
+de descernimento.
+
+	Se hoje um brasileiro de classe média quisesse incrementar seu "currículo"
+com nomes como o do Massachusetts Institute of Technology (MIT), ele já pode
+cursá-lo pela internet. E qual escola que não gostaria de ter em seu
+quadro, professores que cursaram disciplinas nas universidades mais famosas
+do mundo? Nós não podemos ficar atrás. Existe uma série de projetos de educação
+via internet, desde escolas de primeiro grau até cursos de mestrados e doutorado
+via internet, que é o caso da UCLA de Los Angeles.
+
+	
+
+	2.1 Identificação do Problema que Originou o Trabalho
+
+	A Internet, a grande rede mundial da informação, tem sido pouco aproveitada
+no Brasil para área da educação. Um país como o nosso de dimensões continentais,
+deve despertar para esta ferramenta de desenvolvimento cultural a qual hoje 
+pouco se aproveita. Tomemos por exemplo os EUA, onde constatamos que até mesmo
+crianças que estão no ensino básico e médio já se utilizam de computadores,
+sendo a Internet sua principal fonte de pesquisa em trabalhos e deveres 
+escolares. A Internet no que diz a respeito a educação passou a ser uma 
+extensão da escola no lar americano. Se esta situação se aplica ao ensino 
+básico e médio, imagine pois em que estágio se encontrará no ensino universi-
+tário!
+
+	A maioria das universidades americanas que estão ligadas a Internet,
+disponibilizam para seus alunos, ou mesmo visitantes de seu site na Internet, um
+verdadeiro campus on-line onde alunos ou visitantes têm acesso a bibliotecas, 
+pesquisas, cursos de idiomas, cursos de especialização. Não é difícil 
+encontrarmos inclusive cursos de mestrado e até doutorado reconhecidos
+pelo governo americano.
+
+	Como podemos chegar próximos a esta realidade quase mundial? Com esforço 
+de nosso governo? Talvez, mas principalmente com a iniciativa das próprias
+instituições de ensino do nosso pais. Hoje já temos acesso a tecnologia, 
+temos mão de obra capacitada para desenvolver tal projeto (visto que o Brasil
+hoje  segundo pesquisa da revista veja - exporta inclusive profissionais de 
+informática para os EUA). O que falta realmente é vontade e um pouco de visão
+ das nossa universidades e instituições de ensino em geral.
+
+	Imagine se hoje todas as universidades e instituições de ensino em geral,
+disponibilizassem na Internet cursos dos mais variados possíveis, desde o mais 
+simples até cursos de especialização profissional chegando talvez até mesmo a 
+um doutorado.  Por serem curso ministrados via Internet o custo dos cursos (se
+tratando de instituições particulares) seria reduzido em mais de 50%, o que 
+asseguraria acesso financeiro a uma grande maioria que hoje não tem acesso. 
+As instituições de ensino poderiam inclusive aumentar o seu faturamento, visto 
+não existir limitação física no numero de vagas. Outro fator positivo é que 
+pode-se atender alunos de outros estados e até de outros países (inclusive de
+língua latina, visando o mercosul, o que já ocorre nos EUA).
+
+	Esta disponibilidade com certeza irá gerar uma competitividade a nível de 
+ofertas, custo e benefícios, obrigando as universidades e instituições de 
+ensino a melhorarem seus currículos tanto no ensino a distância quanto  
+principalmente no tradicional.
+
+	Neste conceito nossa nação só tem a ganhar. Uma grande nação do amanhã
+disponibiliza para sua população recursos e formas para que esta possa se
+capacitar, adquirir cultura e se preparar para seu futuro.
+
+	Um grande problema que as empresas e universidades têm no momento da 
+escolha de um software educadional, é que normalmente elas adiquirem 
+softwares proprietários, ou seja, de um único fabricante, por exemplo um 
+editor de texto, um browser, uma planilha, um apresentador de slides, etc. 
+Normalmente estes softwares não são acompanhados de código fonte, e não são
+de livre distribuição, ou seja, um software para cada computador. O problema é
+que estes softwares se tornam caros, e quase todos anos temos que trocá-los 
+por versões mais novas. Enquanto que as escolas que utilizam softwares free,( softwares de livre distribuição), não se preocupam com a versão mais nova do 
+produto, pois ele sempre esta sendo atualizado, e na grande maioria não tem 
+custo.
+
+	Outro movimento é o opensource, ( programas de código aberto) que 
+possibilita um desenvolvimento mais rápido da tecnologia, ou seja, profissionais
+de quase todo mundo atuando em conjunto como colaboradores do novo software.
+
+	
+	2.1.1 Preocupação do governo sobre o tema
+
+	No dia 11 de fevereiro de 1998, o Diário Oficial da União publicava o 
+Decreto nº 2.494, de 10 de fevereiro de 1998, regulamentando o Art. 80 da Lei 
+de Diretrizes e Bases da Educação Nacional nº 9394. Basicamente, a Lei nº9394,
+de 20 de dezembro de 1996, é o Art. 80, no Título VIII: Das Disposições Gerais 
+que contém as determinações sobre o Ensino/Educação a Distância, temos as 
+seguintes diretrizes:
+
+     a) o Poder Público deve incentivar o desenvolvimento e a veiculação de 
+programas de ensino a distância;
+     b) o ensino a distância desenvolve-se em todos o níveis e modalidades de 
+ensino e de educação continuada;
+     c) a educação a distância organiza-se com abertura e regime especiais;
+     d) a educação a distância será oferecida por instituições especificamente 
+credenciadas
+pela União; 
+     e) caberá à União regulamentar requisitos para realização de exames; para 
+registro de diplomas relativos a cursos de educação a distância;
+     f) caberá aos sistemas de ensino normatizar a produção, controle e 
+avaliação de programas e autorizar sua implementação;
+     g) poderá haver cooperação e integração entre os diferentes sistemas;
+     h) a educação a distância terá tratamento diferenciado, que incluirá: custo
+s reduzidos na transmissão por rádio e televisão; concessão de canais 
+exclusivamente educativos; tempo mínimo gratuito para o Poder Público, em 
+canais comerciais. 
+
+		
+	2.2 Possível Uso dos Conhecimentos Gerados
+
+		Diante do que se tem hoje em tecnologia voltada para educação a 
+distância, deveremos utilizar:
+
+	. hipertexto (www), 
+	. transferência de arquivos (ftp), 
+	. listas de discussão sobre diversos assuntos, via email,
+	. chats (software para conversação on-line entre um grupo de pessoas),
+	. vídeo conferência (refletor de vídeo conferência e cu-seeme),  
+	. ferramenta de buscas (search engines) para busca de informação em outras 
+      universidades,
+	. correspondencia eletrônica (email).
+	. correio de vídeos. ( arquivos de imagem com  som gravados, com possíveis 
+      perguntas e respostas)
+
+		A metodologia de ensino via Internet envolve contatos frequêntes com 
+o professor, chats entre alunos, repostas de emails, etc. A Aplicação destas 
+ferramentas no ensino a distância vem colaborar para a filosofia do ensino,
+e esperamos que atenderia de imediato, auxiliando nos trabalhos do 
+dia a dia dos professores e alunos do CEFET-PR, extendendo-se no futuro para 
+outros centros.
+
+
+	2.3 Descrição dos Trabalhos Existentes
+
+		Existem vários trabalhos em fase experimental na rede, podemos citar
+alguns como o da PUC RJ http://aulanet.les.inf.puc-rio.br/aulanet
+o da USP, da UFMG, da UFRG, etc.
+
+	2.4 Discussão dos Pontos Críticos
+
+	Embora todas as ferramentas citadas anteriormente, já sejam de utilizadas
+há algum tempo, teremos que analisar o principal ponto crítico, que é o meio de 
+comunicação. No caso de cursos ministrados dentro da rede local, teremos uma 
+banda suficiente, ou seja com trafego de arquivos de vídeos e som sem problemas,
+utilizando 10 ou 100 megabits. O problema se torna crítico quando sairmos 
+do backbone local, e entramos na internet, neste trabalho apresentaremos estudo 
+detalhado e tecnico da banda necessária para a utilização deste software.
+		
+
+	2.5 Organização do Trabalho
+	
+	Análise/Desenvolvimento de um software que possa ter acesso prático e de 
+fácil uso por parte dos professores e alunos, como também um software de fácil
+manutenção pelo administrador identificado aqui como webmaster, que possa 
+configurar permissões dar manutenção nas bases de professores, alunos e 
+matérias cadastradas.
+
+	O projeto proposto teria 04 areas: webmaster, matérias, professores e 
+alunos.
+	O que se pretende aplicar em software de Eduação a Distância para cada 
+uma destas áreas seria:
+
+	Professor
+	=========
+
+		. Lista e grupos de discussão, de responsabilidade do professor.
+		. Chats entre professores e aluno.
+		. Interface para um professor novo se cadastrar de maneira fácil.
+		. Interfaces para o professor enviar arquivo de aula(s).
+		. Interfaces para o professor enviar arquivo de vídeo(s).
+		. Interface para um professor criar uma matéria.
+		. Interface para um professor criar e dar manutenção numa lista de 
+          discussão.
+		. Refletor de vídeo conferência. 
+
+	Aluno	
+	=====
+		. Interface para cadastramento como aluno.	
+		. Interface para a matrícula num curso de educação a distância.
+		. Interface de acesso às materias cadastradas pelo professor.
+		. Area pública de alunos para transferência de arquivos.
+		. Interface para assinar uma lista de discussão, cadastrada pelo 
+		  professor.
+
+	Matéria ( acesso do webmaster)
+	=======
+		. Interface para manutencao na base de materias, com
+		   ( inclusao,alteracao,listagem e exclusao de uma materia)	
+		
+	Webmaster ( administrador do sistema )
+	=========
+		. Interface para ativar/desativar e verificar status do sistema.
+		. Interface para configurar o sistema, nos aspectos:
+			. linguagem
+			. diretório
+			. nivel de proteção da área do professor
+			. permissão de upload de arquivos textos para os alunos
+			. permissão de upload de arquivos de vídeos para os alunos
+			. configuração de tamanho máximo de arquivos para upload.
+			. configuração da disponibilidade de arquivos de vídeos no servidor.
+		. Interface p/ manutenção em vídeo conferência.
+		. Interface p/ manutenção das listas de discussão, com
+			. Criar lista 
+			. Remover lista 
+			. Editar arquivos de mensagem 
+			. Incluir/Remover Usuarios 
+			. Listar Usuarios 
+		. Interface para manutenção na base de professores, com
+			. Incluir, Alterar, Excluir e Listar os professores cadastrados
+			. Interace para cadastramento de professores novos. 
+		. Interface para manutenção na base de matérias, com
+			. Incluir, Alterar, Excluir e Listar as matérias cadastradas
+		. Interface para manutenção na base de alunos, com
+			. Incluir, Alterar, Excluir e Listar os alunos cadastrados
+
+	
+		Para instalar/desenvolver:
+
+		. chat para alunos e professores
+		. refletor de vídeo conferência e cu-seeme
+
+			
+
+3-	RESULTADOS ESPERADOS
+
+	3.1 O Ponto de vista Teórico
+
+		Aqui entrará o estudo sobre a banda necessária para prover este 
+servico junto com os requerimentos de hardware mínimo para ter a aplicação 
+em laboratório.
+
+		3.1.1 A inovação do método: vantagens e desvantagens
+
+		Desvantagens
+			Sob o aspecto da perda de parte da troca de experiências pessoais,
+contatos pessoais e proteção  do ambiente escolar ( em caso de adolescentes 
+e jovens onde os pais que trabalham e precisam deixar os filhos sob 
+responsabilidade da escola ).
+
+		Vantagens
+			. Ambiente de trabalho focado para a cooperação, na coordenação
+e no construtivismo.
+			. Independência da localidade física de onde a matéria esta sendo ministrada
+			. Uso imediato das tecnologias atualizadas.
+			. Praticidade e dinamicidade do sistema de ensino.
+		 	. Liberdade para escolha de matérias em universidades remotas. ( nocaso de cursos de pós-graduação). 
+			. Informação na ponta de seus dedos.
+
+
+4- 	CRONOGRAMA
+	4.1 Cronograma Geral de Execução
+
+		Análise inicial                             03 maio      1998
+		Desenvolvimento e testes                    10 fevereiro 1999
+		Empacotamento do software		 			20 fevereiro 1999
+		Instalacao em laboratório de testes         21 fevereiro 1999
+		Correções e Acertos 						28 fevereiro 1999
+
+			
+
+5- CONCLUSÃO
+
+	Esta pesquisa tem como propósito central o estudo da viabilidade de 
+difusão da informação utilizando recursos tecnológicos via internet junto
+com a utilização de softwares de livre distribuição, que na maioria dos 
+casos são gratuítos. Fazendo com que se torne viável para as aplicações 
+das entidades de ensino público, reduzindo o investimento pelos orgãos
+competentes e auxiliando o educador ou o próprio aprendiz na estruturação
+de seus conhecimentos.
+
+	Educacao a Distancia é um software de ensino, onde o professor passa/troca
+informacoes com alunos remotamente. A principio desenhado para ser utilizado 
+a rede internet, embora muitas servicos como vídeo-conferência exigam uma 
+banda de dados maiores do que a existente hoje, o software traz um refletor 
+para vídeo conferência, que podera ser configurado para rodar na rede local 
+do servidor. Este projeto está sendo elaborado sob softwares free, sob 
+licensa de uso GNU, sob Sistema Operacional Linux. 
+
+
+	
+
+6- Revisão Bibliográfica
+
+http:/www.internet.com.br 
+http://www.proinfo.mec.gov.br/
+http://aulanet.les.inf.puc-rio.br/aulanet/
+http://cecae.usp.br/edudis.html
+http://www.centrodesaber.com.br/
+http://www.cg.org.br/ead/

@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<TITLE>Exclusão de listas </TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#0000FF" VLINK="#000080" ALINK="#FF0000">
+<H2>Exclusão de listas </H2>
+<FORM METHOD="post" ACTION="/cgi-bin/ed/lista_exclusao1.cgi">
+<P>Selecione a lista :
+<?
+
+$handle=opendir('/home/mailman/lists');
+echo "<SELECT NAME=\"lista\">\n";
+while ($file = readdir($handle)) {
+	/* echo "$file\n<BR>"; */
+	if ( $file != "." && $file != "..") {
+		echo "<OPTION VALUE=$file>$file\n";
+	}
+}
+echo "</SELECT>";
+closedir($handle); 
+?>
+<BR>
+<INPUT TYPE=Submit VALUE="Excluir lista">
+<BR>
+<FORM> <input type="button" value="Retornar" onClick="history.back()"></FORM>
+</FORM>
+</BODY>
+</HTML>

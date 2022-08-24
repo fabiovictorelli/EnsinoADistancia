@@ -1,0 +1,39 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec(" Inclusão de Alunos ");
+?>
+
+<FORM ACTION="/ed/webmaster/alunos/inclusao1.phtml" METHOD="POST">
+<?
+
+       $conn = pg_Connect("localhost", "5432", "", "", "ed");
+
+       if (!$conn) {
+		SaiErro ("Nao foi possivel abrir banco de dados.\n");
+        }    
+
+        $result = pg_Exec($conn, "Select * from cursos ORDER BY nome;");
+        $num = pg_NumRows($result);
+        if ( $num == 0 ) {
+            MostraErro ("Não existe cursos cadastradas, deve ser cadastrado um curso ");
+        }
+        echo "<BR>Selecione um Curso para matrícula:";
+        echo "<SELECT NAME=\"codigo_curso\">\n";
+        for($i = 0; $i < $num; $i++)
+        {
+                echo "<OPTION VALUE=\"";
+                echo pg_Result($result, $i, "cod_curso");
+                echo "\">";
+                echo pg_Result($result, $i, "nome");
+                echo "\n";
+        }
+        echo "</SELECT>\n";
+        pg_FreeResult($result);      
+
+?>
+<CENTER>
+<INPUT TYPE="submit" VALUE="Continua"></INPUT>
+</CENTER>
+</FORM>
+
+<?PHP MostraRodape(); ?>

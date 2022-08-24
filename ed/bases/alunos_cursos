@@ -1,0 +1,4 @@
+create table alunos_cursos(
+cod_aluno int4,
+data_matricula_curso date,
+cod_curso int4);

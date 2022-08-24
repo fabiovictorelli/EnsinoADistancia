@@ -1,0 +1,149 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Cadastramento de alunos ");
+?>
+<H2>Operações</H2>
+
+<?PHP
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+	     
+	if (!$conn) {
+		echo "Não foi possivel abrir banco de dados.\n";
+	exit;
+	}
+	if($nome_aluno == ""){
+		echo "<BR><BR> O campo NOME DO ALUNO deve ser preenchido!\n<BR><BR>\n";
+ 		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+        pg_Close($conn);
+		exit;	
+	}
+	if($email == ""){
+		echo "<BR><BR> O campo NOME DO ALUNO deve ser preenchido!\n<BR><BR>\n";
+ 		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+        pg_Close($conn);
+		exit;	
+	}
+	if($chave == ""){
+		echo "<BR><BR> O campo NOME DO ALUNO deve ser preenchido!\n<BR><BR>\n";
+ 		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+        pg_Close($conn);
+		exit;	
+	}
+	if($senha == ""){
+		echo "<BR><BR> O campo NOME DO ALUNO deve ser preenchido!\n<BR><BR>\n";
+ 		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+        pg_Close($conn);
+		exit;	
+	}
+
+
+
+
+    $NOME = strtoupper($nome_aluno);
+    $testanome = pg_Exec($conn, "select * from alunos ;");
+    $num = pg_NumRows($testanome);
+    $i=0;
+    for($i = 0; $i < $num; $i++) {
+            /* trim() tira os espacos em brancos  do comeco ate o fim da base de dados */
+        $nome= strtoupper(trim(pg_Result( $testanome, $i, "nome" )));
+        $ret=strcmp ( $nome, $NOME );
+        if ( $ret == 0 ) {
+           echo "<BR><BR><BR>Aluno $nome_aluno já está cadastrado !";
+           echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+           pg_FreeResult($testanome);
+		   pg_close($conn);
+           exit;
+       }
+    }
+    pg_FreeResult($testanome);        
+
+
+
+
+
+    $NOME = strtoupper($chave);
+    $testanome = pg_Exec($conn, "select * from alunos ;");
+    $num = pg_NumRows($testanome);
+    $i=0;
+    for($i = 0; $i < $num; $i++) {
+            /* trim() tira os espacos em brancos  do comeco ate o fim da base de dados */
+        $nome= strtoupper(trim(pg_Result( $testanome, $i, "chave" )));
+        $ret=strcmp ( $nome, $NOME );
+        if ( $ret == 0 ) {
+           echo "<BR><BR><BR>Chave $chave já está cadastrada !";
+           echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+           pg_FreeResult($testanome);
+		   pg_close($conn);
+           exit;
+       }
+    }
+    pg_FreeResult($testanome);        
+
+
+	$result = pg_Exec($conn,
+                        "INSERT INTO alunos
+                         VALUES ('$nome_aluno', '$chave' , '$senha' , '$email');");
+	if (!$result) {
+		echo "Ocorreu um erro durante a inclusao na base de dados.\n";
+		exit;
+	}
+	pg_FreeResult($result);
+
+ /* Gravando no cursos_materias */
+
+    $teste = pg_Exec($conn, "select * from alunos where upper(chave) LIKE upper('%$chave%');");
+    $num = pg_NumRows($teste);
+    if($num == 0) {
+        echo "<BR><BR><BR>Erro selecionando o aluno gravado !";
+        echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+        pg_FreeResult($teste);
+        pg_close($conn);
+        exit;
+    }
+    $codigo_aluno_novo = pg_result($teste, 0, "cod_aluno");
+    pg_FreeResult($teste);
+
+    /* Gravando  no alunos_cursos */
+    $data_hoje = date("d/m/Y");
+    $result = pg_Exec($conn,
+                        "INSERT INTO alunos_cursos
+                         VALUES ('$codigo_aluno_novo','$data_hoje','$codigo_curso');");
+    if (!$result) {
+        echo "Ocorreu um erro durante a inclusao na base de dados.\n";
+        exit;
+    }
+    pg_FreeResult($result);
+
+
+    /* Gravando  no alunos_cursos_materias */
+
+	if ( $cadtodasmaterias == "sim" ) {
+	
+		echo "cadastrando todas as materias para o aluno $nome_aluno ";
+		$result = pg_Exec($conn, "Select * from cursos_materias WHERE cod_curso = $codigo_curso;");
+        $num = pg_NumRows($result);
+        if ( $num == 0 ) {
+            MostraErro ("Não existe materias cadastradas nos cursos.");
+        }           
+		for($i = 0; $i < $num; $i++)
+        {
+            $cod_materia= pg_Result($result, $i, "cod_materia");       
+
+			$result1 = pg_Exec($conn,
+								"INSERT INTO alunos_cursos_materias
+								 VALUES ('$codigo_aluno_novo','$codigo_curso', $cod_materia);");
+			if (!$result1) {
+				echo "Ocorreu um erro durante a inclusao na base de dados.\n";
+				exit;
+			}
+			pg_FreeResult($result1);
+		}
+	} 
+
+	echo "<CENTER>";
+	echo "<BR><BR>Aluno incluído";
+	echo "</CENTER>";
+	pg_Close($conn);
+?>
+<BR><A HREF="/ed/webmaster/alunos/inclusao.phtml">Cadastrar outro</A>
+<?PHP MostraRodape(); ?>

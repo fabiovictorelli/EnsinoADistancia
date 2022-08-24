@@ -1,0 +1,67 @@
+<?PHP 
+	 require ( "../lib/ed.bib.phtml");
+	 MostraCabec("Configurando  o sistema educação a distância ");
+?>
+        
+<form action="/cgi-bin/ed/configurasistema" method="post" >
+
+<?
+	echo "Linguagem esta setada para ";
+	echo Configuracao("LANG") ;
+?>
+
+  <font size="+2"><b><BR>Linguagem:</b></font> 
+  <select name="linguagem">
+     <option> Português
+     <option> Inglês
+  </select> <BR>
+  Diretório home:<input type="text" size=30 name="dirhome" value="/home/httpd/html/ed" maxsize=60> <BR> <BR>
+
+  <b>Área do Professor:</b> <BR>
+  <input type=radio name="profsenha" value=comsenha checked>com senha 
+  <input type=radio name="profsenha" value=semsenha>sem senha 
+  <BR> <BR>
+
+  <b>Área do Aluno:</b> <BR>
+  Aluno pode fazer upload de arquivos normais ( texto/binário):
+  <input type=radio name="alunoupload" value=sim checked>sim 
+  <input type=radio name="alunoupload" value=nao>não
+  <BR> <BR>
+
+  <b>Área do Correio de Vídeo :</b> <BR>
+  Aluno pode fazer upload de arquivos de video: 
+  <input type=radio name="alunouploadvideo" value=sim checked>sim 
+  <input type=radio name="alunouploadvideo" value=nao>não
+  <BR> 
+  <font >Tamanho máximo de arquivos de vídeo:</font> 
+  <select name="TamMaxArqVideo">
+     <option> 500 kbytes
+     <option> 1 Megabytes
+     <option selected> 1,5 Megabytes
+     <option> 2 Megabytes
+     <option> 3 Megabytes
+  </select> <BR>
+
+  <font >Tempo de permanência dos arquivos de vídeo no servidor:</font> 
+  <select name="TamMaxArqVideo">
+     <option> indeterminado
+     <option> 05 dias
+     <option selected> 10 dias
+     <option> 15 dias 
+     <option> 30 dias 
+     <option> 45 dias 
+     <option> 60 dias 
+     <option> 04 meses 
+     <option> 06 meses 
+     <option> 01 ano 
+  </select> <BR>
+
+  <BR> <BR>
+
+  <input type="submit" value="Processa Comando">
+  <input type="reset" value="Reseta Campos">
+</pre>
+
+</form>
+
+<?PHP MostraRodape(); ?>

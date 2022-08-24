@@ -1,0 +1,24 @@
+:
+
+grep postgres /etc/passwd
+if [ $? != "0" ]; then
+	echo "o postgres deve estar instalado para poder criar as bases sql" 
+	exit 1
+fi
+su - postgres -c "createdb ed"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/agendas"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/agendas_seq"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/alunos"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/alunos_cursos"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/alunos_cursos_materias"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/alunos_seq"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/cursos"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/cursos_materias"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/cursos_seq"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/materias"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/materias_seq"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/professores"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/professores_seq"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/professorestemp"
+su - postgres -c "psql ed -f /home/httpd/html/ed/bases/professorestemp_seq"
+su - postgres -c "psql ed -c \"grant all on agendas, agendas_seq, alunos, alunos_cursos, alunos_cursos_materias, alunos_seq, cursos, cursos_materias, cursos_seq, materias, materias_seq, professores, professores_seq, professorestemp, professorestemp_seq to nobody;\" -q"

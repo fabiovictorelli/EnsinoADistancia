@@ -1,0 +1,130 @@
+Preparation of Papers in Two-Column Format for 
+ICECE
+
+First A. Author and Second B. Author (authors' names)
+
+
+
+
+   Abstract ? These instructions give you basic guidelines for 
+preparing camera-ready papers for ICECE (International 
+Conference on Engineering and Computing Education), Rio de 
+Janeiro, Brazil, August 9-12, 1999.  Do not cite references in the 
+abstract. Indent this paragraph. Use a long dash after the words 
+"Abstract" and "Index Terms".  The abstract should not exceed 
+100 words. Avoid using abbreviations in the title, in case they 
+are necessary, do write their meaning in the abstract. Please 
+carefully follow the instructions provided in this format to 
+ensure legibility and uniformity.
+
+   Index Terms ? Preparation of papers, camera-ready, two-
+column format,  IEEE format.
+
+I. INTRODUCTION
+
+    This format simulates the usual appearance of typeset 
+papers in the IEEE journals. For items not addressed in these 
+instructions, please refer to recent issues of IEEE journals. 
+Prepare your camera-ready paper on 8« in ? 11 in or A4 
+paper. Use Times Roman serif typeface. Do not use a dot-
+matrix printer. The minimum and maximum number of pages 
+are three and five, respectively. 
+
+A. Paper Preparation
+
+   1) Format: In formatting your page, set the top margin to 
+19 mm (0.75 in) and the left margin to 18 mm (0.7 in). If you 
+are using 8« in ? 11 in paper, set the right margin to 18 mm 
+(0.7 in) and the bottom margin to 19 mm (0.75 in). If you are 
+using A4 paper, set the right margin to 12 mm and the bottom 
+margin to 37 mm.  This gives a column length of 24 cm (9.5 
+in). The column width is 88 mm (3.45 in). The space between 
+two columns is about 5mm (0.2 in).  Paragraph indentation is 
+about 3.5 mm (0.14 in).
+   Left - and right - justify your columns. Use two columns in   
+all pages, always. The two columns must always exhibit 
+equal lengths and you should try to fill your last page as 
+much as possible. To obtain such results, you are free to 
+adjust the figures size provided this does not compromise 
+their clarity. Do not use a line of space between paragraphs. 
+Use one line of space between text and section headings. Use 
+one or two lines of space between text and captions, 
+equations, tables and footnote. Use automatic check spelling 
+and hyphenation.
+
+   Manuscript received on January 31, 1999. (Deadline date). This work was 
+supported in part by FAPESP under Grant No. BS123654. (Sponsor 
+acknowledgment comes here).
+   F. A. Author, institution, address, tel, fax, e-mail; S. B. Author, institution, 
+address, tel, fax, e-mail. (This is the only footnote allowed in the paper).
+TABLE I
+POINT SIZES AND TYPE STYLES
+Points 
+Place of Text
+Type Styles
+8
+8
+8
+9
+10
+10
+10
+11
+24
+Table Captions
+Figure Captions and References
+Footnote
+Abstract and Index Terms
+Section Titles
+Main Text and Equations
+Subheadings
+Authors' names
+Paper Title
+SMALL CAPS
+
+
+Bold
+SMALL CAPS
+
+Italics
+
+Uppercase
+
+II. HELPFUL HINTS
+
+   Avoid placing figures and tables before their first mention 
+in the text. Use the abbreviation  "Fig." even at the beginning 
+of a sentence. 
+                                                       
+
+Fig. 1.  Logo of the Institute for Electrical and Electronics Engineers.
+
+   Do not abbreviate "Table"; use Roman numerals to number 
+tables. Refer simply to the reference number, as [3] or [5]-[8]. 
+Do not use "Ref. [3]" or "reference [3]" except at the 
+beginning of sentence: "Reference [3] shows..". Provide up 
+to five authors' names; replace the others by "et al.".  
+Number equations in parenthesis flush with the right margin, 
+
+                 2jk ?u/?z  =  ?2u/?x2 + k2 (n2 - ?2) u .                  (1)
+
+Refer to "(1)", not "Eq. (1)" or "Equation (1)", except at the 
+beginning of a sentence: "Equation (1) is.". Appendixes, if 
+needed, appear before the acknowledgment, which in turn 
+appears before the last section of the paper: References. Do 
+not put figures or anything else after the references. Do not 
+number appendix, acknowledgment and reference sections.
+    
+REFERENCES
+
+[1] A. Eason, B. Noble, and I. N. Sneddon, "On certain integrals of 
+Lipschitz-Hankel type involving products of Bessel functions", Phil. 
+Trans. Roy. Soc. London,  vol. A247, pp. 529-551, April 1955.
+[2]  J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 
+2. Oxford: Clarendon, 1892, pp. 68-73. 
+[3] I. S. Jacobs, "Fine particles and thin films", in Magnetism, vol. III, G. T. 
+Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271-350.
+[4]  K. Elissa, "Not published yet, even if submitted", unpublished.
+[5]  R. Nicole, "Accepted for publication", J. Name Stand. Abbrev., in press.
+[6]  C. J. Kauffman, Rocky Mountain Research Labs., Boulder, Colo.,    
+       personal communication, 1992.

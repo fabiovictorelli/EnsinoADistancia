@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Universidades search</title>
+</head>
+<body bgcolor="#ffffff">
+<a href="http://htdig.sdsu.edu"><IMG SRC="../images/htdig.gif" align=bottom alt="ht://Dig" border=0></a>
+<h3>Site Search</h3>
+<hr noshade size=4>
+Esta pagina permite pesquisar o conteudo de todas as
+paginas publicas disponiveis nas 23 universidades abaixo .
+<br>
+<p>
+<form method="post" action="/cgi-bin/htsearch">
+<font size=-1>
+<select name=method>
+<option value=and>todas as palavras
+<option value=or>qualquer palavra
+<option value=boolean>express&atilde;o
+</select>
+Formato: <select name=format>
+<option value=builtin-long>Longo
+<option value=builtin-short>Resumido
+</select>
+<br>
+Universidades: <select name=restrict>
+<option value="">Todas abaixo
+<option value="http://atlantis.inatel.br/"> http://atlantis.inatel.br/
+<option value="http://guarani.cos.ufrj.br/"> http://guarani.cos.ufrj.br/
+<option value="http://maracana.cefet-rj.br/"> http://maracana.cefet-rj.br/
+<option value="http://www.cefetpr.br/"> http://www.cefetpr.br/
+<option value="http://www.fatepa.br/"> http://www.fatepa.br/
+<option value="http://www.ime.eb.br/"> http://www.ime.eb.br/
+<option value="http://www.ita.cta.br/"> http://www.ita.cta.br/
+<option value="http://www.mackenzie.br/"> http://www.mackenzie.br/
+<option value="http://www.puc-rio.br/"> http://www.puc-rio.br/
+<option value="http://www.pucminas.br/"> http://www.pucminas.br/
+<option value="http://www.pucpr.br/"> http://www.pucpr.br/
+<option value="http://www.pucsp.br/"> http://www.pucsp.br/
+<option value="http://www.uel.br/"> http://www.uel.br/
+<option value="http://www.uem.br/"> http://www.uem.br/
+<option value="http://www.ufba.br/"> http://www.ufba.br/
+<option value="http://www.ufg.br/"> http://www.ufg.br/
+<option value="http://www.ufmg.br/"> http://www.ufmg.br/
+<option value="http://www.ufpa.br/"> http://www.ufpa.br/
+<option value="http://www.ufpe.br/"> http://www.ufpe.br/
+<option value="http://www.ufpr.br/"> http://www.ufpr.br/
+<option value="http://www.ufrgs.br/"> http://www.ufrgs.br/
+<option value="http://www.ufsc.br/"> http://www.ufsc.br/
+<option value="http://www.ufscar.br/"> http://www.ufscar.br/
+<option value="http://www.usp.br/"> http://www.usp.br/
+</select>
+</font>
+<input type=hidden name=config value=htdig-univers>
+<input type=hidden name=exclude value="">
+<br>
+Palavras:
+<input type="text" size="30" name="words" value="">
+<input type="submit" value="PESQUISAR">
+</form>
+<hr noshade size=4>
+</body>
+</html>
+

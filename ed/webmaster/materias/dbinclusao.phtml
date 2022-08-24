@@ -1,0 +1,125 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Inclusão de matérias ");
+?>
+<H2>Resultado</H2>
+
+<?PHP
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+	     
+	if (!$conn) {
+		echo "Não foi possivel abrir banco de dados.\n";
+	exit;
+	}
+	if($nome_materia == ""){
+        pg_Close($conn);
+		MostraErro( "<BR> O campo NOME DA MATÉRIA deve ser preenchido!<BR><BR>");
+	}
+	if($codigo_professor == ""){
+        pg_Close($conn);
+		MostraErro( "<BR>Você deve escolher um professor responsável pela matéria!<BR><BR>");
+	}
+
+
+
+
+    $NOME = strtoupper($nome_materia);
+    $testanome = pg_Exec($conn, "select * from materias ;");
+    $num = pg_NumRows($testanome);
+    $i=0;
+    for($i = 0; $i < $num; $i++) {
+            /* trim() tira os espacos em brancos  do comeco ate o fim da base de dados */
+        $nome= strtoupper(trim(pg_Result( $testanome, $i, "nome" )));
+        $ret=strcmp ( $nome, $NOME );
+        if ( $ret == 0 ) {
+           echo "<BR><BR><BR>Matéria $nome_materia já está cadastrada !";
+           echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+           pg_FreeResult($testanome);
+		   pg_close($conn);
+           exit;
+       }
+    }
+    pg_FreeResult($testanome);        
+
+    /*pegando o nome do curso */
+    $testanome = pg_Exec($conn, "select * from cursos where cod_curso = $codigo_curso ;");
+    $num = pg_NumRows($testanome);
+    if ( $num == 0 ) {
+        echo "<BR><BR><BR>Erro selecionando o nome do curso !";
+        pg_FreeResult($testanome);
+	exit;
+    }
+    $nome_curso = pg_result($testanome, 0, "nome"); 
+    pg_FreeResult($testanome);
+
+
+	/* Criando o diretorio $nome_curso */
+        $HOME= Configuracao("DIRHOME");
+        $homecursos = sprintf ( "%s/cursos/%s",$HOME,$nome_curso);   
+	$homecursos= trim($homecursos);
+	/*echo "homecursos=($homecursos)";*/
+	$ret = mkdir ("$homecursos/materias/$nome_materia" , 0777 );
+	if (!$ret) {
+		SaiErro ("<BR>\nOcorreu um erro durante a criaçao do diretorio da materia $nome_materia .\n");
+	}
+
+	$ret = mkdir ("$homecursos/materias/$nome_materia/arquivos" , 0777 );
+	if (!$ret) {
+		SaiErro ("<BR>\nOcorreu um erro durante a criaçao do diretorio da materia $nome_materia/arquivos .\n");
+	}
+
+	$ret = mkdir ("$homecursos/materias/$nome_materia/videos" , 0777 );
+	if (!$ret) {
+		SaiErro ("<BR>\nOcorreu um erro durante a criaçao do diretorio da materia $nome_materia/videos .\n");
+	}
+
+	$ret = mkdir ("$homecursos/materias/$nome_materia/videos/questoes" , 0777 );
+	if (!$ret) {
+		SaiErro ("<BR>\nOcorreu um erro durante a criaçao do diretorio da materia $nome_materia/videos/questoes .\n");
+	}
+
+	$ret = mkdir ("$homecursos/materias/$nome_materia/videos/respostas" , 0777 );
+	if (!$ret) {
+		SaiErro ("<BR>\nOcorreu um erro durante a criaçao do diretorio da materia $nome_materia/videos/respostas .\n");
+	}
+
+	$result = pg_Exec($conn,
+                        "INSERT INTO materias
+                         VALUES ('$nome_materia','$codigo_professor');");
+	if (!$result) {
+		echo "Ocorreu um erro durante a inclusao na base de dados.\n";
+		exit;
+	}
+	pg_FreeResult($result);
+
+    /* Gravando no cursos_materias */
+
+	$teste = pg_Exec($conn, "select * from materias where upper(nome) LIKE upper('%$nome_materia%');");
+	$num = pg_NumRows($teste);
+	if($num == 0) {
+		echo "<BR><BR><BR>Erro selecionando a materia gravada !";
+ 		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		pg_FreeResult($teste);
+		pg_close($conn);
+		exit;
+	}
+	$codigo_materia_nova = pg_result($teste, 0, "cod_materia"); 
+	pg_FreeResult($teste);
+
+    $data_hoje = date("d/m/Y");  
+	$result = pg_Exec($conn,
+                        "INSERT INTO cursos_materias
+                         VALUES ('$codigo_curso','$data_hoje','$codigo_materia_nova');");
+	if (!$result) {
+		echo "Ocorreu um erro durante a inclusao na base de dados.\n";
+		exit;
+	}
+	pg_FreeResult($result);
+
+	echo "<CENTER>";
+	echo "<BR><BR>Matéria incluída no curso";
+	echo "</CENTER>";
+	pg_Close($conn);
+?>
+<BR><A HREF="/ed/webmaster/materias/inclusao.phtml">Cadastrar outro</A>
+<?PHP MostraRodape(); ?>

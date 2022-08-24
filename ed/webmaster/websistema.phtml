@@ -1,0 +1,19 @@
+<?PHP 
+	 require ( "../lib/ed.bib.phtml");
+	 MostraCabec(" Webmaster Manutenção do Sistema ");
+?>
+
+<pre>
+Ativar Sistema   ( ativar o servidor posgresql ) 
+Desativar Sistema( desativar o servidor posgresql )
+Status Sistema   ( lista estado  do servidor posgresql ) 
+<FORM METHOD="POST" ACTION=/cgi-bin/ed/web-sistema.cgi>
+Escolha a operação    : <SELECT  NAME="sistema">
+<OPTION value=ativa>Ativar sistema 
+<OPTION value=desativa>Desativar sistema
+<OPTION value=status>Status do sistema
+</SELECT>
+<input type="submit" value="Processa Comando">
+</FORM>
+</pre>
+<?PHP MostraRodape(); ?>

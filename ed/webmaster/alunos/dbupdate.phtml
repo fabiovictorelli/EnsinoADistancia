@@ -1,0 +1,38 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec(" Alteração de Alunos ");
+?>
+
+<FORM ACTION="/ed/webmaster/alunos/dbupdate2.phtml" METHOD="post">      
+<?PHP
+	$conn = pg_connect("localhost", "5432", "", "", "ed");
+	if(!$conn){
+		echo "Não Foi possível abrir a base de dados";
+		exit;
+	}
+	$result = pg_exec($conn, "select * from alunos where cod_aluno = $codigo_aluno;");
+	$num = pg_numrows($result);
+	if($num == 0){
+		echo "<BR>Nada Encontrado."; 
+ 		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		exit;
+	}
+	echo "<INPUT TYPE=\"hidden\" NAME=\"codigo_aluno\" VALUE=\"";
+	echo pg_result($result, 0, "cod_aluno"); echo "\">\n";	
+	echo "<INPUT TYPE=\"text\" SIZE=\"20\" NAME=\"aluno\" VALUE=\"";
+	echo pg_result($result, 0, "nome"); echo "\">\n";	
+    echo "<P>Chave:";
+    echo "<INPUT TYPE=\"hidden\" NAME=\"chave\" VALUE=\"";
+    echo pg_result($result, 0, "chave"); echo "\">\n";
+    echo pg_result($result, 0, "chave");
+    echo "<P>Senha:";
+    echo "<INPUT TYPE=\"text\" SIZE=\"8\" NAME=\"senha\" VALUE=\"";
+    echo pg_result($result, 0, "senha"); echo "\">\n";
+    echo "<P>Email:";
+    echo "<INPUT TYPE=\"text\" SIZE=\"30\" NAME=\"email\" VALUE=\"";
+    echo pg_result($result, 0, "email"); echo "\">\n";  
+
+?>
+<CENTER><INPUT TYPE="submit" VALUE="Alterar"></CENTER>
+</FORM>
+<?PHP MostraRodape(); ?>

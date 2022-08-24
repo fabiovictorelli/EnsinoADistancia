@@ -1,0 +1,45 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec(" Alteração de Materias ");
+?>
+
+<FORM ACTION="/ed/webmaster/materias/dbupdate2.phtml" METHOD="post">      
+<?PHP
+	$conn = pg_connect("localhost", "5432", "", "", "ed");
+	if(!$conn){
+		echo "Não Foi possível abrir a base de dados";
+		exit;
+	}
+	$result = pg_exec($conn, "select * from materias where cod_materia = $codigo_materia;");
+	$num = pg_numrows($result);
+	if($num == 0){
+		echo "<BR>Nada Encontrado."; 
+ 		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		exit; 
+	}
+	echo "<BR>Nome da Matéria";
+	echo "<INPUT TYPE=\"hidden\" NAME=\"codigo_materia\" VALUE=\"";
+	echo pg_result($result, 0, "cod_materia"); echo "\">\n";	
+	echo "<INPUT TYPE=\"text\" SIZE=\"20\" NAME=\"materia\" VALUE=\"";
+	echo pg_result($result, 0, "nome"); echo "\">\n";	
+
+    $result = pg_Exec($conn, "Select * from professores ORDER BY nome;");
+        $num = pg_NumRows($result);
+		echo "<BR>Professor responsável";
+        echo "<SELECT NAME=\"codigo_professor\">\n";
+        for($i = 0; $i < $num; $i++)
+        {
+                echo "<OPTION VALUE=\"";
+                echo pg_Result($result, $i, "cod_professor");
+                echo "\">"; 
+				echo pg_Result($result, $i, "nome");
+                echo "\n";
+        }
+        echo "</SELECT>\n";
+        pg_Close($conn);
+        pg_FreeResult($result);
+
+?>
+<CENTER><INPUT TYPE="submit" VALUE="Alterar"></CENTER>
+</FORM>
+<?PHP MostraRodape(); ?>

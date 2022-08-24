@@ -1,0 +1,15 @@
+http://www.connectedpc.com/cpc/videophone/index.htm
+
+http://www.vosaic.com/
+
+http://standards.pictel.com/standorg.htm
+
+http://www.netspeak.com/product/webphone/features.html , diz :
+
+
+H.323 Version 2.0 Standards Compatibility
+ WebPhone lets you speak with Internet telephone users around the world
+ regardless of vendor, platform or network. WebPhone supports the H.323
+ Version 2.0 Series Standard including the G.723.1 and G.711 audio codecs,
+ allowing interoperability between IP-based multimedia applications. Now you
+ can send voice and video communications to any H.323-compliant application. 

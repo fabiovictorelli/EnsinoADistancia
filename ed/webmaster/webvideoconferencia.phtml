@@ -1,0 +1,22 @@
+<?PHP 
+	 require ( "../lib/ed.bib.phtml");
+	 MostraCabec(" ED webmaster configuração dos refletores de video conferência ");
+?>
+Configurações:
+<hr size=5 align=center>
+<p>
+        
+<form action="/cgi-bin/ed/webvideoconferencia" method="post" >
+  Refletor de video conferência: <BR>
+  <input type=radio name="videoconferencia" value=ativa checked>ativa 
+  <input type=radio name="videoconferencia" value=desativa>desativa
+  <input type=radio name="videoconferencia" value=recomeca>recomeça
+  <input type=radio name="videoconferencia" value=status>status
+  <BR> <BR>
+  <input type="submit" value="Processa Comando">
+  <input type="reset" value="Reseta Campos">
+</pre>
+
+</form>
+
+<?PHP MostraRodape(); ?>

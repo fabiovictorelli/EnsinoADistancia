@@ -1,0 +1,42 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Exclusão de Alunos");
+?>
+<FORM METHOD="POST" ENCTYPE=multipart/form-data ACTION=dbexcluir.phtml>
+
+<?PHP
+
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+	     
+	if (!$conn) {
+		SaiErro ("Nao foi possivel abrir banco de dados.\n");
+	}
+
+    $result = pg_Exec($conn, "Select * from alunos ORDER BY nome;");
+    $num = pg_NumRows($result);
+
+
+    if($num == 0) {
+       echo "<BR><CENTER>ERRO- Atenção - não existem alunos cadastradas!\n";
+       echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+       pg_Close($conn);
+       exit;
+     }
+        echo "<BR>Selecione um Aluno(s):";
+
+        echo "<SELECT NAME=\"codigo\">\n";
+        for($i = 0; $i < $num; $i++)
+        {
+                echo "<OPTION VALUE=\"";
+                echo pg_Result($result, $i, "cod_aluno");
+                echo "\">"; 
+				echo pg_Result($result, $i, "nome");
+                echo "\n";
+        }
+        echo "</SELECT>\n";
+        pg_Close($conn);
+        pg_FreeResult($result);
+?>                              
+<form>
+<INPUT TYPE=submit NAME=UPLOAD VALUE=Exclui> <BR>
+<?PHP MostraRodape(); ?>

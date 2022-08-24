@@ -1,0 +1,8 @@
+create table professorestemp(
+nome char(40),
+titulo char(40),
+senha char(8),
+chave char(8),
+tipo int4,
+email text,
+cod_professor int4 DEFAULT nextval ( 'professorestemp_seq'));

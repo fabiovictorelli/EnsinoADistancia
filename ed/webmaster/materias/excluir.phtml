@@ -1,0 +1,37 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Exclusão de matérias");
+?>
+<FORM METHOD="POST" ENCTYPE=multipart/form-data ACTION=dbexcluir.phtml>
+
+<?PHP
+
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+	     
+	if (!$conn) {
+		SaiErro ("Nao foi possivel abrir banco de dados.\n");
+	}
+
+    $result = pg_Exec($conn, "Select * from materias ORDER BY nome;");
+        $num = pg_NumRows($result);
+
+		if ( $num == 0 ) {
+			MostraErro ("Não existe matérias cadastradas ");
+        }
+        echo "<BR>Selecione uma Matéria(s):";
+        echo "<SELECT NAME=\"codigo\">\n";
+        for($i = 0; $i < $num; $i++)
+        {
+                echo "<OPTION VALUE=\"";
+                echo pg_Result($result, $i, "cod_materia");
+                echo "\">"; 
+				echo pg_Result($result, $i, "nome");
+                echo "\n";
+        }
+        echo "</SELECT>\n";
+        pg_Close($conn);
+        pg_FreeResult($result);
+?>                              
+<form>
+<INPUT TYPE=submit NAME=UPLOAD VALUE=Exclui> <BR>
+<?PHP MostraRodape(); ?>

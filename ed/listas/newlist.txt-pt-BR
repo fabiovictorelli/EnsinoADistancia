@@ -1,0 +1,36 @@
+A lista de email `%(listname)s' acabou de ser criada por você.  Abaixo
+segue algumas informações básicas sobre a lista:
+
+Sua senha de manutenção da lista é:
+
+    %(password)s
+
+Você precisa desta senha para configuração da lista. Você também precisa
+da senha para lidar com requisições administrativas, como aprovação de email,
+caso você escolheu uma lista do tipo moderada.
+
+Você pode configurar sua lista pela seguinte página:
+
+    %(admin_url)s
+
+A página web para usuários de sua lista é:
+
+    %(listinfo_url)s
+
+Você também pode customizar estas páginas de sua página web de configuração
+de lista. No entanto, você precisa conhecer HTML para fazer isto.
+
+Existe também uma interface baseada em email para usuários ( não administradores)
+de sua lista; você pode ter informações sobre isto enviando um email, somente com
+o título ou como corpo do email com a palavra `help' , para:
+
+    %(requestaddr)s
+
+
+Para desinscrever um usuário: Use a página da lista 'listinfo' , clique
+no endereço de email do usuário ou digite o email caso for aquele usuário.
+Onde aquele usuário deveria colocar a senha para se desinscrever, coloque sua senha
+de administrador. Você também pode usar sua senha para mudar opções de membros,
+incluindo `empacotamento de mensagem', disabilitar entrega, etc. 
+
+Por favor envie qualquer dúvida para mailman-owner@%(hostname)s.

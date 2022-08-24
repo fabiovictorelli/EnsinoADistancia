@@ -1,0 +1,449 @@
+  Questão 1:
+ Múltiplas redes podem ser conectadas usando repetidores, pontes, roteadores e gateways. Defina cada um destes elementos de interconexão. Liste duas vantagens de pontes (bridges) sobre repetidores e duas vantagens de roteadores sobre pontes. 
+
+
+Graficos: http://www.ufsc.br/scra/elvis/
+
+
+	REPETIDORES ( repeaters )
+		Os repetidores são utilizados, para a interligação de duas ou mais 
+redes identicas. Atuam no nível físico.
+		Os repetidores simplesmente (repetem os sinais eletricos de uma rede
+para outra) ou seja recebem todos os pacotes de cada uma das 
+redes que interligam e os repetem nas demais redes sem realizar qualquer tipo 
+de tratamento sobre os mesmos.
+	 	No primeiro momento podemos utilizar-se de repetidores atuando como um 
+retransmissor. Em um segundo ponto vem da utilização de repetidores em redes 
+que utilizam protocolos baseados em contenção. Nesse caso caberá ao repetidor 
+tambem a função detecção de colisão ( quer por erros de CRC ou por mecanismos
+especiais) e retransmissão. 
+		OBS.: Redes que utilizam protocolos CSMA/CD, ao se calcular o tamanho
+mínimo do pacote, deve-se levar em conta o retardo introduzido pelo repetidor. 
+Que irá limitar o número de repetidores em série em tais redes.
+
+
+[Soares] Soares, Luiz Fernando Gomes, "Redes de Computadores",
+         pg 300, Embratel, 1995.
+
+
+
+
+	PONTES ( bridges )
+
+		Ponte é um produto com a capacidade de segmentar uma rede local em 
+sub-redes com o objetivo de reduzir tráfegos ou converter diferentes 
+padrões de LAN's ( Ex.: de Ethernet para Token-Ring ).
+
+		Atua no protocolo a nível de enlace. 	
+		Ao contrário dos repetidores as pontes somente repetem os pacotes 
+destinados as redes que interligam ou que devem passar pelas redes que 
+interligam até chegarem ao seu destino por uma ponte.
+		
+		Diferenca entre ponte e repetidor:
+		As pontes diferenciam-se dos repetidores, pois repassam pacotes ao 
+invés de sinais elétricos. As pontes possuem vantagens sobre os repetidores,
+pois não retransmitem ruídos erros, ou frames mal formados, um frame deve 
+estar completamente válido para ser retransmitido por uma ponte.
+		Atua nas camadas 1 e 2 do modelo de referência ISO/OSI, lendo o 
+campo de endereço dos pacotes de mensagens e transmitindo-os quando se 
+tratar de segmentos de rede diferentes, utilizando o mesmo protocolo de 
+comunicação. São atribuições de uma rede:
+
+		. Filtrar as mensagem de tal forma que somente as mensagens endere-
+çadas para ela seja tratadas.
+		. Armazenar mensagens, quando o tráfego for muito grande.
+		. Funcionar como uma estação repetidora comum.
+		
+
+		As pontes atuam também como elementos passivos gerenciadores de rede, 
+podendo coletar dados estatísticos de tráfego de pacotes para elaboração
+de relatórios.
+		As pontes também podem ser usadas para converter redes LAN's de 
+Ethernet para Token-Ring e vice-versa.
+		A configuração ( LAN 1 / Bridge / LAN 2) oferece melhor performance que uma rede local única com dois nós.
+
+
+[Soares] Soares, Luiz Fernando Gomes, "Redes de Computadores",
+         pg 302, Embratel, 1995.
+
+[Grupo Editorial Cyclades]	 Guia Internet de Conectividade, pg 67 , 1996 .
+
+
+
+
+	ROTEADORES
+
+		Os roteadores decidem sobre qual caminho o tráfego de informações ( controle e dados) deve seguir.
+		Operam nas camadas de níveis 1,2 e 3 do modelo de referência ISO/OSI e fazem o roteamento de pacotes entre as LAN's.
+		Para estabelecer a conexão, o Roteador utiliza um dos protocolos de roteamento ( RIP, OSPF, etc) para obter informações sobre a rede (normalmente recebe informacoes e guarda-as em tabelas de roteamento ).
+		Este protocolo baseia-se em algoritmos para escolher a melhor rota,
+sendo composto por vários critérios conhecidos como "Métrica de roteamento". Os roteadores podem também comprimir e compactar dados.
+		Os roteadores permitem que LAN's tenha acessos a WAN's.
+		Normalmente um roteador tem uma porta LAN ( ethernet ou Token-Ring) e várias portas WAN ( PPP. X.25, Frame-Relay, ISDN).
+		Os roteadores normalmente trabalham com IP ou IPX e os endereços IP's definidos na tabela de roteamento são repassados à rede WAN.
+
+		Um exemplo clássico de uso de roteador são ISP ( provedores de acesso internet). 
+		Veja como é configurado este roteador:
+
+               -------------
+               |           => porta WAN até 512 kbytes ( protocolo PPP )		
+         LAN <=|   ROUTER  |
+               |           => porta WAN até 2 Mgbytes ( protocolo PPP ) 		
+               -------------
+	
+	Revendedores conhecidos:
+			Cisco, Livinston, Cyclades
+
+[Grupo Editorial Cyclades]	 Guia Internet de Conectividade, pg 68 , 1996 .
+
+
+
+
+	GATEWAYS	
+
+		Os gateways atuam em todas as camadas do modelo ISO/OSI, onde recompõem os pacotes de dados e os transmite entre as redes.
+		Tanenbaum descreve que gateways operam no nivel de rede ( pg 337) .
+		Estes equipamentos resolvem problemas de diferença entre tamanho máxi-
+mo de pacotes, forma de endereçamento, técnicas de roteamento, controle de
+acesso, time outs, entre outros.
+		Exemplo de gateway, pode ser um produto que integra redes TCP/IP com redes SNA. 
+		Segundo Tanenbaum existe dois tipos de gateways :
+			a) Oritentadas a conexão.
+			b) Sem conexão.
+
+		a) Orientadas a conexão
+			Também conhecido como método de concatenação de subredes em
+"circuito virtual". a diferença básica deste método é que ele usa pontes
+na camada de rede, e o método sem conexão usa na camada de enlace.
+			Neste modelo, uma conexão com um host em uma rede distante é es-
+tabelecida como se fosse com um host local. A subrede vê que o destinho  é
+remoto, excolhe um "meio-gateway" apropriado e constroi uma rota virtual para 
+aqule "gateway". O primeiro gateway grava a existencia deste circuito virtual
+em sua tabela e processa para construir uma rota para o próximo gateway.
+Este procedimento procede até que o host seja localizado.
+
+
+		b) Sem conexão.
+			Também conhecido com estilo internet de datagramas. 
+			Neste modelo,  o único serviço que a camada de rede oferece
+é a habilidade de colocar os datagramas na subrede e esperar pelo melhor.
+Não existe uma noção de rota virtual.
+
+
+[Tanenbaum]		Andrew S. Tanenbaum, Computer Networks, Prentice Hall 
+				International Edition,second edition pg 337-346,  1989. 
+
+[Grupo Editorial Cyclades]	 Guia Internet de Conectividade, pg 68 , 1996 .
+
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x
+  Questão 2:
+O padrão ISSO 8802.3 (tipo Ethernet) de 10 Mbps  requer um tamanho mínimo de quadro de 64 Bytes (46 bytes de  payload) e um tamanho máximo de quadro  de 1518 Bytes (1500 bytes payload)
+
+          (1)Explique por que são necessários um tamanho máximo e mínimo de quadro para este protocolo de acesso ao meio.
+
+          (2) Explique por que destes dois tamanhos particulares. Leve em consideração na sua resposta os seguintes parâmetros de rede: cada cabo possui um comprimento máximo de 500 metros; existem no máximo 4 repetidores para cada cabo e o sinal trafega a uma velocidade de 200.000 km/s no cabo.  
+     
+
+(2.1)
+
+Vejamos a estrutura do frame 802.3:
+ --------------------------------------------------------------------------
+ | preambulo | | end. dest. | end. origem | tam. | dados | pad | checksum |
+ --------------------------------------------------------------------------
+      7       1     2 ou 6        2 ou 6      2    0-1500  0-46      4
+
+	Vejamos que o campo tam. ( tamanho ) , nos mostra qtos bytes estão pre
+sentes no campo de dados quepodem ter o mínimo de 0 e máximo de 1500 bytes.
+	Embora seja possível termos 0 bytes segundo o protocolo, isto causa problemas quando o transceiver detecta uma colisão, ele trunca o frame corrente, o que
+significa quye bits perdidos e pedaços de frames ficarão fácil de distinguir frames válidos de lixo.
+	O protocolo 802.3 determina que frames válidos devam ter no mínimo 64 bytes.
+Deste o campo end. destino até o checksum.
+	Se a porção de dados é menos que 46 bytes; o campo PAD é utilizado para
+completar o frame.
+	Outra, ( e mais importante ) razão para ter um tamanho mínimo de 64 bytes,
+é prevenir que uma estação complete a transmissão ( ou pelo menos ache que
+completou) antes do pacote alcançcar o final do cabo. ( terminador )
+
+	Quanto ao tamanho máximo de 1500 bytes de payload, está diretamente liga
+da a eficiência/colisão comparando-se com o tamanho do quadro Ethernet.
+
+(2.2) 
+	cada cabo= 500 metros
+	máximo 04 repetidores
+  	tx. sinal = 200.00 km/s no cabo.
+	
+	pior caso= 04 repetidores = distancia máxima= 2.500 metros.
+	Conforme Gomes Soares, onde M >= 2 C Tp, sendo
+	
+	M = tamanho do quadro
+	C = tx de transmissao
+	Tp= tempo de propagação
+
+	M >= 2 x 10 mega x ( 2.500 / 200 000 000 seg. )
+	M >= 2 x 125
+	M >= 250 bits      (250 bits = 31,25 bytes)
+	M >= 31,25 bytes
+	64 >= 31,25  ( mostra que o tamanho do quadro Ethernet está suficiente)
+		
+	Quanto a eficiencia, podemos dizer que o tam. máximo do pacote Ethernet 
+1518 bytes, se aproximou bastante de uma eficiencia ótima, ou seja:
+
+	E = 1 /  1 + ( 3,4 x Tp x C/M )    = 0.967 
+
+
+[Tanenbaum]		Andrew S. Tanenbaum, Computer Networks, Prentice Hall 
+				International Edition,second edition pg 144-146,  1989. 
+
+[Soares] Soares, Luiz Fernando Gomes, "Redes de Computadores",
+         Embratel, 1995.
+
+
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x
+  Questão 3:
+   A lei de Shannon diz que não se pode transmitir mais de 30 kbps sobre uma linha telefônica dimensionada para transmitir sinais de voz limitados em 4 kHz. No entanto, assume-se uma taxa de 64kbps para transmissão de voz em sistemas telefônicos.  Explique porque não há contradição nestas duas afirmações.
+
+	Lembrando que  o teorema de Nyquist (1924) diz que num canal de 3000-Hz 
+de banda, com atenuação de 30 dB ( típica do sistema de telefonia ) nunca
+passariamos mais que 30.000 bps. 
+	Lembrando também que seu teorema diz que que 8000 exemplos por segundo é
+suficiente para capturar toda informacao de um canal de 4khz de banda.
+
+	Esta técninca é chamada PCM ( Pusle Code Modulation ).
+	
+	Para transmitir a voz num canal digital, digitaliza-mos ( normalmente com
+a técnica PCM). Utilizamos uma tx de amostragem >= 2 w vezes por segundo.
+	
+	Uma vez que voz, tem banda de 4 khz, a tx de amostragem neste caso é de
+8.000 amostras por segundo.  se codificarmos em 8 bits, teremos
+8.000 x 8 = 4 kbps.
+
+	Conclusão:
+		não existe contradição nestas duas afirmações, o que existe é que 
+em um caso o sinal é analógico e no outro o sinal é digital.
+
+	
+[Tanenbaum]		Andrew S. Tanenbaum, Computer Networks, Prentice Hall 
+				International Edition,second edition pg 79-84,  1989. 
+
+ 
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x
+  Questão 4:
+   Redes baseadas em Datagramas, Circuito Virtual e chaveamento de circuitos usam diferentes mecanismos para envio de dados. Explique a diferença entre estes mecanismos. 
+
+DATAGRAMA
+	Os serviços de redes baseadas em datagramas, usando serviços sem conexão, 
+onde não se tem a garantia de entraga dos dados,  enviam informação envelopada
+em unidades independentes chamadas pacotes.
+	Cada datagrama possui end. de origem e destin e pode traçar caminhos dife
+rentes até o destino. Os roteadores nos caminhos não precisam marcar rotas 
+especiais para cada datagrama.
+	
+CIRCUITO VIRTUAL
+	Nos circuitos virutias, estabele-se uma rota de comunicação entre as es
+tações origem e destino, e depois comeca a transf. de dados.
+	O circuito virtual e dinamico, ou seja, a cada transmissão executada é
+estabelecida um circuito.
+	Normalmente se utiliza circuitos virtuais com servços que se precisa
+garantir a entrega dos pacotes ( com conexão ).
+	Os dados dentro de uma conexão sempre seguem a mesma rota, obrigando
+os roteadores trocarem/manterem tabelas de roteamento e a identificação
+do circuito total.
+	
+CHAVEAMENTO DE CIRCUITOS
+
+	O chaveamento de circuito é usado quando se tem um fluxo direto e grande
+de dados. (refletores de Cu-seeme, refletores de video conferencia, etc).
+	Neste tipo de rede não existe problema de congestionamento, pois é reser
+vada uma banda grande inicialmente. 
+
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x
+Questão 5:
+Quais dos seguintes protocolos MAC é determinista em termos de tempo de acesso ao meio: Token-Bus, Token-Ring, CSMA p-persistente, DQDB. Justifique a sua resposta através de exemplos numéricos.
+
+	
+	IEEE padrão 802.4 - Token-Bus		
+		
+		É um protocolo determinista. a topologia é anel lógico.
+
+		Quando o anel é inicializado, as estações sao inseridas dentro do anel
+em ordem do endereço de cada estação, do maior para o menor.
+		A passagem do token também é feita do maior endereço para o menor. 
+		Em cada tempo que a estação adiquiri o token, ela pode transmitir
+frames por um determinado tempo e depois ela para de transmitir e passa o to
+ken adiante.
+		Classes de prioridade.
+		O protocolo token bus define quatro classes de prioridade:
+0,2,4 e 6, sendo 0 a de menor e de maior prioridade.
+			
+		Exemplo:
+		Uma rede com 10 estações,  todas com a mesma prioridade, e com tempo de 
+posse do token para cada estação sendo de 50 milesegundos, o tempo para pas-
+sar o token é de 8 milesegundos.
+	
+		Entao temos:
+		TC = ( num. maq. x Temp de posse ) + ( num maq. x temp. pass token)
+		TC = ( 10  x  50 ms ) + ( 10 x 8 ms )
+		TC = 500 ms + 80 ms
+		TC = 580 ms , ou seja a cada 0,58 segundos o token da a volta pelas
+10 máquinas ( em todo a rede ).
+
+[Tanenbaum]     Andrew S. Tanenbaum, Computer Networks, Prentice Hall
+                International Edition,second edition pg 148-150,  1989.
+
+
+	IEEE padrão 802.5 - Token-Ring		
+		
+		É um protocolo determinista. Aqui o anel é fisico.
+		
+		Neste tipo de protocolo ( muito defendido pela IBM ), cada estação
+do anel fisico faz a reserva da ficha, quando assim passar por ela, e inserindo
+o seu nível de prioridade, sendo de 1 ( menor prioridade ) a 8 ( maior priori-
+dade).
+		Se quando a estação for inserir a sua prioridade no token, e ver que
+a prioridade no token é igual ou inferior, a estação passa a transmitir. Caso
+a prioridade no token é maior que a da estação, então o token é repassado
+adiante e a estação não transmite.
+
+		Exemplo:
+		T.máximo = ( tam. quadro ) x Temp prop + Temp processamento) x num maq.
+		T.máximo = ( 100 ) x 50 ns +  10 ns x 10 maq.
+
+		Não é bom que todas máquina tenham máxima prioridade (fome de ficha).
+
+
+[Tanenbaum]     Andrew S. Tanenbaum, Computer Networks, Prentice Hall
+                International Edition,second edition pg 153-160,  1989.
+
+	CSMA p-persistente
+
+		Não é um protocolo determinista.
+
+		Bom, lembrando que o princípio dos protocolos CSMA ( Carrier Sense 
+Protocols ), é escutar o canal ( meio onde passam os dados) , e quando o canal 
+está livre a estação transmite, caso o canal esteja ocupado, a estação espera.
+		A variação p-persistente do protocolo acima quanto percebe que existe
+outra estação transmitindo, a estação continua a escutar o canal até que fique
+livre, dai transmite com uma probabilidade p, ou espera por um intervalo 
+( 1 -p ), continuando assim até transmitir.
+
+[Tanenbaum]     Andrew S. Tanenbaum, Computer Networks, Prentice Hall
+                International Edition,second edition pg 127,  1989.
+
+	DQDB ( Distributed Queue Dua Bus )		
+		Esta padrão define dois métodos de controle de acesso:
+		a) Fila arbitrada ( Queued Arbitrated - QA ) e
+		b) Pré-arbitrado  ( Pre-Arbitrated - PA ), para uma rede consistindo
+de duas barras unidirecionais interconectando, ponto a ponto, uma multiplici-
+dade de nós.
+	
+
+[Soares] Soares, Luiz Fernando Gomes, "Redes de Computadores",
+         pg 196, 256 e 438, Embratel, 1995.
+
+
+-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x-x
+  Questão 6: (trabalho de pesquisa sobre algoritmos de roteamento)
+   Considere uma rede simples de 5 nós (nó A,B,C,D, E  e F): 
+								 ^ são 5 ou  sao         ^6, keiko?
+
+        #Quando utilizado para adaptar a carga da rede o algoritmo de vetor de distância CPGEI98 possui duas propriedades:
+(a) notícias boas viajam rápido
+(b) notícias ruins viajam devagar
+  Esta segunda propriedade é também chamada de problema de contagem ao Infinito. Assumindo que um novo enlace apareça entre os dois nós (por exemplo C e F), dê um exemplo que ilustre a primeira propriedade. 
+
+        #Assumindo que o enlace entre E e F está fora do ar na rede original de um exemplo que ilustre a segunda propriedade. 
+
+        #Uma solução do problema de contagem ao Infinito é denominada divisão no horizonte. Neste caso, se o próximo hop de um nó X para um destino Z é Y, então X envia a Y sua tabela de vetor distância e X  ajusta a sua distância até Z como infinito. Esta é somente uma solução parcial do problema. Assumindo novamente que o enlace entre E e F está fora do ar, mostre dois cenários de exemplo: um onde a técnica de dividir o horizonte resolve o problema de contagem ao infinito e outro onde este não resolve.
+
+
+(1)
+	Temos inicialmente os seguintes nós, com os numeros de hops logo abaixo:
+
+    (a)--------(b)--------(c)--------(d)---------(e)---------(f)
+     5          4          3          2           1           -
+
+	Aparecendo um novo enlace entre os 2 nós C e F, vamos a primeira proprie-
+dade: A) Noticias boas viajam rápido:
+
+	
+    (a)--------(b)--------(c)--------(d)---------(e)---------(f)
+                           |__________________________________|
+
+    (a)--------(b)--------(c)--------(d)---------(e)---------(f)
+     5          4          3          2           1           -
+     5          4          1          2           1           -
+     5          2          1          2           1           -
+     3          2          1          2           1           -
+
+	 Veja que em somente 03 passos, do nó mais distante (a) até o 
+nó f( participante agora do novo enlace), tiveram acerto em seus valores.
+
+
+(2) 
+	Assumindo que o enlace entre os nós (e) e (f) estejam fora do ar na
+rede original, mostramos a  segunda propriedade: B) notícias ruins viajam
+devagar.
+
+     Situação inicial:	
+    (a)--------(b)--------(c)--------(d)---------(e)---------(f)
+     5          4          3          2           1           -
+
+     Situação agora:	
+    (a)--------(b)--------(c)--------(d)---------(e)   //    (f)
+     5          4          3          2           1           -
+     5          4          3          2           3           -
+     5          4          3          4           3           -
+     5          4          5          4           5           -
+     5          6          5          6           5           -
+     6          6          5          6           5           -
+     7          6          7          6           7           -
+     7          8          7          8           7           -
+     ...        ...        ...        ...         ...           -
+
+
+(3)
+     Assumindo novamente que o enlace entre E e F está fora do ar, mostre 
+dois cenários de exemplo: um onde a técnica de dividir o horizonte resolve
+o problema de contagem ao infinito e outro onde este não resolve.
+
+	Aplicando a solução 01 Técnica de "Divisão de Horizonte", encontramos
+uma solução, e a propagação é de um hop por cada passo para os outros nós,
+em direção contrária ao do nó destino, veja:
+
+    (a)--------(b)--------(c)--------(d)---------(e)    //   (f)
+     5          4          3          2           1           -
+     5          4          3          2           inf.        -
+     5          4          3          inf.        inf.        -
+     5          4          inf.       inf.        inf.        -
+     5         inf.        inf.       inf.        inf.        -
+     inf.      inf.        inf.       inf.        inf.        -
+
+
+	Situação onde a técninca não é eficaz,  ou seja onde o numero de hops
+entre os nós não são lineares :
+
+    (d)   //   (c)--------(b)--------(a)
+                1          1          2
+                inf.       1
+
+
+	Ou seja:
+	                     
+                  (a) ----1---- (b)
+                   \            / 
+                    \          / 
+                     1        1 
+                      \      / 
+                       \    / 
+                         (c)
+                          |
+                          2  cai
+                          |
+                         (d) 
+
+			
+Fontes: aula de redes em  27/04/98 
+
+[Tanenbaum]     Andrew S. Tanenbaum, Computer Networks, Prentice Hall
+                International Edition,second edition pg 289,  1989.
+

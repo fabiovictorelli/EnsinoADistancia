@@ -1,0 +1,116 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Listagem de Agenda ");
+
+		if(!isset($pos_cursor)){
+		$pos_cursor = 0;
+		}
+		$conn = pg_Connect("localhost", "5432", "", "", "ed");
+		if (!$conn) {
+			SaiErro("Um erro ocorreu durante a abertura da base de dados.\n");  
+		}
+
+		pg_exec($conn,"begin;");
+		pg_exec($conn,"declare pont cursor for SELECT * FROM agendas 
+		             WHERE cod_materia = $codigo_materia
+					 ORDER BY data;");
+		if($pos_cursor != 0){
+				pg_exec($conn,"move forward $pos_cursor in pont;");
+		}
+		$result = pg_exec($conn,"fetch 10 in pont;");
+		if (!$result) {
+			SaiErro("Um erro ocorreu durante a abertura da base de dados.\n");  
+		}
+		pg_exec($conn,"end;");
+
+		$prox_pag = $pos_cursor + 10;
+		$pag_ant = $pos_cursor - 10;
+
+		$todos = pg_exec($conn,"SELECT * FROM agendas 
+								WHERE cod_materia = $codigo_materia
+		                        ORDER BY data ;");
+		$total = pg_numrows($todos);
+		$paginas = ceil($total/10);
+		if(!isset($pag_atual)){ $pag_atual = 1; }
+		pg_freeresult($todos);
+
+		echo"<B><BIG>$total Agendas. Página $pag_atual/$paginas.</BIG></B><br>";
+		$num = pg_NumRows($result);
+		$i = 0;
+		if($num > 0){
+			echo "<HR SIZE=\"2\">";	    
+			echo "<TABLE BORDER = \"2\">";
+			echo "<TR><TD width=\"4\">Código</TD><TD>Data</TD><TD width=\"20\">Descrição do Agenda</TD><TD width=\"20\">Tipo </TD><TD>&nbsp</TD></TR>\n";
+			while ($i < $num) {
+				echo "<FORM METHOD=\"post\" ACTION=\"dbupdate.phtml\">\n";
+				echo "<INPUT TYPE=\"hidden\" NAME=\"codigo_agenda\" VALUE=\"";
+				echo pg_result($result, $i, "cod_agenda"); 
+				echo "\">";
+
+				echo "<TD><CENTER>"; echo pg_Result($result, $i, "cod_agenda") ; echo "</TD></CENTER>\n" ;
+				echo "<TD><CENTER>"; 
+				$data_final =pg_Result($result, $i, "data") ; 
+				$data_final=ereg_replace("/","-",$data_final);
+				$dmano=explode("-", $data_final);
+				$d = $dmano[0];
+				$m = $dmano[1];
+				$y = $dmano[2];
+				$data_final= date( "d-m-Y", mktime(0, 0, 0, $d, $m , $y));   
+		        echo "$data_final";
+
+				echo "</TD></CENTER>\n" ;
+				$descricao = pg_Result($result, $i, "nome");
+				$codigo_prof = pg_result($result, $i, "tipo_agenda");
+				if ( $codigo_prof == '1' ) {
+					echo "<TD>$descricao</TD>";
+					echo "<TD>texto</TD>";
+				}
+				if ( $codigo_prof == '2' ) {
+					echo "<TD><A HREF=\"http://$descricao\">$descricao</A></TD>";
+					echo "<TD><FONT COLOR=blue>link</FONT></TD>";
+				}
+				if ( $codigo_prof == '3' ) {
+					echo "<TD>$descricao</TD>";
+					echo "<TD><FONT COLOR=red>aviso</FONT></TD>";
+				}
+				if ( $codigo_prof == '4' ) {
+					echo "<TD>$descricao</TD>";
+					echo "<TD>Arquivo para baixar</TD>";
+				}
+
+				echo "<TD><INPUT TYPE=\"submit\" VALUE=\"Alterar\"></TD>\n" ;
+				echo "</TR>\n";
+				echo "</FORM>\n";
+				$i++;
+			}
+			echo "</TABLE>";
+			//pg_FreeResult($result);
+			//pg_Close($conn);
+		}
+		elseif  ($num == 0) {
+			echo "<TR><TD>\n";
+			echo "Nada encontrado para esta matéria.\n" ;
+			echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+			echo "</TR></TD>\n";
+		}
+
+		echo "<CENTER>\n";
+		echo "<TABLE BORDER=0 CELLSPACING=4><TR>\n";
+		if($pos_cursor > 0)
+		{
+		$cont = $pag_atual - 1;
+		echo "
+		<TD><A HREF=\"dbexibematerias.phtml?";echo "pos_cursor=$pag_ant&pag_atual=$cont";echo "\">página anterior</A></TD>\n
+		";
+		}
+		if($pag_atual  < $paginas)
+		{
+		$cont = $pag_atual + 1;
+		echo"
+		<TD><A HREF=\"dbexibematerias.phtml?";echo "pos_cursor=$prox_pag&pag_atual=$cont";echo "\">próxima página</A></TD>\n";
+		}
+		echo "</TR></TABLE>\n";
+		echo "</CENTER>\n";
+
+	MostraRodape();
+?>

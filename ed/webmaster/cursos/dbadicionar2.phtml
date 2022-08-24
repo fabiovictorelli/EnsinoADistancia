@@ -1,0 +1,41 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec("Incluindo matéras nos cursos ");
+?>
+<H2>Resultado</H2>
+
+<?PHP
+    $data_hoje = date("d/m/Y");  
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+	     
+	if (!$conn) {
+		echo "Não foi possivel abrir banco de dados.\n";
+	exit;
+	}
+
+	$teste = pg_Exec($conn, "select * from cursos_materias where cod_curso=$codigo_curso and cod_materia=$codigo_materia;");
+	$num = pg_NumRows($teste);
+	if($num > 0) {
+		echo "<BR><BR><BR>A matéria já está cadastrado no curso $nome_curso";
+ 		echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+		pg_FreeResult($teste);
+		pg_close($conn);
+		exit;
+	}
+	pg_FreeResult($teste);
+	$result = pg_Exec($conn,
+                        "INSERT INTO cursos_materias
+                         VALUES ('$codigo_curso', '$data_hoje', '$codigo_materia');");
+	if (!$result) {
+		echo "Ocorreu um erro durante a inclusao na base de dados.\n";
+		exit;
+	}
+
+	echo "<CENTER>";
+	echo "<BR><BR>Matéria incluída no curso $nome_curso.";
+	echo "</CENTER>";
+	pg_FreeResult($result);
+	pg_Close($conn);
+?>
+<BR><A HREF="/ed/webmaster/cursos/adicionarmaterias.phtml">Adicionar outra</A>
+<?PHP MostraRodape(); ?>

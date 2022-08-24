@@ -1,0 +1,98 @@
+<?PHP 
+	require ( "../../lib/ed.bib.phtml");
+	MostraCabec(" Lista de Professores ");
+
+		if(!isset($pos_cursor)){
+		$pos_cursor = 0;
+		}
+		$conn = pg_Connect("localhost", "5432", "", "", "ed");
+		if (!$conn) {
+			SaiErro("Um erro ocorreu durante a abertura da base de dados.\n");  
+		}
+
+		pg_exec($conn,"begin;");
+		pg_exec($conn,"declare pont cursor for SELECT * FROM professores ORDER BY nome;");
+		if($pos_cursor != 0){
+				pg_exec($conn,"move forward $pos_cursor in pont;");
+		}
+		$result = pg_exec($conn,"fetch 10 in pont;");
+		if (!$result) {
+			SaiErro("Um erro ocorreu durante a abertura da base de dados.\n");  
+		}
+		pg_exec($conn,"end;");
+
+		$prox_pag = $pos_cursor + 10;
+		$pag_ant = $pos_cursor - 10;
+
+		$todos = pg_exec($conn,"SELECT * FROM professores ORDER BY nome;");
+		$total = pg_numrows($todos);
+		$paginas = ceil($total/10);
+		if(!isset($pag_atual)){ $pag_atual = 1; }
+		pg_freeresult($todos);
+
+		echo"<B><BIG>$total Professores. P&aacute;gina $pag_atual/$paginas.</BIG></B><br>";
+		$num = pg_NumRows($result);
+		$i = 0;
+		if($num > 0){
+			echo "<HR SIZE=\"2\">";	    
+			echo "<TABLE BORDER = \"2\">";
+			echo "<TR><TD width=\"4\">Código</TD><TD>Nome do Professor</TD><TD>Títulação</TD><TD>Chave</TD><TD>Tipo</TD><TD>Email do Professor</TD> <TD>&nbsp</TD></TR>\n";
+			while ($i < $num) {
+				echo "<FORM METHOD=\"post\" ACTION=\"dbupdate.phtml\">\n";
+				echo "<INPUT TYPE=\"hidden\" NAME=\"codigo_professor\" VALUE=\"";echo pg_result($result, $i, "cod_professor"); echo "\">";
+				echo "<TD><CENTER>"; echo pg_Result($result, $i, "cod_professor") ; echo "</TD></CENTER>\n" ;
+				echo "<TD>";echo pg_Result($result, $i, "nome");echo "</TD>\n" ;
+				echo "<TD>";echo pg_Result($result, $i, "titulo");echo "</TD>\n" ;
+				echo "<TD>";echo pg_Result($result, $i, "chave");echo "</TD>\n" ;
+				$tipo_prof = pg_result($result, $i, "tipo");
+				if ( $tipo_prof == '1' ) {
+					echo "<TD>Normal</TD>";
+				}                
+				if ( $tipo_prof == '2' ) {
+					echo "<TD>Orientador</TD>";
+				}                
+				if ( $tipo_prof == '3' ) {
+					echo "<TD>Coordenador de Curso</TD>";
+				}                
+				if ( $tipo_prof == '4' ) {
+					echo "<TD>Visitante</TD>";
+				}                
+				echo "<TD>";echo pg_Result($result, $i, "email");echo "</TD>\n" ;
+				echo "<TD><INPUT TYPE=\"submit\" VALUE=\"Alterar\"></TD>\n" ;
+				echo "</TR>\n";
+				echo "</FORM>\n";
+				$i++;
+			}
+			echo "</TABLE>";
+		}
+		elseif  ($num == 0) {
+			echo "<TR><TD>\n";
+			echo "Nada encontrado.\n" ;
+			echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";  
+			echo "</TR></TD>\n";
+			exit ;
+		}
+
+		echo "<CENTER>\n";
+		echo "<TABLE BORDER=0 CELLSPACING=4><TR>\n";
+		if($pos_cursor > 0)
+		{
+		$cont = $pag_atual - 1;
+		echo "
+		<TD><A HREF=\"exibeprofessores.phtml?";echo "pos_cursor=$pag_ant&pag_atual=$cont";echo "\">página anterior</A></TD>\n
+		";
+		}
+		if($pag_atual  < $paginas)
+		{
+		$cont = $pag_atual + 1;
+		echo"
+		<TD><A HREF=\"exibeprofessores.phtml?";echo "pos_cursor=$prox_pag&pag_atual=$cont";echo "\">próxima página</A></TD>\n";
+		}
+		echo "</TR></TABLE>\n";
+		echo "</CENTER>\n";
+
+		pg_FreeResult($result);
+		pg_Close($conn);
+
+		MostraRodape();
+?>

@@ -1,0 +1,66 @@
+<?PHP 
+	 require ( "../../lib/ed.bib.phtml");
+	 MostraCabec(" Inclusão de Materias ");
+?>
+
+<FORM ACTION="/ed/webmaster/materias/dbinclusao.phtml" METHOD="POST">
+<?PHP
+
+	$conn = pg_Connect("localhost", "5432", "", "", "ed");
+	     
+	if (!$conn) {
+		SaiErro ("Nao foi possivel abrir banco de dados.\n");
+	}
+
+        $result = pg_Exec($conn, "Select * from cursos ORDER BY nome;");
+        $num = pg_NumRows($result);
+        if ( $num == 0 ) {
+            MostraErro ("Não existe cursos cadastradas, deve ser cadastrado um curso ");
+        }
+        echo "<BR>Selecione um Curso(s):";
+        echo "<SELECT NAME=\"codigo_curso\">\n";
+        for($i = 0; $i < $num; $i++)
+        {
+                echo "<OPTION VALUE=\"";
+                echo pg_Result($result, $i, "cod_curso");
+                echo "\">";
+                echo pg_Result($result, $i, "nome");
+                echo "\n";
+        }
+        echo "</SELECT>\n";
+        pg_FreeResult($result);    
+
+        $result = pg_Exec($conn, "Select * from professores ORDER BY nome;");
+        $num = pg_NumRows($result);
+
+		if($num == 0)
+		{
+			echo "<BR><CENTER>ERRO- Atenção - não existem professores cadastrados!\n";
+			echo "<BR>Você deve cadastrar um professor primeiro !\n";
+			echo "<BR><form><input type=\"button\" value=\"Retornar\" onClick=\"history.back()\"></form>";
+        	pg_Close($conn);
+			exit;
+		}
+		echo " <P>Nome da materia:";
+		echo "<INPUT TYPE=\"text\" NAME=\"nome_materia\" SIZE=\"40\"></INPUT> <BR>";
+		echo "Professor responsável:";
+        echo "<SELECT NAME=\"codigo_professor\">\n";
+        for($i = 0; $i < $num; $i++)
+        {
+                echo "<OPTION VALUE=\"";
+                echo pg_Result($result, $i, "cod_professor");
+                echo "\">"; 
+				echo pg_Result($result, $i, "nome");
+                echo "\n";
+        }
+        echo "</SELECT>\n";
+        pg_Close($conn);
+        pg_FreeResult($result);
+        echo "<BR>";
+?>                              
+
+<INPUT TYPE="submit" VALUE="Cadastrar"></INPUT>
+<INPUT TYPE="reset" VALUE="Limpar"></INPUT>
+</CENTER>
+</FORM>
+<?PHP MostraRodape(); ?>
