@@ -3,32 +3,14 @@
 
 Educacao a Distancia é um software de ensino via Web, onde o professor passa/troca informacoes com alunos remotamente. A principio desenhado para ser utilizado a rede internet, embora muitas servicos como vídeo-conferência exigam uma  banda de dados maiores do que a existente hoje, o software traz um refletor para vídeo conferência, que podera ser configurado para rodar na rede local do servidor. Este projeto está sendo elaborado sob softwares free, sob licensa de uso GNU, sob Sistema Operacional Linux.
 
-
-Fábio Dorival Victorelli  e Eduardo Nissenbaum
-1997
-
-   Abstract    
-   
-   Detectamos o problema de assiduidade professor/aluno no CEFET-PR ( instituição de ensino superior da área tecnológica) devido a fatores intrinsecos ao perfil da mesma como : Necessidade de ausências por período 
-prolongados a trabalho de professores e alunos.
-	Implementamos uma aplicação WEB que usa uma metodologia de ensino a distância e recursos multimídia para solucionar esse tipo de problema. 
-Aspectos técnicos de comunicações e metodológicos de administração do ensino a distância são analisados nesse artigo.
-
-
-I. INTRODUCTION
-
-    O Cefet-PR é uma instituição de ensino superior cujo perfil do curso de engenharia industrial é fortemente voltado para a prática tecnológica. Alem disso a maioria de seus alunos já são técnicos na área em que cursam a engenharia e portanto trabalham durante o curso.
-    Por outro lado a maioria dos professores trabalham em empresas da área de suas matérias. Esse perfil, aliado às demandas modernas de viagens constantes no mercado de trabalho tecnológico, leva-nos ao problema de períodos
-de faltas inevitáveis do aluno/professor dentro do calendário programado de  aulas.  
-   A qualidade de ensino nas matérias onde o problema ocorre cai e propomos o uso de uma _FERRAMENTA_ metodologia de ensino a distância via Internet implementada em um servidor web da instituição, para professores e alunos que tenham previsão de baixa assiduidade durante o semestre da matéria em questão e que tenham acesso à microcomputadores de baixo custo ligados a Internet nos locais remotos onde se encontrem durante os períodos de ausência.
-   O crescimento exponencial da Internet chegou a dezenas de milhões de servidores em todo o mundo e vem crescendo cada vez mais. O numero de Web sites dobra a cada 06 meses. Aplicações do tipo video-on-demand e distance learning incrementa o tráfego na Internet cada vez a taxa maiores.  Alguns sites recebem milhões de visitas por dia, e é comum estes sites terem uma taxa muito alta de repostas.
+Fábio Dorival Victorelli  e Eduardo Nissenbaum, 1997
 
 
 A. O servidor  e seus recursos administrativos
 
  Diante do que se tem hoje em tecnologia voltada para educação a distância, deveremos utilizar no sistema as seguintes aplicações:
 * hipertexto (www),
-*  transferência de arquivos (ftp),
+* transferência de arquivos (ftp),
 * listas de discussão sobre diversos assuntos, via email,
 * chats (software para conversação on-line entre um grupo de pessoas),
 * vídeo conferência (refletor de vídeo conferência e cu-seeme),
@@ -85,6 +67,12 @@ A. O servidor  e seus recursos administrativos
 * Interface para manutenção na base de alunos, com
 * Incluir, Alterar, Excluir e Listar os alunos cadastrados
 
+B. SOFTWARES NECESSARIOS: 
+* Servidor Linux
+* HTTPD (Apache)
+* PHP3 
+* PostgreSQL  
 
-  
+C. INSTALACAO
+  Veja diretorio ed/install os scripts install.sh e cria_base
     
